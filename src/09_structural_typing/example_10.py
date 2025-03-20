@@ -1,0 +1,3 @@
+# example_10.py
+class Container(Protocol):
+    def get_item[T](self) -> T: ...
