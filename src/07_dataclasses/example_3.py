@@ -1,6 +1,7 @@
 # example_3.py
 from dataclasses import dataclass
 
+
 @dataclass
 class Stars:
     stars: int

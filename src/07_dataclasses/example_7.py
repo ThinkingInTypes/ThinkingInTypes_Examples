@@ -1,6 +1,7 @@
 # example_7.py
 from enum import Enum
 
+
 class Month(Enum):
     JANUARY = (1, 31)
     FEBRUARY = (2, 28)
