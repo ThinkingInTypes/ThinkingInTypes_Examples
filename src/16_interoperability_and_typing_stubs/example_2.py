@@ -1,3 +1,0 @@
-# example_2.py
-# Generated example.pyi
-def greet(name: str) -> str: ...

@@ -1,13 +1,4 @@
 # example_1.py
-from dataclasses import dataclass
-
-
-@dataclass
-class Product:
-    name: str
-    price: float
-    in_stock: bool = True
-
-
-product = Product("Laptop", 999.99)
-print(product)  # Product(name='Laptop', price=999.99, in_stock=True)
+def rate_stars(stars: int):
+    assert 1 <= stars <= 10, "Stars rating must be between 1 and 10."
+    # use stars safely

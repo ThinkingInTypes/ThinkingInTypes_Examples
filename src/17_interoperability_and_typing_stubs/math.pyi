@@ -1,3 +1,2 @@
-# example_1.py
 # math.pyi
 def sqrt(x: float) -> float: ...

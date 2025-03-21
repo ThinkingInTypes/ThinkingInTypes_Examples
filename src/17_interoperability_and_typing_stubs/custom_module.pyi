@@ -1,4 +1,3 @@
-# example_3.py
 # custom_module.pyi
 class User:
     id: int

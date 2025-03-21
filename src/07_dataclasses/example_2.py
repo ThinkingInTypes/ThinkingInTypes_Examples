@@ -1,13 +1,9 @@
 # example_2.py
-from dataclasses import dataclass, field
-from typing import List
+class Stars:
+    def __init__(self, stars: int):
+        assert 1 <= stars <= 10, "Stars rating must be between 1 and 10."
+        self._stars = stars
 
-
-@dataclass(frozen=True)
-class Order:
-    order_id: int
-    items: List[str] = field(default_factory=list)
-
-
-order = Order(order_id=123)
-# order.order_id = 456  # Error: dataclass is frozen (immutable)
+    @property
+    def stars(self):
+        return self._stars
