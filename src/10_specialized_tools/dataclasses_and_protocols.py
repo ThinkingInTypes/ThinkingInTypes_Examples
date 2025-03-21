@@ -1,4 +1,5 @@
 # dataclasses_and_protocols.py
+from dataclasses import dataclass
 from typing import Protocol
 
 

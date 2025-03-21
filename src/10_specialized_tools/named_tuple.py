@@ -8,4 +8,6 @@ class Coordinates(NamedTuple):
 
 
 coords = Coordinates(51.5074, -0.1278)
-print(coords.latitude)  # 51.5074
+print(coords)
+print(coords.latitude)
+coords.latitude = 123.4567

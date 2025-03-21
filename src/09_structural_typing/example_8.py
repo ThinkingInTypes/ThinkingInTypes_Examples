@@ -1,4 +1,7 @@
 # example_8.py
+from typing import Container
+
+
 def print_item_and_return[C](container: Container[C]) -> C:
     item = container.get_item()
     print("Got:", item)
