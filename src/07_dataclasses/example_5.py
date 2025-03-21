@@ -1,4 +1,7 @@
 # example_5.py
+from dataclasses import dataclass
+
+
 @dataclass(frozen=True)
 class Stars:
     stars: int

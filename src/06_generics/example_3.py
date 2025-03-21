@@ -1,4 +1,6 @@
 # example_3.py
+from typing import TypeVar
+
 U = TypeVar("U", int, float)
 
 

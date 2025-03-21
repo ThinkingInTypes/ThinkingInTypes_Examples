@@ -1,4 +1,7 @@
 # example_6.py
+from dataclasses import dataclass
+
+
 @dataclass(frozen=True)
 class FullName:
     name: str

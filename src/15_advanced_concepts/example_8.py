@@ -1,4 +1,6 @@
 # example_8.py
+from typing import TypeVar, Generic
+
 T_contra = TypeVar("T_contra", contravariant=True)
 
 

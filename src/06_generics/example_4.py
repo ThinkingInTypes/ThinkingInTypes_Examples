@@ -1,4 +1,7 @@
 # example_4.py
+from typing import TypeVar
+
+
 class Animal:
     def speak(self) -> str:
         return "..."

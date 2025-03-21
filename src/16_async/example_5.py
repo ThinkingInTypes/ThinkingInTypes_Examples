@@ -1,4 +1,5 @@
 # example_5.py
+import asyncio
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 

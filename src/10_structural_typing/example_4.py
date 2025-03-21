@@ -1,5 +1,5 @@
 # example_4.py
-from typing import runtime_checkable
+from typing import runtime_checkable, Protocol
 
 
 @runtime_checkable
