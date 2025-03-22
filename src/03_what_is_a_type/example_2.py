@@ -9,3 +9,4 @@ def make_it_quack(bird):
 
 
 make_it_quack(Duck())  # works fine
+## Quack!
