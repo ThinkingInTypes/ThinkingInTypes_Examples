@@ -17,3 +17,5 @@ class User:
 
 user = User(id=1, name="Alice", status=Status.ACTIVE)
 print(user)
+## User(id=1, name='Alice', status=<Status.ACTIVE:
+## 'active'>)

@@ -14,3 +14,4 @@ def is_cat(animal: object) -> TypeGuard[Cat]:
 animal = Cat()
 if is_cat(animal):
     animal.meow()  # Safe to call
+## Meow!

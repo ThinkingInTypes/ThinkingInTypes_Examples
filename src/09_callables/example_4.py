@@ -19,3 +19,4 @@ def multiply(a: int, b: int) -> int:
 
 
 multiply(2, 3)  # Output: Calling multiply with (2, 3) and {} then returns 6
+## Calling multiply with (2, 3) and {}

@@ -7,4 +7,5 @@ def set_mode(mode: Literal["auto", "manual"]) -> None:
 
 
 set_mode("auto")  # valid
+## Mode set to auto
 # set_mode('automatic')  # invalid, detected by type checker

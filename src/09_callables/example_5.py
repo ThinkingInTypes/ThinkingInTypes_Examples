@@ -17,4 +17,6 @@ def double(value: Union[int, str]) -> Union[int, str]:
 
 
 print(double(4))  # Output: 8
+## 8
 print(double("Hi"))  # Output: HiHi
+## HiHi

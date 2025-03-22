@@ -38,3 +38,5 @@ run_process("DataCleanup", FileLogger("app.log"))  # logs to file
 test_logger = ListLogger()
 run_process("DataCleanup", test_logger)  # logs to list in memory
 print("Captured logs:", test_logger.messages)
+## Captured logs: ['Starting DataCleanup',
+## 'Finished DataCleanup']

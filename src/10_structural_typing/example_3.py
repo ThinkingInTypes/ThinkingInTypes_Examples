@@ -29,3 +29,4 @@ closables = [FileResource("data.txt"), SocketResource(), open("other.txt", "w")]
 close_all(
     closables
 )  # OK: FileResource, SocketResource, and file objects all have close()
+## Socket closed

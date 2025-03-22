@@ -24,4 +24,6 @@ def print_id(entity: Identifiable) -> None:
 
 
 print_id(User(1, "Alice"))
+## ID: 1
 print_id(Product(101, 19.99))
+## ID: 101
