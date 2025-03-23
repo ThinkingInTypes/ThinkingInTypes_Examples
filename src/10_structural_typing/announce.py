@@ -1,4 +1,7 @@
-# example_2.py
+# announce.py
+from speaker import Speaker
+
+
 class Dog:
     def speak(self) -> str:
         return "woof"

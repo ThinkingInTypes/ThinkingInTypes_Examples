@@ -1,4 +1,4 @@
-# example_1.py
+# speaker.py
 from typing import Protocol
 
 
