@@ -1,6 +1,5 @@
 # it_all_goes_wrong.py
 
-
 class A:
     x: int = 100
     y: int = 200
@@ -23,6 +22,7 @@ a1: A = None
 a2: A = None
 a3: A = None
 
+
 def display(counter: int):
     print(f"display({counter})")
     if a1:
@@ -31,6 +31,7 @@ def display(counter: int):
         print(f"{a2.x = }, {a2.y = }")
     if a3:
         print(f"{a3.x = }, {a3.y = }")
+
 
 a1 = A()
 display(1)

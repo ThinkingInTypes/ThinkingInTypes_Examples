@@ -1,11 +1,14 @@
 # example_2.py
-from typing import Generic
+from dataclasses import dataclass
+from typing import Generic, TypeVar
+
+T = TypeVar("T")  # Declare a type variable
 
 
+@dataclass
 class Box(Generic[T]):
-    def __init__(self, content: T):
-        self.content = content
+    content: T
 
 
-box_int = Box(123)
-box_str = Box("hello")
+box_int = Box(123)  # Box[int]
+box_str = Box("hello")  # Box[str]
