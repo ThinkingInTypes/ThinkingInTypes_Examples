@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 from decimal import Decimal
 from require import requires, Condition
-
+from .. import capture
 positive_amount = Condition(
     check=lambda self, amount: amount >= Decimal("0"),
     message="Amount cannot be negative",
@@ -33,15 +33,7 @@ account.deposit(Decimal("50"))
 ## Deposited 50, balance: 150
 account.withdraw(Decimal("30"))
 ## Withdrew 30, balance: 120
-
-try:
+with capture():
     account.withdraw(Decimal("200"))
-except Exception as e:
-    print(f"Error: {e}")
-## Error: Insufficient balance
-
-try:
+with capture():
     account.deposit(Decimal("-10"))
-except Exception as e:
-    print(f"Error: {e}")
-## Error: Amount cannot be negative
