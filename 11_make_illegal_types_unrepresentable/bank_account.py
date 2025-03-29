@@ -1,8 +1,10 @@
 # bank_account.py
 from dataclasses import dataclass
 from decimal import Decimal
+
+from book_utils import Catch
 from require import requires, Condition
-from book_utils import catch
+from amount import Amount
 
 positive_amount = Condition(
     check=lambda self, amount: amount >= Decimal("0"),
@@ -30,8 +32,10 @@ class BankAccount:
         return f"Deposited {amount}, balance: {self.balance}"
 
 
-account = BankAccount(Decimal("100"))
-print(account.deposit(Amount("50")))
-print(account.withdraw(Amount("30")))
-catch(account.withdraw, Amount("200"))
-catch(account.deposit, Amount("-10"))
+account = BankAccount(Decimal(100))
+print(account.deposit(Decimal(50)))
+print(account.withdraw(Decimal(30)))
+with Catch():
+    account.withdraw(Decimal(200))
+with Catch():
+    account.deposit(Decimal(-10))

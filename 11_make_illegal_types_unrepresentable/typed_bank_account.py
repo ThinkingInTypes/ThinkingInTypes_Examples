@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 from amount import Amount
 from balance import Balance
-from book_utils import catch
+from book_utils import Catch
 
 
 @dataclass
@@ -19,7 +19,9 @@ class BankAccount:
 
 
 account = BankAccount(Balance(Amount(100)))
-print(account.deposit(Amount("50")))
-print(account.withdraw(Amount("30")))
-catch(account.withdraw, Amount("200"))
-catch(account.deposit, Amount("-10"))
+print(account.deposit(Amount(50)))
+print(account.withdraw(Amount(30)))
+with Catch():
+    account.withdraw(Amount(200))
+with Catch():
+    account.deposit(Amount(-10))
