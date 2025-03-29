@@ -1,6 +1,9 @@
 # stars.py
 from dataclasses import dataclass
 
+from book_utils import Catch
+
+
 @dataclass(frozen=True)
 class Stars:
     number: int
@@ -16,6 +19,9 @@ def f2(s: Stars) -> Stars:
 stars1 = Stars(4)
 print(stars1)
 print(f1(stars1))
-print(f2(f1(stars1)))
-stars2 = Stars(11)
-print(f1(stars2))
+with Catch():
+    print(f2(f1(stars1)))
+with Catch():
+    stars2 = Stars(11)
+with Catch():
+    print(f1(Stars(11)))

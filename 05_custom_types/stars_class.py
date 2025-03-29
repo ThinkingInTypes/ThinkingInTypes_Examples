@@ -1,4 +1,6 @@
 # stars_class.py
+from book_utils import Catch
+
 
 class Stars:
     def __init__(self, n_stars: int):
@@ -35,10 +37,15 @@ class Stars:
 stars1 = Stars(4)
 print(stars1)
 print(stars1.f1(3))
-print(stars1.f2(stars1.f1(3)))
-stars2 = Stars(11)
-print(stars2.f1(2))
-print(stars2.f2(22))
+with Catch():
+    print(stars1.f2(stars1.f1(3)))
+with Catch():
+    stars2 = Stars(11)
+stars3 = Stars(5)
+with Catch():
+    print(stars3.f1(4))
+with Catch():
+    print(stars3.f2(22))
 # @property without setter prevents mutation:
 # stars1.number = 99
 # AttributeError: can't set attribute 'number'

@@ -1,5 +1,7 @@
 # int_stars.py
 # Using 1-10 stars for customer feedback.
+from book_utils import Catch
+
 
 def f1(stars: int) -> int:
     # Must check argument...
@@ -16,6 +18,8 @@ print(stars1)
 print(f1(stars1))
 print(f2(stars1))
 stars2 = 11
-print(f1(stars2))
+with Catch():
+    print(f1(stars2))
 stars1 = 99
-print(f2(stars1))
+with Catch():
+    print(f2(stars1))

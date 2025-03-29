@@ -2,6 +2,8 @@
 from dataclasses import dataclass, field
 from typing import List
 
+from book_utils import Catch
+
 
 @dataclass(frozen=True)
 class Day:
@@ -77,6 +79,7 @@ for date in [
     (11, 31, 2022),
     (12, 31, 2022),
 ]:
-    print(date)
-    print(BirthDate(months.number(date[0]), Day(date[1]), Year(date[2])))
-    print('-' * 30)
+    with Catch():
+        print(date)
+        print(BirthDate(months.number(date[0]), Day(date[1]), Year(date[2])))
+        print('-' * 30)
