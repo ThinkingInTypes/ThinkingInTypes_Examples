@@ -1,12 +1,6 @@
 # RunAllPythonExamplesParallel.ps1
-# Recursively runs all .py files in the given directory (or current dir).
-# Runs in parallel with colorized, timestamped output. Fails fast on first error.
-# Usage:
-# Run all Python examples in the current directory
-# .\RunAllPythonExamplesParallel.ps1
-# Or a specific subfolder with a higher concurrency limit
-# .\RunAllPythonExamplesParallel.ps1 -TargetDir examples/chapter04 -ThrottleLimit 8
-
+# Runs all Python files in a directory tree (or specific subdirectory) in parallel.
+# Colored output, timestamps, and stops all jobs on first failure.
 
 param (
     [string]$TargetDir = ".",
@@ -19,7 +13,6 @@ if ($PSVersionTable.PSVersion.Major -lt 7) {
 }
 
 $ErrorActionPreference = 'Stop'
-
 $root = Resolve-Path $TargetDir
 Write-Host "🔍 Searching for Python files in: $root" -ForegroundColor Yellow
 
@@ -33,61 +26,80 @@ if (-not $pythonFiles) {
 
 Write-Host "🚀 Running $($pythonFiles.Count) scripts in parallel (ThrottleLimit = $ThrottleLimit)" -ForegroundColor Green
 
-# Set up cancellation token
-$cancellationSource = [System.Threading.CancellationTokenSource]::new()
-$cancellationToken = $cancellationSource.Token
-
-# Failures are tracked here
+# Store failures
 $failures = [System.Collections.Concurrent.ConcurrentBag[string]]::new()
+$jobs = @()
 
-# Run in parallel using .NET Task Parallel Library
-[System.Threading.Tasks.Parallel]::ForEach(
-    $pythonFiles,
-    (New-Object System.Threading.Tasks.ParallelOptions -Property @{
-        MaxDegreeOfParallelism = $ThrottleLimit
-        CancellationToken      = $cancellationToken
-    }),
-    [Action[System.IO.FileInfo]] {
-        param ($file)
-        if ($cancellationToken.IsCancellationRequested) { return }
+# Launch jobs (throttled manually)
+$semaphore = [System.Threading.SemaphoreSlim]::new($ThrottleLimit, $ThrottleLimit)
+
+foreach ($file in $pythonFiles) {
+    $null = $semaphore.WaitAsync()
+
+    $jobs += Start-ThreadJob -ScriptBlock {
+        param($path, $sema)
 
         $timestamp = Get-Date -Format 'HH:mm:ss'
-        Write-Host "$timestamp ▶️ Running: $($file.FullName)" -ForegroundColor Cyan
+        Write-Host "$timestamp ▶️ Running: $path" -ForegroundColor Cyan
 
-        try {
-            $psi = New-Object System.Diagnostics.ProcessStartInfo
-            $psi.FileName = "python"
-            $psi.Arguments = "`"$($file.FullName)`""
-            $psi.RedirectStandardOutput = $true
-            $psi.RedirectStandardError = $true
-            $psi.UseShellExecute = $false
-            $psi.CreateNoWindow = $true
+        $psi = New-Object System.Diagnostics.ProcessStartInfo
+        $psi.FileName = "python"
+        $psi.Arguments = "`"$path`""
+        $psi.RedirectStandardOutput = $true
+        $psi.RedirectStandardError = $true
+        $psi.UseShellExecute = $false
+        $psi.CreateNoWindow = $true
 
-            $process = [System.Diagnostics.Process]::Start($psi)
-            $stdout = $process.StandardOutput.ReadToEnd()
-            $stderr = $process.StandardError.ReadToEnd()
-            $process.WaitForExit()
+        $process = [System.Diagnostics.Process]::Start($psi)
+        $stdout = $process.StandardOutput.ReadToEnd()
+        $stderr = $process.StandardError.ReadToEnd()
+        $process.WaitForExit()
 
-            if ($process.ExitCode -ne 0) {
-                $failures.Add("❌ Failed: $($file.FullName)`n$stderr")
-                $cancellationSource.Cancel()
-            }
-            else {
-                if ($stdout) {
-                    Write-Host $stdout -ForegroundColor Gray
-                }
+        if ($process.ExitCode -ne 0) {
+            return @{
+                Success = $false
+                Path    = $path
+                Error   = $stderr
             }
         }
-        catch {
-            $failures.Add("❌ Exception in: $($file.FullName)`n$($_.Exception.Message)")
-            $cancellationSource.Cancel()
+        else {
+            if ($stdout) {
+                Write-Host $stdout -ForegroundColor Gray
+            }
+            return @{ Success = $true }
         }
+
+    } -ArgumentList $file.FullName, $semaphore
+}
+
+# Monitor jobs
+$failed = $false
+
+foreach ($job in $jobs) {
+    $job | Wait-Job
+
+    $result = Receive-Job $job
+    $null = $semaphore.Release()
+
+    if (-not $result.Success) {
+        $failed = $true
+        Write-Host "`n❌ Failed: $($result.Path)`n$result.Error" -ForegroundColor Red
+
+        # Cancel remaining jobs
+        foreach ($j in $jobs) {
+            if ($j.State -eq 'Running') {
+                Stop-Job $j | Out-Null
+            }
+        }
+        break
     }
-)
+}
 
-if ($failures.Count -gt 0) {
-    Write-Host "`n❌ One or more scripts failed:" -ForegroundColor Red
-    $failures | ForEach-Object { Write-Host $_ -ForegroundColor Red }
+# Cleanup
+$jobs | Remove-Job -Force
+
+if ($failed) {
+    Write-Host "`n❌ One or more scripts failed." -ForegroundColor Red
     exit 1
 }
 
