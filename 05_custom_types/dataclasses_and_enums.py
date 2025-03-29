@@ -15,7 +15,4 @@ class User:
     status: Status
 
 
-user = User(id=1, name="Alice", status=Status.ACTIVE)
-print(user)
-## User(id=1, name='Alice', status=<Status.ACTIVE:
-## 'active'>)
+print(User(id=1, name="Alice", status=Status.ACTIVE))
