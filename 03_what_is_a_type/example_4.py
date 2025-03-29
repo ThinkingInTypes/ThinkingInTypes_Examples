@@ -1,6 +1,8 @@
 # example_4.py
+from book_utils import Catch
+
 def add(a, b):
     return a + b
 
-
-add(1, "2")  # raises runtime TypeError
+with Catch():
+    add(1, "2")  # raises runtime TypeError
