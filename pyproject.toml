@@ -4,6 +4,29 @@ version = "0.1.0"
 description = "Examples from the book ThinkingInTypes.com"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
-    "returns>=0.25.0",
+dependencies = ["returns>=0.25.0"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = [
+    "03_what_is_a_type",
+    "04_predefined_types",
+    "05_custom_types",
+    "06_pattern_matching",
+    "07_immutability",
+    "08_generics",
+    "09_callables",
+    "10_structural_typing",
+    "11_make_illegal_types_unrepresentable",
+    "12_errors_as_values",
+    "13_uncategorized_topics",
+    "a3_guidelines",
+    "a4_type_checkers",
+    "a5_automatic_annotations",
+    "a6_class_attributes",
+    "a8_book_utilities",
+    "book_utils",
 ]
