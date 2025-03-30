@@ -5,7 +5,7 @@
 
 param (
     [string]$TargetDir = ".",
-    [int]$ThrottleLimit = 4
+    [int]$ThrottleLimit = [Environment]::ProcessorCount
 )
 
 if ($PSVersionTable.PSVersion.Major -lt 7) {
