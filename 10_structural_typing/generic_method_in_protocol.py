@@ -1,4 +1,4 @@
-# example_10.py
+# generic_method_in_protocol.py
 from typing import Protocol
 
 

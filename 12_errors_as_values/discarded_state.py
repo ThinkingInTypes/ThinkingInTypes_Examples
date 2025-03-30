@@ -1,5 +1,6 @@
 # discarded_state.py
 # Exception throws everything away
+from book_utils import Catch
 
 
 def func_a(i: int) -> int:
@@ -8,10 +9,6 @@ def func_a(i: int) -> int:
     return i
 
 
-result = [func_a(i) for i in range(3)]
-print(result)
-"""
-Traceback (most recent call last):
-  ...
-ValueError: func_a(1)
-"""
+with Catch():
+    result = [func_a(i) for i in range(3)]
+    print(result)

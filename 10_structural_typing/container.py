@@ -1,4 +1,4 @@
-# example_6.py
+# container.py
 from typing import Protocol, TypeVar
 
 T = TypeVar("T")

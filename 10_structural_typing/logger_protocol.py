@@ -1,4 +1,4 @@
-# example_5.py
+# logger_protocol.py
 from typing import Protocol
 
 

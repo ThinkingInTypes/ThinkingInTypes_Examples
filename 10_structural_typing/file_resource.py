@@ -1,4 +1,4 @@
-# example_3.py
+# file_resource.py
 from typing import Protocol, Iterable
 
 

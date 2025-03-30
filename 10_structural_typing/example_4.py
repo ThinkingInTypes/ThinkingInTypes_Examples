@@ -1,5 +1,6 @@
 # example_4.py
 from typing import runtime_checkable, Protocol
+from file_resource import FileResource
 
 
 @runtime_checkable
