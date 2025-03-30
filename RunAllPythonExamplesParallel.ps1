@@ -1,5 +1,6 @@
 # RunAllPythonExamplesParallel.ps1
 # Runs all Python files in a directory tree (or specific subdirectory) in parallel.
+# Skips __init__.py files and anything inside venv/.venv directories.
 # Colored output, timestamps, and stops all jobs on first failure.
 
 param (
@@ -18,7 +19,7 @@ Write-Host "🔍 Searching for Python files in: $root" -ForegroundColor Yellow
 
 $pythonFiles = Get-ChildItem -Path $root -Recurse -File -Filter *.py |
 Where-Object {
-    -not ($_.FullName -match '\\(\.venv|__pycache__|\.git)\\') -and
+    -not ($_.FullName -match '\\(\.venv|venv|__pycache__|\.git)\\') -and
     $_.Name -ne '__init__.py'
 }
 
@@ -29,11 +30,8 @@ if (-not $pythonFiles) {
 
 Write-Host "🚀 Running $($pythonFiles.Count) scripts in parallel (ThrottleLimit = $ThrottleLimit)" -ForegroundColor Green
 
-# Store failures
 $failures = [System.Collections.Concurrent.ConcurrentBag[string]]::new()
 $jobs = @()
-
-# Launch jobs (throttled manually)
 $semaphore = [System.Threading.SemaphoreSlim]::new($ThrottleLimit, $ThrottleLimit)
 
 foreach ($file in $pythonFiles) {
@@ -84,7 +82,6 @@ foreach ($job in $jobs) {
         $failed = $true
         Write-Host "`n❌ Failed: $($result.Path)`n$result.Error" -ForegroundColor Red
 
-        # Cancel remaining jobs
         foreach ($j in $jobs) {
             if ($j.State -eq 'Running') {
                 Stop-Job $j | Out-Null
@@ -94,7 +91,6 @@ foreach ($job in $jobs) {
     }
 }
 
-# Cleanup
 $jobs | Remove-Job -Force
 
 if ($failed) {
