@@ -18,4 +18,6 @@ def announce(speaker: Speaker) -> None:
 
 
 announce(Dog())  # OK, Dog has speak()
+## Announcement: woof
 announce(Robot())  # OK, Robot has speak()
+## Announcement: beep-boop

@@ -12,3 +12,4 @@ def func_a(i: int) -> int:
 with Catch():
     result = [func_a(i) for i in range(3)]
     print(result)
+## Error: func_a(1)

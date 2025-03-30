@@ -7,3 +7,5 @@ def add(a: int, b: int) -> int:
 
 with Catch():
     add(1, "2")  # Static type checker flags this
+## Error: unsupported operand type(s) for +: 'int'
+## and 'str'

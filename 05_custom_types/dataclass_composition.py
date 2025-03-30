@@ -32,4 +32,10 @@ person = Person(
     BirthDate("7/8/1957"),
     EmailAddress("mindviewinc@gmail.com")
 )
+## FullName checking Bruce Eckel
+## BirthDate checking 7/8/1957
+## EmailAddress checking mindviewinc@gmail.com
 print(person)
+## Person(name=FullName(name='Bruce Eckel'),
+## date_of_birth=BirthDate(dob='7/8/1957'), email=
+## EmailAddress(address='mindviewinc@gmail.com'))

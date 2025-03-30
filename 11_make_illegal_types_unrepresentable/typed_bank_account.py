@@ -20,8 +20,12 @@ class BankAccount:
 
 account = BankAccount(Balance(Amount(100)))
 print(account.deposit(Amount(50)))
+## Deposited 50, balance: 150
 print(account.withdraw(Amount(30)))
+## Withdrew 30, balance: 120
 with Catch():
     account.withdraw(Amount(200))
+## Error: Amount(-80) cannot be negative
 with Catch():
     account.deposit(Amount(-10))
+## Error: Amount(-10) cannot be negative

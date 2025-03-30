@@ -69,3 +69,22 @@ for date in [
         print(date)
         print(BirthDate(Month.number(date[0]), Day(date[1]), Year(date[2])))
         print('-' * 30)
+## (7, 8, 1957)
+## BirthDate(m=JULY, d=Day(n=8), y=Year(n=1957))
+## ------------------------------
+## (0, 32, 1857)
+## Error: Month(0)
+## (2, 31, 2022)
+## Error: Month.FEBRUARY Day(n=31)
+## (9, 31, 2022)
+## Error: Month.SEPTEMBER Day(n=31)
+## (4, 31, 2022)
+## Error: Month.APRIL Day(n=31)
+## (6, 31, 2022)
+## Error: Month.JUNE Day(n=31)
+## (11, 31, 2022)
+## Error: Month.NOVEMBER Day(n=31)
+## (12, 31, 2022)
+## BirthDate(m=DECEMBER, d=Day(n=31),
+## y=Year(n=2022))
+## ------------------------------

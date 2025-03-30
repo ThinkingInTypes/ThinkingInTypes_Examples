@@ -9,9 +9,11 @@ class Messenger:
 
 m = Messenger("foo", 12, 3.14)
 print(m)
+## Messenger(name='foo', number=12, depth=3.14)
 # Frozen dataclass is immutable:
 # m.name = "bar"
 # dataclasses.FrozenInstanceError: cannot assign to field 'name'
 # Automatically creates __hash__():
 d = {m: "value"}
 print(d[m])
+## value

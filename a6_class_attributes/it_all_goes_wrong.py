@@ -36,17 +36,37 @@ def display(counter: int):
 
 a1 = A()
 display(1)
+## display(1)
+## a1.x = 100, a1.y = 200
 a1.x = -1
 a1.y = -2
 display(2)
+## display(2)
+## a1.x = -1, a1.y = -2
 a1.change_x()
 display(3)
+## display(3)
+## a1.x = -1, a1.y = -2
 a2 = A()
 display(4)
+## display(4)
+## a1.x = -1, a1.y = -2
+## a2.x = 999, a2.y = 200
 a2.y = 17
 display(5)
+## display(5)
+## a1.x = -1, a1.y = -2
+## a2.x = 999, a2.y = 17
 A.change_y()
 a3 = A()
 display(6)
+## display(6)
+## a1.x = -1, a1.y = -2
+## a2.x = 999, a2.y = 17
+## a3.x = 999, a3.y = 313
 reset()
 display(7)
+## display(7)
+## a1.x = -1, a1.y = -2
+## a2.x = 100, a2.y = 17
+## a3.x = 100, a3.y = 200

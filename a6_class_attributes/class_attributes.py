@@ -16,7 +16,13 @@ class B:
 
 a = A()
 show(a, "a")
+## [Class A] x: 100
+## [Object a] Empty
 a.x = 1
 show(a, "a")
+## [Class A] x: 100
+## [Object a] x: 1
 b = B(-99)
 show(b, "b")
+## [Class B] x: 100
+## [Object b] x: -99

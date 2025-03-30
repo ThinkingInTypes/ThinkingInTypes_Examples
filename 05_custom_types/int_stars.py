@@ -15,11 +15,16 @@ def f2(stars: int) -> int:
 
 stars1 = 6
 print(stars1)
+## 6
 print(f1(stars1))
+## 11
 print(f2(stars1))
+## 30
 stars2 = 11
 with Catch():
     print(f1(stars2))
+## Error: f1: 11
 stars1 = 99
 with Catch():
     print(f2(stars1))
+## Error: f2: 99

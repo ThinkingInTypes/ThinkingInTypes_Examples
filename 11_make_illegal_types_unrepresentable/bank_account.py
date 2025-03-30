@@ -34,8 +34,12 @@ class BankAccount:
 
 account = BankAccount(Decimal(100))
 print(account.deposit(Decimal(50)))
+## Deposited 50, balance: 150
 print(account.withdraw(Decimal(30)))
+## Withdrew 30, balance: 120
 with Catch():
     account.withdraw(Decimal(200))
+## Error: Insufficient balance
 with Catch():
     account.deposit(Decimal(-10))
+## Error: Amount cannot be negative
