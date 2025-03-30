@@ -17,7 +17,10 @@ $root = Resolve-Path $TargetDir
 Write-Host "🔍 Searching for Python files in: $root" -ForegroundColor Yellow
 
 $pythonFiles = Get-ChildItem -Path $root -Recurse -File -Filter *.py |
-Where-Object { -not ($_.FullName -match '\\(\.venv|__pycache__|\.git)\\') }
+Where-Object {
+    -not ($_.FullName -match '\\(\.venv|__pycache__|\.git)\\') -and
+    $_.Name -ne '__init__.py'
+}
 
 if (-not $pythonFiles) {
     Write-Host "❗ No Python files found." -ForegroundColor Red
@@ -56,11 +59,7 @@ foreach ($file in $pythonFiles) {
         $process.WaitForExit()
 
         if ($process.ExitCode -ne 0) {
-            return @{
-                Success = $false
-                Path    = $path
-                Error   = $stderr
-            }
+            return @{ Success = $false; Path = $path; Error = $stderr }
         }
         else {
             if ($stdout) {
