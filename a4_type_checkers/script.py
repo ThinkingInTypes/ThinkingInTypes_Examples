@@ -1,6 +1,7 @@
 # script.py
+
 def greet(name: str) -> str:
-    return f"Hello, {name}!"
+    print(f"Hello, {name}!")
 
-
-greet(123)  # R: Incorrect type
+greet(123)  # Incorrect type
+## Hello, 123!
