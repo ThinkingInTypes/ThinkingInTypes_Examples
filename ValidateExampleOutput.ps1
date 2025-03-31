@@ -1,6 +1,6 @@
 # ValidateExampleOutput.ps1
 # Runs all Python files and compares their printed output to lines in the script that start with '##'.
-# Continues on mismatches and reports at the end. Uses parallel execution with uv venv.
+# Continues on mismatches and reports at the end. Uses parallel execution with current venv.
 
 param (
     [string]$TargetDir = ".",
@@ -22,7 +22,6 @@ if (-not (Test-Path $pythonPath)) {
 }
 
 Write-Host "🐍 Using interpreter: $pythonPath" -ForegroundColor Green
-
 
 $ErrorActionPreference = 'Stop'
 $root = Resolve-Path $TargetDir
@@ -56,9 +55,20 @@ foreach ($file in $pythonFiles) {
         Write-Host "$timestamp ▶️ Checking: $path" -ForegroundColor Cyan
 
         # Read expected lines from source
-        $expectedLines = Get-Content -Path $path -Encoding UTF8 |
-        Where-Object { $_ -match '^##\s' } |
-        ForEach-Object { ($_ -replace '^##\s*', '').TrimEnd() }
+        $rawLines = Get-Content -Path $path -Encoding UTF8
+        $expectedLines = @()
+        
+        foreach ($line in $rawLines) {
+            $trimmed = $line.TrimStart()
+            if ($trimmed.StartsWith('##')) {
+                if ($trimmed.Length -ge 2) {
+                    $expectedLines += $trimmed.Substring(2).Trim()
+                }
+                else {
+                    $expectedLines += ''
+                }
+            }
+        }
 
         # Run the script
         $psi = New-Object System.Diagnostics.ProcessStartInfo
@@ -83,7 +93,11 @@ foreach ($file in $pythonFiles) {
 
         $actualLines = $stdout -split "`r?`n"
 
-        # Compare actual vs expected
+        # Handle case: no expected output and no actual output
+        if ($expectedLines.Count -eq 0 -and $actualLines.Count -eq 1 -and $actualLines[0] -eq '') {
+            return @{ Success = $true }
+        }
+
         $diff = @()
         for ($i = 0; $i -lt [Math]::Max($expectedLines.Count, $actualLines.Count); $i++) {
             $expected = if ($i -lt $expectedLines.Count) { $expectedLines[$i] } else { "<missing>" }
@@ -93,10 +107,6 @@ foreach ($file in $pythonFiles) {
             }
         }
 
-        if ($expectedLines.Count -eq 0 -and $actualLines.Count -eq 1 -and $actualLines[0] -eq '') {
-            return @{ Success = $true }
-        }
-        
         if ($diff.Count -gt 0) {
             return @{
                 Path  = $path
@@ -116,7 +126,6 @@ foreach ($job in $jobs) {
     $null = $semaphore.Release()
 
     foreach ($result in $results) {
-        # Write-Host "DEBUG: result = $($result | Out-String)" -ForegroundColor DarkGray
         if ($result -is [hashtable] -and $result.ContainsKey('Error')) {
             $message = "❌ $($result.Path)`n$($result['Error'])"
             $discrepancies.Add($message)
