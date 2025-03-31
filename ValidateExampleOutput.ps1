@@ -57,8 +57,8 @@ foreach ($file in $pythonFiles) {
 
         # Read expected lines from source
         $expectedLines = Get-Content -Path $path -Encoding UTF8 |
-        Where-Object { $_ -match '^##\s?' } |
-        ForEach-Object { ($_ -replace '^##\s?', '').TrimEnd() }
+        Where-Object { $_ -match '^##\s' } |
+        ForEach-Object { ($_ -replace '^##\s*', '').TrimEnd() }
 
         # Run the script
         $psi = New-Object System.Diagnostics.ProcessStartInfo
@@ -116,7 +116,7 @@ foreach ($job in $jobs) {
     $null = $semaphore.Release()
 
     foreach ($result in $results) {
-        Write-Host "DEBUG: result = $($result | Out-String)" -ForegroundColor DarkGray
+        # Write-Host "DEBUG: result = $($result | Out-String)" -ForegroundColor DarkGray
         if ($result -is [hashtable] -and $result.ContainsKey('Error')) {
             $message = "❌ $($result.Path)`n$($result['Error'])"
             $discrepancies.Add($message)
