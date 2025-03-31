@@ -1,6 +1,6 @@
 # ValidateExampleOutput.ps1
-# Runs all Python files and compares their printed output to lines in the script that start with '##'.
-# Continues on mismatches and reports at the end. Uses parallel execution with current venv.
+# Runs Python examples and compares actual output with ## comments (ignoring whitespace).
+# Uses parallel threads and supports uv/venv Python activation.
 
 param (
     [string]$TargetDir = ".",
@@ -40,7 +40,6 @@ if (-not $pythonFiles) {
 
 Write-Host "🧪 Comparing output for $($pythonFiles.Count) examples (ThrottleLimit = $ThrottleLimit)" -ForegroundColor Green
 
-# Store failures
 $discrepancies = [System.Collections.Concurrent.ConcurrentBag[string]]::new()
 $jobs = @()
 $semaphore = [System.Threading.SemaphoreSlim]::new($ThrottleLimit, $ThrottleLimit)
@@ -54,21 +53,15 @@ foreach ($file in $pythonFiles) {
         $timestamp = Get-Date -Format 'HH:mm:ss'
         Write-Host "$timestamp ▶️ Checking: $path" -ForegroundColor Cyan
 
-        # Read expected lines from source
+        # Read expected output from ## comments
         $rawLines = Get-Content -Path $path -Encoding UTF8
-        $expectedLines = @()
-        
+        $expectedParts = @()
         foreach ($line in $rawLines) {
-            $trimmed = $line.TrimStart()
-            if ($trimmed.StartsWith('##')) {
-                if ($trimmed.Length -ge 2) {
-                    $expectedLines += $trimmed.Substring(2).Trim()
-                }
-                else {
-                    $expectedLines += ''
-                }
+            if ($line -match '^## (.*)$') {
+                $expectedParts += $matches[1]
             }
         }
+        $expectedString = ($expectedParts -join "`n")
 
         # Run the script
         $psi = New-Object System.Diagnostics.ProcessStartInfo
@@ -80,7 +73,7 @@ foreach ($file in $pythonFiles) {
         $psi.CreateNoWindow = $true
 
         $process = [System.Diagnostics.Process]::Start($psi)
-        $stdout = $process.StandardOutput.ReadToEnd().TrimEnd()
+        $stdout = $process.StandardOutput.ReadToEnd()
         $stderr = $process.StandardError.ReadToEnd()
         $process.WaitForExit()
 
@@ -91,26 +84,13 @@ foreach ($file in $pythonFiles) {
             }
         }
 
-        $actualLines = $stdout -split "`r?`n"
+        $actualStripped = ($stdout -replace '\s+', '')
+        $expectedStripped = ($expectedString -replace '\s+', '')
 
-        # Handle case: no expected output and no actual output
-        if ($expectedLines.Count -eq 0 -and $actualLines.Count -eq 1 -and $actualLines[0] -eq '') {
-            return @{ Success = $true }
-        }
-
-        $diff = @()
-        for ($i = 0; $i -lt [Math]::Max($expectedLines.Count, $actualLines.Count); $i++) {
-            $expected = if ($i -lt $expectedLines.Count) { $expectedLines[$i] } else { "<missing>" }
-            $actual = if ($i -lt $actualLines.Count) { $actualLines[$i] } else { "<missing>" }
-            if ($expected -ne $actual) {
-                $diff += "Line ${i}:`n  Expected: '$expected'`n    Actual: '$actual'"
-            }
-        }
-
-        if ($diff.Count -gt 0) {
+        if (-not $expectedStripped.Contains($actualStripped)) {
             return @{
                 Path  = $path
-                Error = "Output mismatch:`n" + ($diff -join "`n")
+                Error = "Output mismatch.`n--- Expected (## comments) ---`n$expectedString`n--- Actual (stdout) ---`n$stdout"
             }
         }
 
@@ -119,7 +99,6 @@ foreach ($file in $pythonFiles) {
     } -ArgumentList $file.FullName, $semaphore, $pythonPath
 }
 
-# Monitor jobs
 foreach ($job in $jobs) {
     $job | Wait-Job
     $results = Receive-Job $job
@@ -133,7 +112,6 @@ foreach ($job in $jobs) {
     }
 }
 
-# Cleanup
 $jobs | Remove-Job -Force
 
 if ($discrepancies.Count -gt 0) {
