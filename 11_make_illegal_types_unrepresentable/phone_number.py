@@ -3,9 +3,11 @@ from dataclasses import dataclass
 from typing import Self
 import re
 
+
 @dataclass(frozen=True)
 class PhoneNumber:
     """Represents a validated and normalized phone number."""
+
     country_code: str
     number: str  # Digits only, no formatting
 
@@ -41,7 +43,4 @@ class PhoneNumber:
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, PhoneNumber):
             return NotImplemented
-        return (
-            self.country_code == other.country_code
-            and self.number == other.number
-        )
+        return self.country_code == other.country_code and self.number == other.number

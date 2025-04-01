@@ -8,10 +8,12 @@ def f1(stars: int) -> int:
     assert 1 <= stars <= 10, f"f1: {stars}"
     return stars + 5
 
+
 def f2(stars: int) -> int:
     # ...each place it is used.
     assert 1 <= stars <= 10, f"f2: {stars}"
     return stars * 5
+
 
 stars1 = 6
 print(stars1)

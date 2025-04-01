@@ -1,11 +1,13 @@
 # messenger.py
 from dataclasses import dataclass, replace
 
+
 @dataclass
 class Messenger:
     name: str
     number: int
     depth: float = 0.0  # Default argument
+
 
 x = Messenger(name="x", number=9, depth=2.0)
 m = Messenger("foo", 12, 3.14)

@@ -4,7 +4,6 @@ from decimal import Decimal
 
 from book_utils import Catch
 from require import requires, Condition
-from amount import Amount
 
 positive_amount = Condition(
     check=lambda self, amount: amount >= Decimal("0"),
@@ -12,8 +11,7 @@ positive_amount = Condition(
 )
 
 sufficient_balance = Condition(
-    check=lambda self, amount: self.balance >= amount,
-    message="Insufficient balance"
+    check=lambda self, amount: self.balance >= amount, message="Insufficient balance"
 )
 
 

@@ -8,6 +8,7 @@ from book_utils import Catch
 @dataclass(frozen=True)
 class Day:
     n: int
+
     def __post_init__(self) -> None:
         assert 1 <= self.n <= 31, f"Day({self.n})"
 
@@ -15,6 +16,7 @@ class Day:
 @dataclass(frozen=True)
 class Year:
     n: int
+
     def __post_init__(self) -> None:
         assert 1900 < self.n <= 2022, f"Year({self.n})"
 
@@ -24,6 +26,7 @@ class Month:
     name: str
     n: int
     max_days: int
+
     def __post_init__(self):
         assert 1 <= self.n <= 12, f"Month({self.n})"
         assert self.max_days in [28, 30, 31], f"Month max_days {self.max_days}"
@@ -33,20 +36,23 @@ class Month:
 
     @staticmethod
     def make_months():
-        return [Month(m[0], m[1], m[2]) for m in [
-            ("January", 1, 31),
-            ("February", 2, 28),
-            ("March", 3, 31),
-            ("April", 4, 30),
-            ("May", 5, 31),
-            ("June", 6, 30),
-            ("July", 7, 31),
-            ("August", 8, 31),
-            ("September", 9, 30),
-            ("October", 10, 31),
-            ("November", 11, 30),
-            ("December", 12, 31),
-        ]]
+        return [
+            Month(m[0], m[1], m[2])
+            for m in [
+                ("January", 1, 31),
+                ("February", 2, 28),
+                ("March", 3, 31),
+                ("April", 4, 30),
+                ("May", 5, 31),
+                ("June", 6, 30),
+                ("July", 7, 31),
+                ("August", 8, 31),
+                ("September", 9, 30),
+                ("October", 10, 31),
+                ("November", 11, 30),
+                ("December", 12, 31),
+            ]
+        ]
 
 
 @dataclass(frozen=True)
@@ -82,7 +88,7 @@ for date in [
     with Catch():
         print(date)
         print(BirthDate(months.number(date[0]), Day(date[1]), Year(date[2])))
-        print('-' * 30)
+        print("-" * 30)
 ## (7, 8, 1957)
 ## BirthDate(m=Month(name='July', n=7,
 ## max_days=31), d=Day(n=8), y=Year(n=1957))

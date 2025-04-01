@@ -1,11 +1,13 @@
 # frozen_data_classes.py
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True)
 class Messenger:
     name: str
     number: int
     depth: float = 0.0  # Default
+
 
 m = Messenger("foo", 12, 3.14)
 print(m)

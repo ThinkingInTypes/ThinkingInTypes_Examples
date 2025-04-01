@@ -4,6 +4,6 @@ def process_response(response: dict) -> str:
         case {"status": "success", "data": data}:
             return f"Success: {data}"
         case {"status": "error", "message": error_msg}:
-            return f"Error: {error}"
+            return f"Error: {error_msg}"
         case _:
             return "Unknown response format"

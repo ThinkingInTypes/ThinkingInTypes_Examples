@@ -15,7 +15,6 @@ R = TypeVar("R")
 
 
 class Catch:
-
     def __enter__(self) -> "Catch":
         return self
 

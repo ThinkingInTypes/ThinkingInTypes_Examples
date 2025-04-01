@@ -2,6 +2,7 @@
 from container import Container
 from container_types import StringContainer, IntContainer
 
+
 def print_item_and_return[C](container: Container[C]) -> C:
     item = container.get_item()
     print("Got:", item)

@@ -16,3 +16,8 @@ build-backend = "setuptools.build_meta"
 where = ["."]  # Look for packages in the root directory
 include = ["*"]  # Include all directories with __init__.py files
 namespaces = false  # Don't include namespace packages (directories without __init__.py)
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.2",
+]

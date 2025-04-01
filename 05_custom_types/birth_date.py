@@ -9,6 +9,7 @@ from book_utils import Catch
 @dataclass(frozen=True)
 class Day:
     n: int
+
     def __post_init__(self) -> None:
         assert 1 <= self.n <= 31, f"{self}"
 
@@ -16,6 +17,7 @@ class Day:
 @dataclass(frozen=True)
 class Year:
     n: int
+
     def __post_init__(self) -> None:
         assert 1900 < self.n <= 2022, f"{self}"
 
@@ -51,6 +53,7 @@ class BirthDate:
     m: Month
     d: Day
     y: Year
+
     def __post_init__(self):
         self.m.check_day(self.d)
 
@@ -68,7 +71,7 @@ for date in [
     with Catch():
         print(date)
         print(BirthDate(Month.number(date[0]), Day(date[1]), Year(date[2])))
-        print('-' * 30)
+        print("-" * 30)
 ## (7, 8, 1957)
 ## BirthDate(m=JULY, d=Day(n=8), y=Year(n=1957))
 ## ------------------------------

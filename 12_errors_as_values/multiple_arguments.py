@@ -2,6 +2,7 @@
 from pprint import pprint
 
 from composing_functions import func_a, func_b, func_c
+
 ## [(0, <Success: 0>),
 ##  (1, <Failure: func_a(1)>),
 ##  (2, <Success: 2>),
@@ -16,7 +17,7 @@ from returns.result import Result
 
 
 def add(first: int, second: int, third: int) -> str:
-    return f"add({first} + {second} + {third}):" f" {first + second + third}"
+    return f"add({first} + {second} + {third}): {first + second + third}"
 
 
 def composed(i: int, j: int) -> Result[str, str | ZeroDivisionError | ValueError]:

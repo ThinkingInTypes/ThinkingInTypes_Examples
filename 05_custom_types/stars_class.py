@@ -7,7 +7,7 @@ class Stars:
         self._number = n_stars  # Private by convention
         self.condition()
 
-    def condition(self, s: int|None = None):
+    def condition(self, s: int | None = None):
         if s:
             assert 1 <= s <= 10, f"{self}: {s}"
         else:
@@ -15,7 +15,8 @@ class Stars:
 
     # Prevent external modification:
     @property
-    def number(self): return self._number
+    def number(self):
+        return self._number
 
     # Create readable output:
     def __str__(self) -> str:
@@ -33,6 +34,7 @@ class Stars:
         self._number = n_stars * 5
         self.condition()  # Postcondition
         return self._number
+
 
 stars1 = Stars(4)
 print(stars1)
