@@ -11,15 +11,15 @@ default:
 let yes_flag := false
 
 # Helper function for confirmation prompt
-def confirm(action: string): bool {
+let confirm = (closure action {
     if $yes_flag {
         true
     } else {
-        let prompt = $"Continue: ($action)? (y/N)"
-        let answer = (input $prompt | str downcase)
-        $answer in ["y", "yes"]
+        input $"Continue: ($action)? (y/N)"
+        | str downcase
+        | into bool
     }
-}
+})
 
 # Run all steps with confirmation
 run-roundtrip:
@@ -31,29 +31,29 @@ run-roundtrip:
 
 # Run extraction script
 extract:
-    ^"..\ThinkingInTypes.github.io\extract.ps1";
+    ^"..\ThinkingInTypes.github.io\extract.ps1"
 
 # Confirm and run Python examples
 run-python:
-    if (confirm "Run all Python examples") {
-        ^".\RunAllPythonExamplesParallel.ps1";
+    if (do $confirm "Run all Python examples") {
+        ^".\RunAllPythonExamplesParallel.ps1"
     }
 
 # Confirm and update embedded outputs using px
 update-outputs:
-    if (confirm "Update embedded example outputs with px") {
-        print "Updating embedded example outputs";
-        ^px -r .;
+    if (do $confirm "Update embedded example outputs with px") {
+        print "Updating embedded example outputs"
+        ^px -r .
     }
 
 # Confirm and validate output
 validate:
-    if (confirm "Validate Example output") {
-        ^".\ValidateExampleOutput.ps1";
+    if (do $confirm "Validate Example output") {
+        ^".\ValidateExampleOutput.ps1"
     }
 
 # Confirm and inject examples into chapters
 inject:
-    if (confirm "Inject Updated Examples Back Into Chapters") {
-        ^"..\ThinkingInTypes.github.io\inject.ps1";
+    if (do $confirm "Inject Updated Examples Back Into Chapters") {
+        ^"..\ThinkingInTypes.github.io\inject.ps1"
     }
