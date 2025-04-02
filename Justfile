@@ -15,9 +15,9 @@ let confirm = (closure action {
     if $yes_flag {
         true
     } else {
-        input $"Continue: ($action)? (y/N)"
-        | str downcase
-        | into bool
+        let response = (input $"Continue: ($action)? (y/N)")
+        let answer = ($response | str to-lower)
+        $answer in ["y", "yes"]
     }
 })
 
