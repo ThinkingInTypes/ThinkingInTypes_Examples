@@ -4,6 +4,7 @@ Validate Python example scripts by comparing their output to expected ## comment
 NOTE: Does not appear to be working correctly.
 """
 
+import os
 import re
 import subprocess
 import sys
@@ -83,14 +84,15 @@ def run_and_compare(file: Path, interpreter: str) -> tuple[bool, str | None]:
 @task(
     help={
         "target_dir": "Directory to search for Python files (default: current directory).",
-        "throttle_limit": "Max number of parallel workers (default: 4).",
+        "throttle_limit": "Max number of parallel workers (default: number of CPU cores).",
     }
 )
-def validate_output(ctx, target_dir: str = ".", throttle_limit: int = 4) -> None:
+def validate_output(ctx, target_dir: str = ".", throttle_limit: int | None = None) -> None:
     """
     Run Python example scripts and compare actual output to expected ## comments.
     Ignores whitespace, supports parallel execution, and uses the active interpreter.
     """
+    _ = ctx  # Silence warning
     interpreter = sys.executable
     root = Path(target_dir).resolve()
     console.print(f"🐍 Using interpreter: {interpreter}", style="green")
@@ -100,6 +102,9 @@ def validate_output(ctx, target_dir: str = ".", throttle_limit: int = 4) -> None
     if not files:
         console.print("❗ No Python files found.", style="bold red")
         sys.exit(1)
+
+    if throttle_limit is None:
+        throttle_limit = os.cpu_count() or 4
 
     console.print(
         f"🧪 Comparing output for {len(files)} examples (ThrottleLimit = {throttle_limit})",
