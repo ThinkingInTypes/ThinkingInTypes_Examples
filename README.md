@@ -16,5 +16,6 @@ This project uses:
    - Installs all dependencies (including dev tools like `invoke`, `ruff`, etc.)
    - Displays instructions to activate the environment
 4. Test by running `uvx invoke run-all`, which runs all examples and ensures they succeed.
-5. If you activate the virtual environment, you can run any example with `python example.py`.
-   Without activation, use `uv run example.py`.
+
+- If you activate the virtual environment, you can run any example with `python example.py`.
+- Without activation, use `uv run example.py`.
