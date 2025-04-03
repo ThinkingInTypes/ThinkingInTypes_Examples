@@ -11,7 +11,7 @@ This project uses:
 
 1. Clone this repository
 2. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
-3. Run `uvx bootstrap.py`
+3. Run `uv run bootstrap.py`
    - Creates a `.venv` directory
    - Installs all dependencies (including dev tools like `invoke`, `ruff`, etc.)
    - Displays instructions to activate the environment
