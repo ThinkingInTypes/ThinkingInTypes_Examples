@@ -3,14 +3,17 @@ Main tasks file that aggregates tasks from the 'tasks' subdirectory.
 """
 import subprocess
 import sys
+from pathlib import Path
 
 from invoke import task
 from rich.console import Console
 from rich.prompt import Confirm
 
-from invoke_tasks import namespace, validate_output, run_all, examples, validate
+from invoke_tasks import namespace, examples, validate
 
 console = Console()
+
+temp_files = [Path("app.log"), Path("data.txt"), Path("other.txt")]
 
 
 @task
@@ -40,6 +43,10 @@ def full(ctx) -> None:
     subprocess.run(["powershell", "-File", "..\\ThinkingInTypes.github.io\\inject.ps1"], check=True)
 
     console.print("[bold green]\n✅ Workflow completed successfully.[/bold green]")
+    for file in temp_files:
+        if file.exists():
+            file.unlink()
+            print(f"Deleted {file}")
 
 
 namespace.add_task(full)
