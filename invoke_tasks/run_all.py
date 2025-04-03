@@ -88,7 +88,7 @@ def run_script(file: Path, failure_event: threading.Event) -> ScriptResult:
         "throttle_limit": "Maximum number of parallel processes (default: number of processors).",
     }
 )
-def run_all(ctx, target_dir: str = ".", throttle_limit: Optional[int] = None) -> None:
+def examples(ctx, target_dir: str = ".", throttle_limit: Optional[int] = None) -> None:
     """
     Run all Python scripts in a directory tree in parallel.
 

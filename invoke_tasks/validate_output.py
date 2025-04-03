@@ -87,7 +87,7 @@ def run_and_compare(file: Path, interpreter: str) -> tuple[bool, str | None]:
         "throttle_limit": "Max number of parallel workers (default: number of CPU cores).",
     }
 )
-def validate_output(ctx, target_dir: str = ".", throttle_limit: int | None = None) -> None:
+def validate(ctx, target_dir: str = ".", throttle_limit: int | None = None) -> None:
     """
     Run Python example scripts and compare actual output to expected ## comments.
     Ignores whitespace, supports parallel execution, and uses the active interpreter.
