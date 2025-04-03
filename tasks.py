@@ -27,7 +27,7 @@ RESET = "\033[0m"
 
 # Directories to exclude from the search.
 EXCLUDED_DIRS = {"venv", ".venv", "__pycache__", ".git"}
-EXCLUDED_FILES = {"__init__.py", "tasks.py"}
+EXCLUDED_FILES = {"__init__.py", "tasks.py", "bootstrap.py"}
 
 
 @dataclass

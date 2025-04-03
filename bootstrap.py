@@ -31,7 +31,10 @@ def main() -> None:
         print("✅ Virtual environment already exists.")
 
     print("📥 Installing all dependencies (including dev group)...")
-    subprocess.run(["uv", "pip", "install", "--all"], check=True)
+    subprocess.run(
+        ["uv", "pip", "install", "--all-extras", "--requirements", "pyproject.toml"],
+        check=True,
+    )
 
     print("\n🚀 All dependencies installed successfully.")
     print_activation_instruction(system)
