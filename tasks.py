@@ -8,7 +8,7 @@ from invoke import task
 from rich.console import Console
 from rich.prompt import Confirm
 
-from invoke_tasks import namespace, validate_output, run_all
+from invoke_tasks import namespace, validate_output, run_all, examples, validate
 
 console = Console()
 
@@ -28,13 +28,13 @@ def full(ctx) -> None:
     subprocess.run(["powershell", "-File", "..\\ThinkingInTypes.github.io\\extract.ps1"], check=True)
 
     confirm("Run all examples?", default=True)
-    run_all(ctx)
+    examples(ctx)
 
     confirm("Update embedded outputs with 'px -r .'?", default=True)
     ctx.run(["px", "-r", "."], check=True)
 
     confirm("Validate example output?", default=True)
-    validate_output(ctx)
+    validate(ctx)
 
     confirm("Inject examples back into book?", default=True)
     subprocess.run(["powershell", "-File", "..\\ThinkingInTypes.github.io\\inject.ps1"], check=True)
