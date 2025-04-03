@@ -5,7 +5,9 @@ description = "Examples from the book ThinkingInTypes.com"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "pyinvoke>=1.0.4",
     "returns>=0.25.0",
+    "rich>=14.0.0",
 ]
 
 [build-system]
