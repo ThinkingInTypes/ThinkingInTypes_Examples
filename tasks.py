@@ -9,7 +9,7 @@ from invoke import task
 from rich.console import Console
 from rich.prompt import Confirm
 
-from invoke_tasks import namespace, examples, validate
+from invoke_tasks import namespace, examples, validate, extract
 
 console = Console()
 
@@ -28,13 +28,13 @@ def full(ctx) -> None:
             sys.exit(1)
 
     confirm("Erase examples and extract new ones from book?", default=True)
-    subprocess.run(["powershell", "-File", "..\\ThinkingInTypes.github.io\\extract.ps1"], check=True)
+    extract(ctx)
 
     confirm("Run all examples?", default=True)
     examples(ctx)
 
     confirm("Update embedded outputs with 'px -r .'?", default=True)
-    ctx.run(["px", "-r", "."], check=True)
+    ctx.run("px -r .")
 
     confirm("Validate example output?", default=True)
     validate(ctx)
