@@ -16,6 +16,12 @@ console = Console()
 temp_files = [Path("app.log"), Path("data.txt"), Path("other.txt")]
 
 
+@task(default=True)
+def show_tasks(ctx) -> None:
+    """List available tasks"""
+    ctx.run("invoke -l")
+
+
 @task
 def full(ctx) -> None:
     """
@@ -51,3 +57,5 @@ def full(ctx) -> None:
 
 
 namespace.add_task(full)
+namespace.add_task(show_tasks)
+# namespace.configure({'default': 'list_tasks'})
