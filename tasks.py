@@ -40,9 +40,10 @@ def full(ctx) -> None:
     validate(ctx)
 
     confirm("Inject examples back into book?", default=True)
-    subprocess.run(["powershell", "-File", "..\\ThinkingInTypes.github.io\\inject.ps1"], check=True)
+    ctx.run(r"mdinject -i Chapters C:\git\ThinkingInTypes_Examples")
 
     console.print("[bold green]\n✅ Workflow completed successfully.[/bold green]")
+
     for file in temp_files:
         if file.exists():
             file.unlink()
