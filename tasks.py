@@ -46,7 +46,7 @@ def full(ctx) -> None:
     validate(ctx)
 
     confirm("Inject examples back into book?", default=True)
-    ctx.run(r"mdinject -i Chapters C:\git\ThinkingInTypes_Examples")
+    ctx.run(r"mdinject -i C:\git\ThinkingInTypes.github.io\Chapters C:\git\ThinkingInTypes_Examples")
 
     console.print("[bold green]\n✅ Workflow completed successfully.[/bold green]")
 
