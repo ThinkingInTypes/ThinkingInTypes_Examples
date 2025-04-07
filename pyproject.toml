@@ -5,6 +5,7 @@ description = "Examples from the book ThinkingInTypes.com"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "pybooktools",
     "pyinvoke>=1.0.4",
     "returns>=0.25.0",
     "rich>=14.0.0",
@@ -18,6 +19,9 @@ build-backend = "setuptools.build_meta"
 where = ["."]  # Look for packages in the root directory
 include = ["*"]  # Include all directories with __init__.py files
 namespaces = false  # Don't include namespace packages (directories without __init__.py)
+
+[tool.uv.sources]
+pybooktools = { path = "../pybooktools", editable = true }
 
 [dependency-groups]
 dev = [
