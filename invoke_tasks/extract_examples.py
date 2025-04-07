@@ -1,4 +1,3 @@
-import shutil
 from pathlib import Path
 from invoke import task
 
@@ -6,22 +5,22 @@ from invoke import task
 @task
 def extract(ctx) -> None:
     """
-    Deletes the examples directory after confirmation, validates Markdown, then extracts examples
-    from chapter files into the examples directory.
+    Deletes the examples target_path after confirmation, validates Markdown, then extracts examples
+    from chapter files into the examples target_path.
     """
-    directory = Path("C:/git/ThinkingInTypes_Examples")
-    chapters_dir = Path("C:/git/ThinkingInTypes.github.io/Chapters")
+    markdown_chapters_path = Path("C:/git/ThinkingInTypes.github.io/Chapters")
+    target_path = Path("C:/git/ThinkingInTypes_Examples")
 
-    ctx.run(f"mdvalid -d {chapters_dir}")
-    print(f"WARNING: You are about to delete the examples in: {directory}")
+    ctx.run(f"mdvalid -d {markdown_chapters_path}")
+    print(f"WARNING: You are about to delete the examples in: {target_path}")
     response = input("Are you sure? Type 'y' to continue: ")
 
     if response.lower() == 'y':
-        if directory.exists():
-            ctx.run(f"repoclean -a {directory}")
+        if target_path.exists():
+            ctx.run(f"repoclean -a {target_path}")
         else:
-            print(f"Directory does not exist: {directory}")
+            print(f"Directory does not exist: {target_path}")
 
-        ctx.run(f"mdextract -d {chapters_dir} {directory}")
+        ctx.run(f"mdextract -d {markdown_chapters_path} {target_path}")
     else:
         print("Operation canceled.")
