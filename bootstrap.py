@@ -12,6 +12,7 @@ import subprocess
 import sys
 from pathlib import Path
 from shutil import which
+from typing import LiteralString
 
 
 def main() -> None:
@@ -40,7 +41,7 @@ def main() -> None:
     print_activation_instruction(system)
 
 
-def detect_shell() -> str:
+def detect_shell() -> str | None | LiteralString:
     shell = os.environ.get("SHELL") or os.environ.get("COMSPEC", "").lower()
     return shell
 

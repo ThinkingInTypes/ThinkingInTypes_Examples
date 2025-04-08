@@ -1,15 +1,14 @@
 """
 Main tasks file that aggregates tasks from the 'tasks' subdirectory.
 """
-import subprocess
+
 import sys
 from pathlib import Path
 
 from invoke import task
+from invoke_tasks import examples, extract, namespace, validate
 from rich.console import Console
 from rich.prompt import Confirm
-
-from invoke_tasks import namespace, examples, validate, extract
 
 console = Console()
 
@@ -20,6 +19,11 @@ temp_files = [Path("app.log"), Path("data.txt"), Path("other.txt")]
 def show_tasks(ctx) -> None:
     """List available tasks"""
     ctx.run("invoke -l")
+
+
+# @task
+# def run(ctx) -> None:
+#     examples(ctx)
 
 
 @task
@@ -46,7 +50,9 @@ def full(ctx) -> None:
     validate(ctx)
 
     confirm("Inject examples back into book?", default=True)
-    ctx.run(r"mdinject -i C:\git\ThinkingInTypes.github.io\Chapters C:\git\ThinkingInTypes_Examples")
+    ctx.run(
+        r"mdinject -i C:\git\ThinkingInTypes.github.io\Chapters C:\git\ThinkingInTypes_Examples"
+    )
 
     console.print("[bold green]\n✅ Workflow completed successfully.[/bold green]")
 
