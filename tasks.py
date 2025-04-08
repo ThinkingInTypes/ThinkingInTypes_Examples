@@ -22,9 +22,10 @@ def z(ctx) -> None:
 
 
 @task
-def docformatter(ctx)->None:
+def docformat(ctx)->None:
     "Formats documentation strings in Python files"
-    ctx.run("docformatter -ri .")
+    # ctx.run("docformatter -ri .")
+    ctx.run("pyment -w .")
 
 
 @task
@@ -65,5 +66,5 @@ def a(ctx) -> None:
 
 namespace.add_task(a)
 namespace.add_task(z)
-namespace.add_task(docformatter)
+namespace.add_task(docformat)
 # namespace.configure({'default': 'list_tasks'})
