@@ -25,7 +25,9 @@ def z(ctx) -> None:
 def docformat(ctx)->None:
     "Formats documentation strings in Python files"
     # ctx.run("docformatter -ri .")
-    ctx.run("pyment -w .")
+    ctx.run("docformatter --in-place --wrap-summaries 88 --wrap-descriptions 88 \
+    --make-summary-multi-line --pre-summary-newline -r")
+
 
 
 @task
