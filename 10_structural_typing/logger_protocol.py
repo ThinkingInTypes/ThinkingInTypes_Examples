@@ -7,7 +7,9 @@ class Logger(Protocol):
 
 
 class FileLogger:
-    """Concrete logger that writes to a file."""
+    """
+    Concrete logger that writes to a file.
+    """
 
     def __init__(self, filename: str):
         self.filename = filename
@@ -18,7 +20,10 @@ class FileLogger:
 
 
 class ListLogger:
-    """Concrete logger that stores messages in a list (e.g., for testing)."""
+    """
+    Concrete logger that stores messages in a list
+    (e.g., for testing).
+    """
 
     def __init__(self):
         self.messages: list[str] = []

@@ -6,7 +6,10 @@ import re
 
 @dataclass(frozen=True)
 class PhoneNumber:
-    """Represents a validated and normalized phone number."""
+    """
+    Represents a validated and normalized phone
+    number.
+    """
 
     country_code: str
     number: str  # Digits only, no formatting
@@ -15,7 +18,10 @@ class PhoneNumber:
 
     @classmethod
     def parse(cls, raw: str) -> Self:
-        """Parses and validates a raw phone number string."""
+        """
+        Parses and validates a raw phone number
+        string.
+        """
         cleaned = raw.strip()
         match = cls.PHONE_REGEX.match(cleaned)
         if not match:
@@ -30,12 +36,18 @@ class PhoneNumber:
         return cls(country_code=country_code, number=digits)
 
     def __str__(self) -> str:
-        """Formats the phone number as +<country> <formatted number>."""
+        """
+        Formats the phone number as +<country>
+        <formatted number>.
+        """
         formatted = self.format_number()
         return f"+{self.country_code} {formatted}"
 
     def format_number(self) -> str:
-        """Applies simple formatting rules for 10-digit numbers."""
+        """
+        Applies simple formatting rules for
+        10-digit numbers.
+        """
         if len(self.number) == 10:
             return f"({self.number[:3]}) {self.number[3:6]}-{self.number[6:]}"
         return self.number  # fallback: just the digits

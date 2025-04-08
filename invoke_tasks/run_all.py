@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """
-Run Python scripts in a directory tree (or a specific subdirectory) in parallel.
-Prints colored output with timestamps and stops all jobs on first failure.
+Run Python scripts in a directory tree (or a
+specific subdirectory) in parallel.
+
+Prints colored output with timestamps and stops
+all jobs on first failure.
+
 """
 
 import subprocess
@@ -22,7 +26,9 @@ console = Console()
 
 @dataclass
 class ScriptResult:
-    """Result of running a Python script."""
+    """
+    Result of running a Python script.
+    """
 
     success: bool
     path: Path | None = None
@@ -33,8 +39,11 @@ class ScriptResult:
 def run_script(file: Path, failure_event: threading.Event) -> ScriptResult:
     """
     Run the Python script specified by file.
+
     If the failure_event is set, skip running.
-    Uses a polling loop to allow early termination if a failure is detected.
+    Uses a polling loop to allow early termination
+    if a failure is detected.
+
     """
     if failure_event.is_set():
         return ScriptResult(
@@ -90,12 +99,18 @@ def run_script(file: Path, failure_event: threading.Event) -> ScriptResult:
 )
 def examples(ctx, target_dir: str = ".", throttle_limit: Optional[int] = None) -> None:
     """
-    Run all Python scripts in a directory tree in parallel.
+    Run all Python scripts in a directory tree in
+    parallel.
 
-    This task searches for Python files (skipping __init__.py and files in directories
-    such as venv, .venv, __pycache__, or .git) and runs them concurrently with a throttle
-    limit on the number of parallel processes. If any script fails (i.e. exits with a nonzero
-    status), the task stops further execution and prints an error message.
+    This task searches for Python files (skipping
+    __init__.py and files in directories such as
+    venv, .venv, __pycache__, or .git) and runs
+    them concurrently with a throttle limit on the
+    number of parallel processes. If any script
+    fails (i.e. exits with a nonzero status), the
+    task stops further execution and prints an
+    error message.
+
     """
     _ = ctx  # Turns off "value is not used" warning
     target_path = Path(target_dir).resolve()

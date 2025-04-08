@@ -1,5 +1,5 @@
 """
-'Invoke' command file
+'Invoke' command file.
 """
 
 import sys
@@ -17,7 +17,9 @@ temp_files = [Path("app.log"), Path("data.txt"), Path("other.txt")]
 
 @task(default=True)
 def z(ctx) -> None:
-    """List available tasks."""
+    """
+    List available tasks.
+    """
     ctx.run("invoke -l")
 
 
@@ -25,8 +27,8 @@ def z(ctx) -> None:
 def docformat(ctx)->None:
     "Formats documentation strings in Python files"
     # ctx.run("docformatter -ri .")
-    ctx.run("docformatter --in-place --wrap-summaries 88 --wrap-descriptions 88 \
-    --make-summary-multi-line --pre-summary-newline -r")
+    ctx.run("docformatter --in-place --wrap-summaries 50 --wrap-descriptions 50 \
+    --make-summary-multi-line --pre-summary-newline -r .")
 
 
 

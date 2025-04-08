@@ -1,5 +1,6 @@
 """
-Aggregate tasks from individual task modules in this package.
+Aggregate tasks from individual task modules in
+this package.
 """
 
 from invoke import Collection

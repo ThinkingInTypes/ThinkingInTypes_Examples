@@ -9,7 +9,8 @@ EXCLUDED_FILES = {"__init__.py", "tasks.py", "bootstrap.py"}
 
 def find_python_files(target_dir: Path) -> list[Path]:
     """
-    Recursively find all Python files (*.py) in target_dir, excepting exclusions.
+    Recursively find all Python files (*.py) in
+    target_dir, excepting exclusions.
     """
     python_files: list[Path] = []
     for file in target_dir.rglob("*.py"):

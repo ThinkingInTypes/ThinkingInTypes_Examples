@@ -5,8 +5,10 @@ from invoke import task
 @task
 def extract(ctx) -> None:
     """
-    Deletes the examples target_path after confirmation, validates Markdown, then extracts examples
-    from chapter files into the examples target_path.
+    Deletes the examples target_path after
+    confirmation, validates Markdown, then
+    extracts examples from chapter files into the
+    examples target_path.
     """
     markdown_chapters_path = Path("C:/git/ThinkingInTypes.github.io/Chapters")
     target_path = Path("C:/git/ThinkingInTypes_Examples")

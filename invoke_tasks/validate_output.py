@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-Validate Python example scripts by comparing their output to expected ## comments.
+Validate Python example scripts by comparing their
+output to expected ## comments.
+
 NOTE: Does not appear to be working correctly.
+
 """
 
 import os
@@ -23,7 +26,9 @@ console = Console()
 
 @dataclass
 class ScriptResult:
-    """Result of running a Python script."""
+    """
+    Result of running a Python script.
+    """
 
     success: bool
     path: Path | None = None
@@ -33,7 +38,8 @@ class ScriptResult:
 
 def extract_expected_output(file: Path) -> str:
     """
-    Extract expected output from a Python file by reading lines that start with '## '.
+    Extract expected output from a Python file by
+    reading lines that start with '## '.
     """
     lines = file.read_text(encoding="utf-8").splitlines()
     expected = []
@@ -46,8 +52,10 @@ def extract_expected_output(file: Path) -> str:
 
 def run_and_compare(file: Path, interpreter: str) -> tuple[bool, str | None]:
     """
-    Run a Python script using the specified interpreter, compare its output to the expected output,
-    and return a tuple indicating success and an error message (if any).
+    Run a Python script using the specified
+    interpreter, compare its output to the
+    expected output, and return a tuple indicating
+    success and an error message (if any).
     """
     timestamp = datetime.now().strftime("%H:%M:%S")
     console.print(f"{timestamp} ▶️ Checking: {file}", style="cyan")
@@ -89,8 +97,12 @@ def run_and_compare(file: Path, interpreter: str) -> tuple[bool, str | None]:
 )
 def validate(ctx, target_dir: str = ".", throttle_limit: int | None = None) -> None:
     """
-    Run Python example scripts and compare actual output to expected ## comments.
-    Ignores whitespace, supports parallel execution, and uses the active interpreter.
+    Run Python example scripts and compare actual
+    output to expected ## comments.
+
+    Ignores whitespace, supports parallel
+    execution, and uses the active interpreter.
+
     """
     _ = ctx  # Silence warning
     interpreter = sys.executable
