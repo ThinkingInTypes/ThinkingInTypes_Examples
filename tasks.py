@@ -1,5 +1,5 @@
 """
-Main tasks file that aggregates tasks from the 'tasks' subdirectory.
+'Invoke' command file
 """
 
 import sys
@@ -16,20 +16,21 @@ temp_files = [Path("app.log"), Path("data.txt"), Path("other.txt")]
 
 
 @task(default=True)
-def show_tasks(ctx) -> None:
-    """List available tasks"""
+def z(ctx) -> None:
+    """List available tasks."""
     ctx.run("invoke -l")
 
 
-# @task
-# def run(ctx) -> None:
-#     examples(ctx)
+@task
+def docformatter(ctx)->None:
+    "Formats documentation strings in Python files"
+    ctx.run("docformatter -ri .")
 
 
 @task
-def full(ctx) -> None:
+def a(ctx) -> None:
     """
-    Full workflow: extract, run all scripts, update examples, validate, re-inject examples into book.
+    All workflow tasks: extract, run all scripts, update examples, validate, re-inject examples into book.
     """
 
     def confirm(message: str, default: bool = True) -> None:
@@ -62,6 +63,7 @@ def full(ctx) -> None:
             print(f"Deleted {file}")
 
 
-namespace.add_task(full)
-namespace.add_task(show_tasks)
+namespace.add_task(a)
+namespace.add_task(z)
+namespace.add_task(docformatter)
 # namespace.configure({'default': 'list_tasks'})

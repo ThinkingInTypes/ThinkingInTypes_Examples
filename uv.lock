@@ -120,15 +120,15 @@ wheels = [
 
 [[package]]
 name = "hypothesis"
-version = "6.130.10"
+version = "6.130.11"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
     { name = "sortedcontainers" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/96/b5/531f66644db9107e9ca6f6e5947ed5e97f60335cc190cf1dc07901e4cb54/hypothesis-6.130.10.tar.gz", hash = "sha256:d5f290b39af4ff3bc9eb60edccafd1baa31d1739b5de01980d2cddebdfc21ebc", size = 428372 }
+sdist = { url = "https://files.pythonhosted.org/packages/af/0d/9ea745505b3d4dcb538fd283cb1aeef8989aea3a1559ad2813d8e12ed998/hypothesis-6.130.11.tar.gz", hash = "sha256:1224608887d0099c37091959ae2f7fea3e0354dd6085fcf62d6b77329d7b1efa", size = 428974 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/91/ee/044d1e19a43b780d980a56d2141f1c14edd0446b3da71c3cbe5252057e35/hypothesis-6.130.10-py3-none-any.whl", hash = "sha256:d6d754c03b1dd4d3a5801bd23b2d4f91b64f6fb209b599e1cbd6d234e498057d", size = 492875 },
+    { url = "https://files.pythonhosted.org/packages/f1/49/1be495639b4a190052d7787b183f09647f04df452bf46942258be961a527/hypothesis-6.130.11-py3-none-any.whl", hash = "sha256:fed6d0124b709ddda4ad7fc6b3fef4bda2b1046e368c43aee5ad1f4cdc9e5501", size = 493503 },
 ]
 
 [[package]]
@@ -351,6 +351,7 @@ dependencies = [
 dev = [
     { name = "docformatter" },
     { name = "pyinvoke" },
+    { name = "rich" },
     { name = "ruff" },
 ]
 
@@ -366,6 +367,7 @@ requires-dist = [
 dev = [
     { name = "docformatter", specifier = ">=1.7.5" },
     { name = "pyinvoke", specifier = ">=1.0.4" },
+    { name = "rich", specifier = ">=14.0.0" },
     { name = "ruff", specifier = ">=0.11.2" },
 ]
 
