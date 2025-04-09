@@ -9,6 +9,7 @@ from pybooktools.invoke_tasks import (
     examples,
     validate,
     namespace,
+    rewrite_with_semantic_breaks,
 )
 from invoke import task
 from rich.console import Console
@@ -117,6 +118,16 @@ def inject(ctx):
         rf"mdinject -i {markdown_chapters_path} {target_path}"
     )
 
+@task
+def sembr(ctx, chapter: Path):
+    """
+    Adds a semantic break to the specified chapter.
+    """
+    _ = ctx
+    if not isinstance(chapter, Path):
+        chapter = Path(chapter)
+    rewrite_with_semantic_breaks(chapter)
+
 
 @task
 def a(ctx) -> None:
@@ -144,3 +155,4 @@ namespace.add_task(z)
 namespace.add_task(docformat)
 namespace.add_task(codeformat)
 namespace.add_task(update_example_output)
+namespace.add_task(sembr)
