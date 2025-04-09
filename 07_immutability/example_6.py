@@ -12,9 +12,11 @@ class Point:
 
 p = Point(x=1, y=2)
 print(p.x, p.y)  # Outputs: 1 2
+## 1 2
 
 with Catch():
     # Attempting to modify a field produces an error:
     p.x = 5  # noqa
+## Error: cannot assign to field 'x'
 
 p.__dict__["x"] = 5  # Bypassing 'frozen'

@@ -4,6 +4,7 @@ from example_8 import Rectangle
 
 r = Rectangle(3.0, 4.0)
 print(r.area)  # Outputs: 12.0
+## 12.0
 # Try to modify attributes (should fail)
 with Catch():
     # 'Rectangle' object attribute 'width' is read-only:

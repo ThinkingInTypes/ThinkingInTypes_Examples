@@ -1,9 +1,14 @@
 # generic_function.py
 from container import Container
-from container_types import StringContainer, IntContainer
+from container_types import (
+    StringContainer,
+    IntContainer,
+)
 
 
-def print_item_and_return[C](container: Container[C]) -> C:
+def print_item_and_return[C](
+    container: Container[C],
+) -> C:
     item = container.get_item()
     print("Got:", item)
     return item  # The type of item is inferred as C

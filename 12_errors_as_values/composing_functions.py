@@ -2,12 +2,18 @@
 from pprint import pprint
 
 from return_result import func_a
+
 ## [(0, <Success: 0>),
 ##  (1, <Failure: func_a(1)>),
 ##  (2, <Success: 2>),
 ##  (3, <Success: 3>),
 ##  (4, <Success: 4>)]
-from returns.result import Failure, Result, Success, safe
+from returns.result import (
+    Failure,
+    Result,
+    Success,
+    safe,
+)
 
 
 # Use an exception as info (but don't raise it):
@@ -29,7 +35,9 @@ def func_c(i: int) -> Result[int, ZeroDivisionError]:
 
 
 @safe  # Convert existing function
-def func_d(i: int) -> str:  # Result[str, ZeroDivisionError]
+def func_d(
+    i: int,
+) -> str:  # Result[str, ZeroDivisionError]
     1 / i
     return f"func_d({i})"
 
@@ -39,18 +47,18 @@ def composed(
 ) -> Result[str, str | ValueError | ZeroDivisionError]:
     result_a = func_a(i)
     if isinstance(result_a, Failure):
-        return result_a # noqa
+        return result_a  # noqa
 
     # unwrap() gets the answer from Success:
     result_b = func_b(result_a.unwrap())
     if isinstance(result_b, Failure):
-        return result_b # noqa
+        return result_b  # noqa
 
     result_c = func_c(result_b.unwrap())
     if isinstance(result_c, Failure):
-        return result_c # noqa
+        return result_c  # noqa
 
-    return func_d(result_c.unwrap()) # noqa
+    return func_d(result_c.unwrap())  # noqa
 
 
 pprint([(i, composed(i)) for i in range(5)])

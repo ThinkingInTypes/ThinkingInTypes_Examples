@@ -17,7 +17,9 @@ class Fob:
 
 def foo(a: int, b: Fob) -> str:
     if a < 0:
-        raise ValueError(f"foo arg {a} must be positive")
+        raise ValueError(
+            f"foo arg {a} must be positive"
+        )
     return f"foo({a}, {b}) succeeded"
 
 
@@ -34,7 +36,7 @@ with Catch():
 ## foo(42, Fob(x=42)) succeeded
 
 # Lambda form displays successful result:
-with Catch() as catch:  
+with Catch() as catch:
     catch(lambda: foo(42, Fob(42)))
 ## foo(42, Fob(x=42)) succeeded
 
