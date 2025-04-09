@@ -1,3 +1,4 @@
+# tasks.py
 """
 'Invoke' command file.
 """
@@ -12,7 +13,7 @@ from invoke import task
 from rich.console import Console
 from rich.prompt import Confirm
 
-WIDTH = 55  # Width for code listings and comments
+WIDTH = 60  # Width for code listings and comments
 
 markdown_chapters_path = Path(
     "C:/git/ThinkingInTypes.github.io/Chapters"
@@ -27,9 +28,7 @@ temp_files = [
 console = Console()
 
 
-def confirm(
-    message: str, default: bool = True
-) -> None:
+def confirm(message: str, default: bool = True) -> None:
     if not Confirm.ask(
         f"[yellow]{message}[/yellow]",
         default=default,
@@ -88,12 +87,12 @@ def extract(ctx) -> None:
         f"WARNING: delete the examples in {target_path} extract new ones from book?",
         default=False,
     )
-    if target_path.exists():  # Check repoclean to see if it already does this
+    if (
+        target_path.exists()
+    ):  # Check repoclean to see if it already does this
         ctx.run(f"repoclean -a {target_path}")
     else:
-        print(
-            f"Directory does not exist: {target_path}"
-        )
+        print(f"Directory does not exist: {target_path}")
     print(
         f"Running: mdextract -d {markdown_chapters_path} {target_path}"
     )
