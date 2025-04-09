@@ -18,3 +18,5 @@ def animal_sound(animal: Union[Cat, Dog]) -> str:
             return animal.meow()
         case Dog():
             return animal.bark()
+        case _:
+            return "Unknown"

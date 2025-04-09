@@ -19,9 +19,9 @@ def reset():
     A.y = 200
 
 
-a1: A = None
-a2: A = None
-a3: A = None
+a1: A = None  # type: ignore
+a2: A = None  # type: ignore
+a3: A = None  # type: ignore
 
 
 def display(counter: int):

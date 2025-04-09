@@ -32,9 +32,9 @@ with Catch():  # Single-failure simple form
 with Catch():
     print(foo(42, Fob(42)))  # Must explicitly print
 ## foo(42, Fob(x=42)) succeeded
-with (
-    Catch() as catch
-):  # Lambda form displays successful result
+
+# Lambda form displays successful result:
+with Catch() as catch:  
     catch(lambda: foo(42, Fob(42)))
 ## foo(42, Fob(x=42)) succeeded
 

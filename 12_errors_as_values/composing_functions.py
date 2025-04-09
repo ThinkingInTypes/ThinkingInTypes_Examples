@@ -39,18 +39,18 @@ def composed(
 ) -> Result[str, str | ValueError | ZeroDivisionError]:
     result_a = func_a(i)
     if isinstance(result_a, Failure):
-        return result_a
+        return result_a # noqa
 
     # unwrap() gets the answer from Success:
     result_b = func_b(result_a.unwrap())
     if isinstance(result_b, Failure):
-        return result_b
+        return result_b # noqa
 
     result_c = func_c(result_b.unwrap())
     if isinstance(result_c, Failure):
-        return result_c
+        return result_c # noqa
 
-    return func_d(result_c.unwrap())
+    return func_d(result_c.unwrap()) # noqa
 
 
 pprint([(i, composed(i)) for i in range(5)])
