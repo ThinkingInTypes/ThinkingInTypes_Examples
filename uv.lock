@@ -352,6 +352,7 @@ name = "thinkingintypes-examples"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "pybooktools" },
     { name = "pyinvoke" },
     { name = "returns" },
     { name = "rich" },
@@ -368,6 +369,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "pybooktools", editable = "../pybooktools" },
     { name = "pyinvoke", specifier = ">=1.0.4" },
     { name = "returns", specifier = ">=0.25.0" },
     { name = "rich", specifier = ">=14.0.0" },

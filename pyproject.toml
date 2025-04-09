@@ -5,6 +5,7 @@ description = "Examples from the book ThinkingInTypes.com"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "pybooktools",
     "pyinvoke>=1.0.4",
     "returns>=0.25.0",
     "rich>=14.0.0",
@@ -28,14 +29,14 @@ dev = [
     "ruff>=0.11.2",
 ]
 
-[tool.docformatter]
-recursive = true
-wrap-summaries = 50
-wrap-descriptions = 50
-close-quotes-on-newline  = true
--make-summary-multi-line = true
-blank = true
-style = "epytext"
+#[tool.docformatter]
+#recursive = true
+#wrap-summaries = 50
+#wrap-descriptions = 50
+#close-quotes-on-newline  = true
+#-make-summary-multi-line = true
+#blank = true
+#style = "epytext"
 
 [tool.uv.sources]
 pybooktools = { path = "../pybooktools", editable = true }
