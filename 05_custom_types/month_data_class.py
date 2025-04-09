@@ -29,7 +29,9 @@ class Month:
 
     def __post_init__(self):
         assert 1 <= self.n <= 12, f"Month({self.n})"
-        assert self.max_days in [28, 30, 31], f"Month max_days {self.max_days}"
+        assert self.max_days in [28, 30, 31], (
+            f"Month max_days {self.max_days}"
+        )
 
     def check_day(self, day: Day):
         assert day.n <= self.max_days, f"{self} {day}"
@@ -57,10 +59,14 @@ class Month:
 
 @dataclass(frozen=True)
 class Months:
-    months: List[Month] = field(default_factory=Month.make_months)
+    months: List[Month] = field(
+        default_factory=Month.make_months
+    )
 
     def number(self, month_number: int):
-        assert 1 <= month_number <= 12, f"Month({month_number})"
+        assert 1 <= month_number <= 12, (
+            f"Month({month_number})"
+        )
         return self.months[month_number - 1]
 
 
@@ -87,7 +93,13 @@ for date in [
 ]:
     with Catch():
         print(date)
-        print(BirthDate(months.number(date[0]), Day(date[1]), Year(date[2])))
+        print(
+            BirthDate(
+                months.number(date[0]),
+                Day(date[1]),
+                Year(date[2]),
+            )
+        )
         print("-" * 30)
 ## (7, 8, 1957)
 ## BirthDate(m=Month(name='July', n=7,

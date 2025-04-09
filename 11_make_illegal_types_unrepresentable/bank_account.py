@@ -11,7 +11,8 @@ positive_amount = Condition(
 )
 
 sufficient_balance = Condition(
-    check=lambda self, amount: self.balance >= amount, message="Insufficient balance"
+    check=lambda self, amount: self.balance >= amount,
+    message="Insufficient balance",
 )
 
 
@@ -27,7 +28,9 @@ class BankAccount:
     @requires(positive_amount)
     def deposit(self, amount: Decimal) -> str:
         self.balance += amount
-        return f"Deposited {amount}, balance: {self.balance}"
+        return (
+            f"Deposited {amount}, balance: {self.balance}"
+        )
 
 
 account = BankAccount(Decimal(100))

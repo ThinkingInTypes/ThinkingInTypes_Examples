@@ -11,5 +11,7 @@ def read(data: str) -> str: ...
 
 
 def read(data: Union[str, bytes]) -> str:
-    # single implementation handling both  
-    return data.decode() if isinstance(data, bytes) else data
+    # single implementation handling both
+    return (
+        data.decode() if isinstance(data, bytes) else data
+    )

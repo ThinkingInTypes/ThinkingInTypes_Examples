@@ -8,7 +8,9 @@ class FullName:
 
     def __post_init__(self) -> None:
         print(f"FullName checking {self.name}")
-        assert len(self.name.split()) > 1, f"'{self.name}' needs first and last names"
+        assert len(self.name.split()) > 1, (
+            f"'{self.name}' needs first and last names"
+        )
 
 
 @dataclass(frozen=True)

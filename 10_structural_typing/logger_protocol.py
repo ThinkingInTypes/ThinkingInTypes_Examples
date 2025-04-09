@@ -21,8 +21,8 @@ class FileLogger:
 
 class ListLogger:
     """
-    Concrete logger that stores messages in a list
-    (e.g., for testing).
+    Concrete logger that stores messages in a list (e.g.,
+    for testing).
     """
 
     def __init__(self):
@@ -39,9 +39,13 @@ def run_process(task_name: str, logger: Logger) -> None:
 
 
 # Using the run_process with different loggers
-run_process("DataCleanup", FileLogger("app.log"))  # logs to file
+run_process(
+    "DataCleanup", FileLogger("app.log")
+)  # logs to file
 test_logger = ListLogger()
-run_process("DataCleanup", test_logger)  # logs to list in memory
+run_process(
+    "DataCleanup", test_logger
+)  # logs to list in memory
 print("Captured logs:", test_logger.messages)
 ## Captured logs: ['Starting DataCleanup',
 ## 'Finished DataCleanup']

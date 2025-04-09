@@ -25,7 +25,11 @@ def close_all(resources: Iterable[Closable]) -> None:
 
 
 # Using the close_all function with different resource types
-closables = [FileResource("data.txt"), SocketResource(), open("other.txt", "w")]
+closables = [
+    FileResource("data.txt"),
+    SocketResource(),
+    open("other.txt", "w"),
+]
 close_all(
     closables
 )  # OK: FileResource, SocketResource, and file objects all have close()

@@ -1,5 +1,6 @@
 # example_2.py
 class Duck:
+    # noinspection PyMethodMayBeStatic
     def quack(self):
         print("Quack!")
 

@@ -10,4 +10,6 @@ class Processor(Generic[T_contra]):
 
 
 int_processor: Processor[int] = Processor()
-number_processor: Processor[float] = int_processor  # Valid due to contravariance
+number_processor: Processor[float] = (
+    int_processor  # Valid due to contravariance
+)

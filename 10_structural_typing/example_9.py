@@ -4,4 +4,6 @@ from logger_protocol import Logger
 ## Captured logs: ['Starting DataCleanup',
 ## 'Finished DataCleanup']
 
-T = TypeVar("T", bound=Logger)  # using our Logger protocol from earlier
+T = TypeVar(
+    "T", bound=Logger
+)  # using our Logger protocol from earlier

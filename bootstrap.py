@@ -31,9 +31,18 @@ def main() -> None:
     else:
         print("✅ Virtual environment already exists.")
 
-    print("📥 Installing all dependencies (including dev group)...")
+    print(
+        "📥 Installing all dependencies (including dev group)..."
+    )
     subprocess.run(
-        ["uv", "pip", "install", "--all-extras", "--requirements", "pyproject.toml"],
+        [
+            "uv",
+            "pip",
+            "install",
+            "--all-extras",
+            "--requirements",
+            "pyproject.toml",
+        ],
         check=True,
     )
 
@@ -42,7 +51,10 @@ def main() -> None:
 
 
 def detect_shell() -> str | None | LiteralString:
-    shell = os.environ.get("SHELL") or os.environ.get("COMSPEC", "").lower()
+    shell = (
+        os.environ.get("SHELL")
+        or os.environ.get("COMSPEC", "").lower()
+    )
     return shell
 
 
@@ -58,7 +70,9 @@ def print_activation_instruction(system: str) -> None:
             elif "cmd.exe" in shell:
                 print("   .\\.venv\\Scripts\\activate.bat")
             else:
-                print("   .\\.venv\\Scripts\\activate")  # generic fallback
+                print(
+                    "   .\\.venv\\Scripts\\activate"
+                )  # generic fallback
         case _:
             if "fish" in shell:
                 print("   source .venv/bin/activate.fish")
@@ -67,7 +81,9 @@ def print_activation_instruction(system: str) -> None:
             elif "bash" in shell:
                 print("   source .venv/bin/activate")
             else:
-                print("   source .venv/bin/activate  # (unknown shell)")
+                print(
+                    "   source .venv/bin/activate  # (unknown shell)"
+                )
 
     print("\n💡 Once activated, you can run tasks like:")
     print("   invoke setup")

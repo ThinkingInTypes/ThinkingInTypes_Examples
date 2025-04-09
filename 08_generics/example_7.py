@@ -10,4 +10,6 @@ class ReadOnlyList(Generic[T_co]):
 
 
 ints: ReadOnlyList[int] = ReadOnlyList([1, 2, 3])
-numbers: ReadOnlyList[float] = ints  # Valid due to covariance
+numbers: ReadOnlyList[float] = (
+    ints  # Valid due to covariance
+)

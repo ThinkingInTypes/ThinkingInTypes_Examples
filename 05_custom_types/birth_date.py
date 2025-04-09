@@ -38,7 +38,9 @@ class Month(Enum):
 
     @staticmethod
     def number(month_number: int):
-        assert 1 <= month_number <= 12, f"Month({month_number})"
+        assert 1 <= month_number <= 12, (
+            f"Month({month_number})"
+        )
         return list(Month)[month_number - 1]
 
     def check_day(self, day: Day):
@@ -70,7 +72,13 @@ for date in [
 ]:
     with Catch():
         print(date)
-        print(BirthDate(Month.number(date[0]), Day(date[1]), Year(date[2])))
+        print(
+            BirthDate(
+                Month.number(date[0]),
+                Day(date[1]),
+                Year(date[2]),
+            )
+        )
         print("-" * 30)
 ## (7, 8, 1957)
 ## BirthDate(m=JULY, d=Day(n=8), y=Year(n=1957))

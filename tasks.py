@@ -2,6 +2,7 @@
 """
 'Invoke' command file.
 """
+
 import sys
 from pathlib import Path
 from pybooktools.invoke_tasks import (
@@ -79,8 +80,8 @@ def update_example_output(ctx) -> None:
 @task
 def extract(ctx) -> None:
     """
-    Extracts examples from chapter files into the
-    examples directory.
+    Extracts examples from chapter files into the examples
+    directory.
     """
     ctx.run(f"mdvalid -d {markdown_chapters_path}")
     confirm(

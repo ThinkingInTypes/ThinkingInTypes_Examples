@@ -1,3 +1,3 @@
 # example_18.py
-class Node:  
+class Node:
     def add_child(self, child: "Node") -> None: ...

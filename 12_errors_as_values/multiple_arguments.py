@@ -19,7 +19,9 @@ def add(first: int, second: int, third: int) -> str:
     return f"add({first} + {second} + {third}): {first + second + third}"
 
 
-def composed(i: int, j: int) -> Result[str, str | ZeroDivisionError | ValueError]:
+def composed(
+    i: int, j: int
+) -> Result[str, str | ZeroDivisionError | ValueError]:
     # fmt: off
     return Result.do(
         add(first, second, third)

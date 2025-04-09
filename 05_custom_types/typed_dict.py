@@ -8,4 +8,8 @@ class UserProfile(TypedDict):
     age: int
 
 
-user: UserProfile = {"username": "alice", "email": "alice@example.com", "age": 30}
+user: UserProfile = {
+    "username": "alice",
+    "email": "alice@example.com",
+    "age": 30,
+}

@@ -10,7 +10,11 @@ def print_item_and_return[C](container: Container[C]) -> C:
 
 
 # Using the generic function with different container types:
-x = print_item_and_return(StringContainer("hello"))  # prints "hello", x is str
+x = print_item_and_return(
+    StringContainer("hello")
+)  # prints "hello", x is str
 ## Got: hello
-y = print_item_and_return(IntContainer(42))  # prints "42", y is int
+y = print_item_and_return(
+    IntContainer(42)
+)  # prints "42", y is int
 ## Got: 42
