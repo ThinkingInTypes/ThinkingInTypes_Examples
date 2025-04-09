@@ -43,14 +43,12 @@ def extract(ctx) -> None:
     Extracts examples from chapter files into the examples directory.
     """
     ctx.run(f"mdvalid -d {markdown_chapters_path}")
-
     confirm(f"WARNING: delete the examples in {target_path}?", default=False)
-
-    if target_path.exists():
+    if target_path.exists():  # Check repoclean to see if it already does this
         ctx.run(f"repoclean -a {target_path}")
     else:
         print(f"Directory does not exist: {target_path}")
-
+    print(f"Running: mdextract -d {markdown_chapters_path} {target_path}")
     ctx.run(f"mdextract -d {markdown_chapters_path} {target_path}")
 
 
