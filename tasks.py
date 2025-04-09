@@ -31,7 +31,9 @@ def z(ctx) -> None:
 
 @task
 def docformat(ctx) -> None:
-    """Formats documentation strings in Python files"""
+    """
+    Formats documentation strings in Python files.
+    """
     # ctx.run("docformatter -ri .")
     ctx.run("docformatter --in-place --wrap-summaries 50 --wrap-descriptions 50 \
     --make-summary-multi-line --pre-summary-newline -r .")
@@ -40,7 +42,8 @@ def docformat(ctx) -> None:
 @task
 def extract(ctx) -> None:
     """
-    Extracts examples from chapter files into the examples directory.
+    Extracts examples from chapter files into the
+    examples directory.
     """
     ctx.run(f"mdvalid -d {markdown_chapters_path}")
     confirm(f"WARNING: delete the examples in {target_path}?", default=False)
@@ -54,7 +57,9 @@ def extract(ctx) -> None:
 
 @task
 def inject(ctx):
-    """Injects examples back into the chapter files."""
+    """
+    Injects examples back into the chapter files.
+    """
     confirm("Inject examples back into book?", default=True)
     ctx.run(
         rf"mdinject -i {markdown_chapters_path} {target_path}"
