@@ -5,3 +5,5 @@ x = 10
 with Catch():
     # Can't add a str to an int:
     result = x + "world"  # type: ignore
+## Error: unsupported operand type(s) for +: 'int'
+## and 'str'

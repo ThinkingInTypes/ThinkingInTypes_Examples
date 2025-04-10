@@ -13,4 +13,6 @@ def quacks(entity):
 donald = Duck()
 tesla = Car()
 quacks(donald)  # Quack!
+## Quack!
 quacks(tesla)   # I can quack, too!
+## I can quack, too!
