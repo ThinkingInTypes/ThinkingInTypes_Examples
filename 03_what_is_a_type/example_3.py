@@ -1,6 +1,7 @@
 # example_3.py
+from book_utils import Catch
+
 x = 10
-# If we try to use x as a string, we'll get a runtime error
-result = (
-    x + "world"
-)  # TypeError: unsupported operand type(s) for +: 'int' and 'str'
+with Catch():
+    # Can't add a str to an int:
+    result = x + "world"  # type: ignore

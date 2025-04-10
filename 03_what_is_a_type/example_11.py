@@ -1,7 +1,12 @@
 # example_11.py
+from book_utils import Catch
+
+
 def add(a: int, b: int) -> int:
     return a + b
 
 
-result1 = add(10, 5)
-result2 = add(10, "5")  # oops, second argument is str
+print(add(10, 5))
+with Catch():
+    # Second arg is not an int:
+    add(10, "5")  # type: ignore
