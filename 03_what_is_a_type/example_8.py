@@ -1,3 +1,4 @@
 # example_8.py
 count: int = 0
-texts: list[str] = ["hello", "world"]  # using list[str] instead of typing.List
+# list[str] instead of typing.List:
+texts: list[str] = ["hello", "world"]

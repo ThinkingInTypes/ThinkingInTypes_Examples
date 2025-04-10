@@ -5,13 +5,14 @@
 
 import sys
 from pathlib import Path
+
+from invoke import task
 from pybooktools.invoke_tasks import (
     examples,
-    validate,
     namespace,
     rewrite_with_semantic_breaks,
+    validate,
 )
-from invoke import task
 from rich.console import Console
 from rich.prompt import Confirm
 
@@ -120,7 +121,7 @@ def inject(ctx):
 @task
 def sembr(ctx, chapter: Path):
     """
-    Adds a semantic break to the specified chapter.
+    Adds semantic breaks to the specified chapter.
     """
     _ = ctx
     if not isinstance(chapter, Path):
@@ -137,6 +138,7 @@ def a(ctx) -> None:
     examples(ctx)
     update_example_output(ctx)
     validate(ctx)
+    codeformat(ctx)
     inject(ctx)
     console.print(
         "[bold green]\n✅ Workflow completed successfully.[/bold green]"

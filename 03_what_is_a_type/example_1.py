@@ -1,5 +1,5 @@
 # example_1.py
-print(type(42)) 
+print(type(42))
 ## <class 'int'>
 print(type("Hello"))
 ## <class 'str'>
