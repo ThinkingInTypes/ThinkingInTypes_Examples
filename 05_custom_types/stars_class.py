@@ -1,4 +1,5 @@
 # stars_class.py
+from typing import Optional
 from book_utils import Catch
 
 
@@ -7,7 +8,7 @@ class Stars:
         self._number = n_stars  # Private by convention
         self.condition()
 
-    def condition(self, s: int | None = None):
+    def condition(self, s: Optional[int] = None):
         if s:
             assert 1 <= s <= 10, f"{self}: {s}"
         else:

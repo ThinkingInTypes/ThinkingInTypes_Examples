@@ -3,22 +3,22 @@ from pathlib import Path
 
 from book_utils import Catch
 
-this_dir = Path(__file__).parent.resolve()
 
-
-def read_second_line(file: str | Path) -> str:
+def is_file(file: str | Path) -> bool:
     # Converts string or Path to a Path object:
-    p = this_dir / file
-    return p.read_text().splitlines()[1]
+    p = Path(file)
+    return p.exists() and p.is_file()
 
 
 # Works with a string path:
-print(read_second_line("example_9.py"))
-## from pathlib import Path
+print(is_file("nonexistent.txt"))
+## False
 # Works with a Path object:
-print(read_second_line(Path("example_9.py")))
-## from pathlib import Path
+print(is_file(Path("nonexistent.txt")))
+## False
 with Catch():
     # Raises TypeError, static checker flags it:
-    read_second_line(12345)  # type: ignore
-## Error: unsupported operand type(s) for /: 'WindowsPath' and 'int'
+    is_file(12345)  # type: ignore
+## Error: argument should be a str or an
+## os.PathLike object where __fspath__ returns a
+## str, not 'int'

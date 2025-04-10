@@ -11,8 +11,8 @@ def quacks(entity):
     entity.quack()
 
 donald = Duck()
-tesla = Car()
+studebaker = Car()
 quacks(donald)  # Quack!
 ## Quack!
-quacks(tesla)   # I can quack, too!
+quacks(studebaker)   # I can quack, too!
 ## I can quack, too!
