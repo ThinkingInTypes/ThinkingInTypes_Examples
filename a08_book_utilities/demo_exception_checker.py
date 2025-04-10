@@ -17,9 +17,7 @@ class Fob:
 
 def foo(a: int, b: Fob) -> str:
     if a < 0:
-        raise ValueError(
-            f"foo arg {a} must be positive"
-        )
+        raise ValueError(f"foo arg {a} must be positive")
     return f"foo({a}, {b}) succeeded"
 
 

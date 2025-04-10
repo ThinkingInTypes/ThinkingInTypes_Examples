@@ -30,9 +30,7 @@ temp_files = [
 console = Console()
 
 
-def confirm(
-    message: str, default: bool = True
-) -> None:
+def confirm(message: str, default: bool = True) -> None:
     if not Confirm.ask(
         f"[yellow]{message}[/yellow]",
         default=default,
@@ -91,12 +89,12 @@ def extract(ctx) -> None:
         f"WARNING: delete the examples in {target_path} extract new ones from book?",
         default=False,
     )
-    if target_path.exists():  # Check repoclean to see if it already does this
+    if (
+        target_path.exists()
+    ):  # Check repoclean to see if it already does this
         ctx.run(f"repoclean -a {target_path}")
     else:
-        print(
-            f"Directory does not exist: {target_path}"
-        )
+        print(f"Directory does not exist: {target_path}")
     print(
         f"Running: mdextract -d {markdown_chapters_path} {target_path}"
     )
@@ -117,6 +115,7 @@ def inject(ctx):
     ctx.run(
         rf"mdinject -i {markdown_chapters_path} {target_path}"
     )
+
 
 @task
 def sembr(ctx, chapter: Path):

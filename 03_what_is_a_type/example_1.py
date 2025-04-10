@@ -1,3 +1,5 @@
 # example_1.py
-x = 42  # x is dynamically assigned as an integer
-y = "hello"  # y is dynamically assigned as a string
+print(type(42))  # <class 'int'>
+print(type("Hello"))  # <class 'str'>
+print(isinstance(42, int))  # True
+print(isinstance("Hello", int))  # False
