@@ -31,7 +31,16 @@ temp_files = [
 console = Console()
 
 
-def confirm(message: str, default: bool = True) -> None:
+def confirm(
+    message: str,
+    default: bool = True,
+    force: bool = False,
+) -> None:
+    if force:
+        console.print(
+            f"[green]Auto-confirmed:[/] {message}"
+        )
+        return
     if not Confirm.ask(
         f"[yellow]{message}[/yellow]",
         default=default,
@@ -68,19 +77,22 @@ def codeformat(ctx) -> None:
 
 
 @task
-def update_example_output(ctx) -> None:
+def update_example_output(
+    ctx, force: bool = False
+) -> None:
     """
     Updates embedded `##` outputs in examples.
     """
     confirm(
         "Update embedded outputs with 'px -r .'?",
         default=True,
+        force=force,
     )
     ctx.run("px -r .")
 
 
 @task
-def extract(ctx) -> None:
+def extract(ctx, force: bool = False) -> None:
     """
     Extracts examples from chapter files into the examples
     directory.
@@ -89,13 +101,14 @@ def extract(ctx) -> None:
     confirm(
         f"WARNING: delete the examples in {target_path} extract new ones from book?",
         default=False,
+        force=force,
     )
-    if (
-        target_path.exists()
-    ):  # Check repoclean to see if it already does this
+    if target_path.exists():
         ctx.run(f"repoclean -a {target_path}")
     else:
-        print(f"Directory does not exist: {target_path}")
+        print(
+            f"Directory does not exist: {target_path}"
+        )
     print(
         f"Running: mdextract -d {markdown_chapters_path} {target_path}"
     )
@@ -105,13 +118,14 @@ def extract(ctx) -> None:
 
 
 @task
-def inject(ctx):
+def inject(ctx, force: bool = False):
     """
     Injects examples back into the chapter files.
     """
     confirm(
         "Inject examples back into book?",
         default=True,
+        force=force,
     )
     ctx.run(
         rf"mdinject -i {markdown_chapters_path} {target_path}"
@@ -130,16 +144,16 @@ def sembr(ctx, chapter: Path):
 
 
 @task
-def a(ctx) -> None:
+def a(ctx, force: bool = False) -> None:
     """
-    All workflow tasks: extract, run all scripts, update examples, validate, re-inject examples into book.
+    All: extract, run all scripts, update examples, validate, re-inject examples into book. (--force runs w/o prompting)
     """
-    extract(ctx)
+    extract(ctx, force=force)
     examples(ctx)
-    update_example_output(ctx)
+    update_example_output(ctx, force=force)
     validate(ctx)
     codeformat(ctx)
-    inject(ctx)
+    inject(ctx, force=force)
     console.print(
         "[bold green]\n✅ Workflow completed successfully.[/bold green]"
     )

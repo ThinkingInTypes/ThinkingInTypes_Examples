@@ -1,7 +1,5 @@
 # example_2.py
-from typing import Dict, List
-
-UserData = Dict[str, List[int]]
+UserData = dict[str, list[int]]
 
 
 def process_data(data: UserData) -> None:

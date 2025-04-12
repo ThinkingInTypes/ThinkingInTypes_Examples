@@ -1,6 +1,5 @@
 # month_data_class.py
 from dataclasses import dataclass, field
-from typing import List
 
 from book_utils import Catch
 
@@ -59,7 +58,7 @@ class Month:
 
 @dataclass(frozen=True)
 class Months:
-    months: List[Month] = field(
+    months: list[Month] = field(
         default_factory=Month.make_months
     )
 

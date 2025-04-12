@@ -1,9 +1,9 @@
 # example_1.py
-def handle_command(command: str) -> str:
-    match command:
-        case "start":
-            return "Starting"
-        case "stop":
-            return "Stopping"
-        case _:
-            return "Unknown command"
+status = 404
+match status:
+    case 200:
+        result = "OK"
+    case 404:
+        result = "Not Found"
+    case _:
+        result = "Unknown status"

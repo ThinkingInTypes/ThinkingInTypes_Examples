@@ -1,7 +1,13 @@
 # example_6.py
-def parse_coordinates(coords: tuple) -> str:
-    match coords := coords:
-        case (float(lat), float(lon)):
-            return f"Latitude: {lat}, Longitude: {lon}"
-        case _:
-            return "Invalid coordinates"
+from typing import NamedTuple
+
+
+class Player(NamedTuple):
+    name: str
+    score: int
+
+
+def player_score(player: Player):
+    match player:
+        case Player(name=_, score=s):
+            print(f"Player has score {s}")

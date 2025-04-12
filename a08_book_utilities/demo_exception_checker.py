@@ -17,18 +17,20 @@ class Fob:
 
 def foo(a: int, b: Fob) -> str:
     if a < 0:
-        raise ValueError(f"foo arg {a} must be positive")
+        raise ValueError(
+            f"foo arg {a} must be positive"
+        )
     return f"foo({a}, {b}) succeeded"
 
 
 # If you know it succeeds you can just run it without a context:
 print(foo(0, Fob(0)))
 ## foo(0, Fob(x=0)) succeeded
-with Catch():  # Single-failure simple form
+with Catch():  # Single-failure form
     foo(1, Fob(-1))
 ## Error: Fob arg -1 must be positive
 
-# In the simple form, success does NOT automatically display the result:
+# In the form, success does NOT automatically display the result:
 with Catch():
     print(foo(42, Fob(42)))  # Must explicitly print
 ## foo(42, Fob(x=42)) succeeded

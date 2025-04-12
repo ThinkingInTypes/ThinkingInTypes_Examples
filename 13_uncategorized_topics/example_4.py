@@ -1,8 +1,7 @@
 # example_4.py
-from typing import Union
 
 
-def process(value: Union[int, str]) -> None:
+def process(value: int | str) -> None:
     if isinstance(value, int):
         print(value + 1)
     else:

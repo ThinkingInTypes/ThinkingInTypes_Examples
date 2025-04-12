@@ -16,5 +16,7 @@ def f2(phone_num: str):
     check = re.compile(
         r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$"
     )
-    assert check.match(phone_num), f"Invalid {phone_num}"
+    assert check.match(phone_num), (
+        f"Invalid {phone_num}"
+    )
     ...

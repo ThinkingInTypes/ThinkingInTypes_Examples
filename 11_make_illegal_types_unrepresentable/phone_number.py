@@ -32,10 +32,16 @@ class PhoneNumber:
         cc, num = match.groups()
         digits = re.sub(r"\D", "", num)
         if not digits:
-            raise ValueError(f"No digits found in: {raw!r}")
+            raise ValueError(
+                f"No digits found in: {raw!r}"
+            )
 
-        country_code = cc if cc else "1"  # default to US
-        return cls(country_code=country_code, number=digits)
+        country_code = (
+            cc if cc else "1"
+        )  # default to US
+        return cls(
+            country_code=country_code, number=digits
+        )
 
     def __str__(self) -> str:
         """
@@ -47,7 +53,7 @@ class PhoneNumber:
 
     def format_number(self) -> str:
         """
-        Simple formatting rules for 10-digit numbers.
+        formatting rules for 10-digit numbers.
         """
         if len(self.number) == 10:
             return f"({self.number[:3]}) {self.number[3:6]}-{self.number[6:]}"

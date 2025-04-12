@@ -49,12 +49,13 @@ with Catch():
     stars2 = Stars(11)
 ## Error: Stars(11)
 stars3 = Stars(5)
-with Catch():
-    print(stars3.f1(4))
+print(stars3.f1(4))
 ## 9
 with Catch():
     print(stars3.f2(22))
 ## Error: Stars(9): 22
 # @property without setter prevents mutation:
-# stars1.number = 99
-# AttributeError: can't set attribute 'number'
+with Catch():
+    stars1.number = 99
+## Error: property 'number' of 'Stars' object has
+## no setter

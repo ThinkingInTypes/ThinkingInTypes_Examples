@@ -1,20 +1,18 @@
 # example_2.py
-from typing import Union, NamedTuple
+from enum import Enum
 
 
-class Success(NamedTuple):
-    result: str
+class Color(Enum):
+    RED = 1
+    GREEN = 2
+    BLUE = 3
 
 
-class Error(NamedTuple):
-    error: str
-
-
-def process(response: Union[Success, Error]) -> str:
-    match response:
-        case Success(result):
-            return f"Success: {result}"
-        case Error(error):
-            return f"Error: {error}"
-        case _:
-            raise ValueError("Unhandled response type")
+color = Color.GREEN
+match color:
+    case Color.RED:
+        print("It's red!")
+    case Color.GREEN:
+        print("It's green!")
+    case Color.BLUE:
+        print("It's blue!")

@@ -1,6 +1,6 @@
 # ddd.py
 from dataclasses import dataclass
-from typing import List, NamedTuple
+from typing import NamedTuple
 
 
 class Product(NamedTuple):
@@ -11,7 +11,7 @@ class Product(NamedTuple):
 @dataclass
 class Order:
     order_id: int
-    products: List[Product]
+    products: list[Product]
 
     def total(self) -> float:
         return sum(
