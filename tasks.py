@@ -50,7 +50,7 @@ def confirm(
 
 
 @task(default=True)
-def z(ctx) -> None:
+def help(ctx) -> None:
     """
     List available tasks.
     """
@@ -77,9 +77,7 @@ def codeformat(ctx) -> None:
 
 
 @task
-def update_example_output(
-    ctx, force: bool = False
-) -> None:
+def update_example_output(ctx, force: bool = False) -> None:
     """
     Updates embedded `##` outputs in examples.
     """
@@ -106,9 +104,7 @@ def extract(ctx, force: bool = False) -> None:
     if target_path.exists():
         ctx.run(f"repoclean -a {target_path}")
     else:
-        print(
-            f"Directory does not exist: {target_path}"
-        )
+        print(f"Directory does not exist: {target_path}")
     print(
         f"Running: mdextract -d {markdown_chapters_path} {target_path}"
     )
@@ -163,10 +159,33 @@ def a(ctx, force: bool = False) -> None:
             print(f"Deleted {file}")
 
 
+@task
+def f(ctx, file: Path, force: bool = False) -> None:
+    """
+    Full workflow for a single file: extract, run, update, validate, inject. (--force runs w/o prompting)
+    """
+    if not isinstance(file, Path):
+        file = Path(file)
+    examples(ctx, file=str(file))
+    update_example_output(
+        ctx, force=force
+    )  # Directory needs to be specified here
+    validate(ctx)
+    codeformat(ctx)
+    inject(ctx, force=force)
+    console.print(
+        f"[bold green]\n✅ Workflow completed successfully for {file}.[/bold green]"
+    )
+    for temp_file in temp_files:
+        if temp_file.exists():
+            temp_file.unlink()
+            print(f"Deleted {temp_file}")
+
+
 namespace.add_task(a)
 namespace.add_task(extract)
 namespace.add_task(inject)
-namespace.add_task(z)
+namespace.add_task(help)
 namespace.add_task(docformat)
 namespace.add_task(codeformat)
 namespace.add_task(update_example_output)

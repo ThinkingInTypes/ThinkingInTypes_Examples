@@ -5,3 +5,4 @@ match pair:
         print("The two values are equal.")
     case (x, y):
         print("The values are different.")
+## The two values are equal.

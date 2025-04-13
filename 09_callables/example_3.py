@@ -8,6 +8,4 @@ def operate(
     return func(a, b)
 
 
-result = operate(
-    5, 3, lambda x, y: x * y
-)  # returns 15
+result = operate(5, 3, lambda x, y: x * y)  # returns 15

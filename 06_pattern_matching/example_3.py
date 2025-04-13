@@ -5,3 +5,4 @@ match command:
         print("Quitting...")
     case other:
         print(f"Received unknown command: {other!r}")
+## Received unknown command: 'hello'

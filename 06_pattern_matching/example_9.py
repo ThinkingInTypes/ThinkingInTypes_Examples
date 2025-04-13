@@ -7,3 +7,4 @@ match event:
         print(f"Mouse moved to ({x}, {y})")
     case _:
         print("Unknown event")
+## Key pressed: Enter

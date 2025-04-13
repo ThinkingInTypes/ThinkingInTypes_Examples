@@ -1,4 +1,4 @@
-# example_2.py
+# colors.py
 from enum import Enum
 
 
@@ -16,3 +16,4 @@ match color:
         print("It's green!")
     case Color.BLUE:
         print("It's blue!")
+## It's green!

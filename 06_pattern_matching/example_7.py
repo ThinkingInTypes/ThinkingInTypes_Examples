@@ -9,3 +9,4 @@ match point:
         print(f"On the X-axis at x={x}")
     case (x, y):
         print(f"Point at ({x}, {y})")
+## On the Y-axis at y=5

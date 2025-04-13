@@ -1,5 +1,6 @@
 # example_16.py
-from example_2 import Color
+from colors import Color
+## It's green!
 
 
 def handle_color(color: Color):
@@ -7,6 +8,4 @@ def handle_color(color: Color):
         case Color.RED | Color.GREEN | Color.BLUE:
             ...  # handle known colors
         case _ as unknown:
-            raise ValueError(
-                f"Unknown color: {unknown}"
-            )
+            raise ValueError(f"Unknown color: {unknown}")

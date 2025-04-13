@@ -15,9 +15,7 @@ class Amount:
             raise ValueError(
                 f"Amount({decimal_value}) cannot be negative"
             )
-        object.__setattr__(
-            self, "value", decimal_value
-        )
+        object.__setattr__(self, "value", decimal_value)
 
     def __add__(self, other: "Amount") -> "Amount":
         return Amount(self.value + other.value)

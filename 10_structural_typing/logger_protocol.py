@@ -32,9 +32,7 @@ class ListLogger:
         self.messages.append(message)
 
 
-def run_process(
-    task_name: str, logger: Logger
-) -> None:
+def run_process(task_name: str, logger: Logger) -> None:
     logger.log(f"Starting {task_name}")
     # Perform the task ...
     logger.log(f"Finished {task_name}")

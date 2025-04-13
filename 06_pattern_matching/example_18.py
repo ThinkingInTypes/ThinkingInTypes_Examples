@@ -7,3 +7,4 @@ match request:
         print(f"POST request with id {data['id']}")
     case {"method": m}:
         print(f"Other request method: {m}")
+## POST request with id 42
