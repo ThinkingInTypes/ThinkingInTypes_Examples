@@ -5,9 +5,9 @@ def nested_pattern(*values: int) -> None:
     match values:
         case [first, second, *rest]:
             # Here the type checker infers:
-            # - first: int
-            # - second: int
-            # - rest: list[int]
+            #--first: int
+            #--second: int
+            #--rest: list[int]
             print(f"{first = }, {second = }, {rest = }")
         case [(x, y), *rest]:
             print(f"({x=}, {y=}), *{rest}")

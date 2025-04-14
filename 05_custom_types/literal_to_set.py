@@ -12,7 +12,7 @@ print("NOPE" in ParamVal)
 # Convert literal values to a set:
 allowed_set = set(ParamVal.__args__)  # type: ignore
 print(allowed_set)
-## {'MIN', 'DEF', 'MAX'}
+## {'DEF', 'MAX', 'MIN'}
 print("MIN" in allowed_set)
 ## True
 print("NOPE" in allowed_set)

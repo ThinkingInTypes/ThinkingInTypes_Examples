@@ -13,7 +13,7 @@ class PhoneNumber:
     country_code: str
     number: str  # Digits only, no formatting
 
-    PHONE_REGEX = re.compile(
+    phone_number_re = re.compile(
         r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$"
     )
 
@@ -23,7 +23,7 @@ class PhoneNumber:
         Parses and validates a raw phone number string.
         """
         cleaned = raw.strip()
-        match = cls.PHONE_REGEX.match(cleaned)
+        match = cls.phone_number_re.match(cleaned)
         if not match:
             raise ValueError(
                 f"Invalid phone number: {raw!r}"
@@ -47,11 +47,11 @@ class PhoneNumber:
 
     def format_number(self) -> str:
         """
-        formatting rules for 10-digit numbers.
+        Formatting rules for 10-digit numbers.
         """
         if len(self.number) == 10:
             return f"({self.number[:3]}) {self.number[3:6]}-{self.number[6:]}"
-        return self.number  # fallback: just the digits
+        return self.number  # Fallback: just the digits
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, PhoneNumber):

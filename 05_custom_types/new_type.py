@@ -1,27 +1,31 @@
 # new_type.py
-from typing import NewType
+from typing import NewType, get_type_hints
 
-UserID = NewType("UserID", int)
-IDs = NewType("IDs", list[UserID])
-
-user_ids = IDs([UserID(2), UserID(5), UserID(42)])
+Number = NewType("Number", int | float | str)
+Measurements = NewType("Measurements", list[Number])
 
 
-def increment(uid: UserID) -> UserID:
-    # Transparently access underlying value:
-    return UserID(uid + 1)
+def process_measurements(data: Measurements) -> None:
+    print(get_type_hints(process_measurements))
+    for n in data:
+        print(f"{n = }, {type(n) = }")
 
 
-# increment(42)  # Type check error
-
-# Access underlying list operation:
-print(increment(user_ids[-1]))
-## 43
-
-
-def increment_users(user_ids: IDs) -> IDs:
-    return IDs([increment(uid) for uid in user_ids])
-
-
-print(increment_users(user_ids))
-## [3, 6, 43]
+process_measurements(
+    Measurements(
+        [Number(11), Number(3.14), Number("1.618")]
+    )
+)
+## {'data': __main__.Measurements, 'return':
+## <class 'NoneType'>}
+## n = 11, type(n) = <class 'int'>
+## n = 3.14, type(n) = <class 'float'>
+## n = '1.618', type(n) = <class 'str'>
+process_measurements(Measurements([11, 3.14, "1.618"]))
+## {'data': __main__.Measurements, 'return':
+## <class 'NoneType'>}
+## n = 11, type(n) = <class 'int'>
+## n = 3.14, type(n) = <class 'float'>
+## n = '1.618', type(n) = <class 'str'>
+# Not allowed:
+# process_measurements([11, 3.14, "1.618"])
