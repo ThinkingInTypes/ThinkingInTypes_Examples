@@ -1,6 +1,4 @@
 # example_8.py
-
-
 def rest_pattern(*values):
     match values:
         case [first, second, *rest]:

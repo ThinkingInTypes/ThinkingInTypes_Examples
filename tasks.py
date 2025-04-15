@@ -160,6 +160,15 @@ def a(ctx, force: bool = False) -> None:
 
 
 @task
+def extract_and_run(ctx) -> None:
+    """
+    Extract and run all examples.
+    """
+    extract(ctx, force=True)
+    examples(ctx)
+
+
+@task
 def f(ctx, file: Path, force: bool = False) -> None:
     """
     Full workflow for a single file: extract, run, update, validate, inject. (--force runs w/o prompting)
@@ -190,3 +199,4 @@ namespace.add_task(docformat)
 namespace.add_task(codeformat)
 namespace.add_task(update_example_output)
 namespace.add_task(sembr)
+namespace.add_task(extract_and_run)

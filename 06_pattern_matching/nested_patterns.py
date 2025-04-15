@@ -1,6 +1,4 @@
 # nested_patterns.py
-
-
 def nested_pattern(*values: int) -> None:
     match values:
         case [first, second, *rest]:

@@ -1,4 +1,4 @@
-# example_6.py
+# wildcard_ignore_value.py
 from typing import NamedTuple
 
 
