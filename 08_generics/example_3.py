@@ -1,13 +1,13 @@
 # example_3.py
 from typing import TypeVar
 
-U = TypeVar("U", int, float)
+# Define a TypeVar that can only be int or float
+Number = TypeVar('Number', int, float)
 
-
-def add(a: U, b: U) -> U:
+def add(a: Number, b: Number) -> Number:
     return a + b
 
-
-add(1, 2)  # valid
-add(1.5, 2.5)  # valid
-# add("a", "b")  # invalid, detected by type checker
+add(5, 10)      # valid, both int
+add(3.5, 2.5)   # valid, both float
+add(5, 2.5)     # valid, int and float (both allowed types)
+add("5", "2")   # ERROR: str not allowed for Number
