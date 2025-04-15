@@ -1,6 +1,7 @@
 # wildcard_ignore_elements.py
 from typing import Any
 
+
 def wildcard_ignore(point: tuple[float, Any, Any]) -> None:
     match point:
         case (x, _, _):

@@ -41,3 +41,11 @@ dev = [
 
 [tool.uv.sources]
 pybooktools = { path = "../pybooktools", editable = true }
+
+[tool.pyright]
+pythonVersion = "3.13"
+ignore = [
+    "xperiments",
+    "bootstrap.py",
+    "tasks.py",
+]

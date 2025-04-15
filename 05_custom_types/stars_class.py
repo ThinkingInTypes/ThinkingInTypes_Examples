@@ -56,6 +56,6 @@ with Catch():
 ## Error: Stars(9): 22
 # @property without setter prevents mutation:
 with Catch():
-    stars1.number = 99
+    stars1.number = 99  # type: ignore
 ## Error: property 'number' of 'Stars' object has
 ## no setter

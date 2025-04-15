@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 class A:
     def __init__(
-        self, x: int = 100, y: int = 200, z: int = 300
+            self, x: int = 100, y: int = 200, z: int = 300
     ):
         self.x = x
         self.y = y

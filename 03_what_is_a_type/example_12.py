@@ -5,6 +5,7 @@ def f(x: int) -> int:
 
 print(f(5))  # Correct type
 ## 10
-print(f("hi"))  # Does NOT cause a TypeError
+# Expected type 'int', got 'str' instead:
+print(f("hi"))  # type: ignore
 ## hihi
 # Strings can be "multiplied"

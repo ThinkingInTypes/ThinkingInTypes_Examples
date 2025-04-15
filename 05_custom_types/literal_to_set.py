@@ -3,8 +3,8 @@ from typing import Literal
 
 ParamVal = Literal["DEF", "MIN", "MAX"]
 print(ParamVal)
-print("MIN" in ParamVal)
-print("NOPE" in ParamVal)
+print("MIN" in ParamVal)  # type: ignore
+print("NOPE" in ParamVal)  # type: ignore
 
 # Convert literal values to a set:
 allowed_set = set(ParamVal.__args__)  # type: ignore

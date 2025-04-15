@@ -1,9 +1,9 @@
 # ddd.py
 from dataclasses import dataclass
-from typing import NamedTuple
 
 
-class Product(NamedTuple):
+@dataclass
+class Product:
     name: str
     price: float
 

@@ -1,5 +1,9 @@
 # example_27.py
-from typing import TypeVar
+from typing import TypeVar, Iterable
+
 T = TypeVar('T')
+
+
 def sort_items(items: list[T]) -> list[T]:
-    return sorted(items)
+    # Pyright issue:
+    return sorted(items)  # type: ignore

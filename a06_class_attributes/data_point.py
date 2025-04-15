@@ -6,6 +6,6 @@ class DataPoint:
 
 
 d = DataPoint()
-d.measurement1 = 100
-d.measurement2 = 200
-d.measurement3 = 300
+d.measurement1 = 100  # type: ignore
+d.measurement2 = 200  # type: ignore
+d.measurement3 = 300  # type: ignore

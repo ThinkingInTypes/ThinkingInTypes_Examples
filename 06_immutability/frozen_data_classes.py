@@ -1,5 +1,6 @@
 # frozen_data_classes.py
 from dataclasses import dataclass
+from book_utils import Catch
 
 
 @dataclass(frozen=True)
@@ -9,13 +10,13 @@ class Messenger:
     depth: float = 0.0  # Default
 
 
-m = Messenger("foo", 12, 3.14)
-print(m)
+print(messenger := Messenger("foo", 12, 3.14))
 ## Messenger(name='foo', number=12, depth=3.14)
 # Frozen dataclass is immutable:
-# m.name = "bar"
-# dataclasses.FrozenInstanceError: cannot assign to field 'name'
+with Catch():
+    messenger.name = "bar"  # type: ignore
+
 # Automatically creates __hash__():
-d = {m: "value"}
-print(d[m])
+d = {messenger: "value"}
+print(d[messenger])
 ## value

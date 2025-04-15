@@ -13,6 +13,10 @@ class Square(NamedTuple):
 def shape_area(shape: Circle | Square) -> float:
     match shape:
         case Circle(radius=r):
-            ...  # here shape is type Circle
+            # Here shape is type Circle:
+            return 3.14 * r ** 2
         case Square(side=s):
-            ...  # here shape is type Square
+            # Here shape is type Square:
+            return s ** 2
+        case _:
+            raise ValueError("Unsupported shape")

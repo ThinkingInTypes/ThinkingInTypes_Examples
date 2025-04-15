@@ -1,4 +1,4 @@
-# example_7.py
+# frozen_person.py
 from dataclasses import dataclass
 
 from book_utils import Catch
@@ -15,7 +15,7 @@ print(person.name)  # "Alice"
 ## Alice
 with Catch():
     # Trying to modify a frozen dataclass field:
-    person.age = 31  # noqa
+    person.age = 31  # type: ignore
 ## Error: cannot assign to field 'age'
 
 person.__dict__["age"] = 31  # Disable 'frozen'

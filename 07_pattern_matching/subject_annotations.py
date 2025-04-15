@@ -6,9 +6,9 @@ def subject_annotation(*values: int) -> None:
     match values:
         case [first, second, *rest]:
             # Here the type checker infers:
-            #--first: int
-            #--second: int
-            #--rest: list[int]
+            # --first: int
+            # --second: int
+            # --rest: list[int]
             print(f"{first = }, {second = }, {rest = }")
 
 

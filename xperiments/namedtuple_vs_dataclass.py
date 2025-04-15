@@ -1,4 +1,4 @@
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, is_dataclass
 from typing import NamedTuple
 
 
@@ -34,8 +34,9 @@ print(f"{nt._asdict() = }")
 
 # Dataclass introspection
 print("\nDataclass fields:")
-for f in fields(FDC):
-    print(f"{f.name}: {f.type}")
+if is_dataclass(FDC):
+    for f in fields(FDC):
+        print(f"{f.name}: {f.type}")
 
 # Create new object by replacing a value:
 nt2 = nt._replace(name="Desktop")

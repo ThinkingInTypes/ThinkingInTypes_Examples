@@ -6,7 +6,7 @@ R = TypeVar("R")
 
 
 def logging_decorator(
-    func: Callable[P, R],
+        func: Callable[P, R],
 ) -> Callable[P, R]:
     def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
         print(

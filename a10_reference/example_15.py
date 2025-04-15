@@ -4,5 +4,5 @@ from typing import Self
 
 class MyBuilder:
     def set_name(self, name: str) -> Self:
-        self.name = name  # noqa: Instance attribute
+        self.name = name  # type: ignore
         return self
