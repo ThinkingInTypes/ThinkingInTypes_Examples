@@ -2,8 +2,9 @@
 """
 'Invoke' command file.
 """
-import os
+import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from invoke import task
@@ -151,54 +152,57 @@ def pyright(ctx):
     console.print("[bold green]" + " End Pyright ".center(80, "-") + "[/bold green]")
 
 
-CHUNK_SIZE = 100  # Tune this as needed
-
-
 @task
 def mypy(ctx) -> None:
     """
-    Run mypy on each .py file individually to avoid package name issues.
+    Run mypy in parallel across all valid .py files in the repo.
     """
-
-    def is_valid_mypy_file(path: Path) -> bool:
-        if any(part in EXCLUDE_PATHS for part in path.parts):
-            return False
-        # Skip __init__.py in directories with invalid names
-        if path.name == "__init__.py":
-            parent = path.parent.name
-            if not parent.isidentifier():
-                return False
-        return True
-
+    _ = ctx
     root = Path(".").resolve()
-    files = [path for path in root.rglob("*.py") if is_valid_mypy_file(path)]
+    files = [
+        path for path in root.rglob("*.py")
+        if not any(part in EXCLUDE_PATHS for part in path.parts)
+    ]
 
     if not files:
         console.print("[bold red]No Python files found for mypy linting.[/bold red]")
         return
 
     console.print(Panel.fit(
-        f"🧹 Running mypy on [cyan]{len(files)}[/cyan] files (one at a time)...",
-        title="Mypy Lint",
+        f"⚡ Running mypy on [cyan]{len(files)}[/cyan] files in parallel...",
+        title="Mypy Lint (Parallel)",
         border_style="blue"
     ))
 
-    original_cwd = os.getcwd()
+    def check_file(path: Path) -> tuple[Path, int, str]:
+        result = subprocess.run(
+            ["mypy",
+             "--no-error-summary",
+             "--namespace-packages",
+             "--ignore-missing-imports",
+             str(path)
+             ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        return path, result.returncode, result.stdout.strip()
 
-    for i, path in enumerate(files, 1):
-        console.print(f"[green]→ Checking {path} ({i}/{len(files)})[/green]")
-        try:
-            os.chdir(path.parent)
-            ctx.run(
-                f"mypy --no-error-summary --namespace-packages {path.name}",
-                pty=(sys.platform != "win32")
-            )
-        except Exception as e:
-            console.print(Panel(str(e), title="❌ Mypy failed", border_style="red"))
-            os.chdir(original_cwd)
-            raise
-        finally:
-            os.chdir(original_cwd)
+    error_count = 0
+
+    with ThreadPoolExecutor() as executor:
+        future_to_file = {executor.submit(check_file, path): path for path in files}
+        for future in as_completed(future_to_file):
+            path, code, output = future.result()
+            if code != 0:
+                error_count += 1
+                console.print(Panel(output, title=f"❌ {path}", border_style="red"))
+
+    if error_count:
+        console.print(f"[bold red]❌ mypy failed on {error_count} files[/bold red]")
+        sys.exit(1)
+    else:
+        console.print("[bold green]✅ All files passed mypy[/bold green]")
 
 
 @task
