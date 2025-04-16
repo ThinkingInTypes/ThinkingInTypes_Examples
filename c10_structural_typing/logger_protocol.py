@@ -13,7 +13,7 @@ class Logger(Protocol):
 class FileLogger(AbstractContextManager):
     """
     Logger that writes to a temporary file.
-    Automatically cleans up with the context manager.
+    Automatically cleans up via the context manager.
     """
 
     def __init__(self):
@@ -45,7 +45,7 @@ class ListLogger:
 
 
 def run_process(
-    task_name: str, logger: Logger
+        task_name: str, logger: Logger
 ) -> None:
     logger.log(f"Starting {task_name}")
     # Perform the task ...

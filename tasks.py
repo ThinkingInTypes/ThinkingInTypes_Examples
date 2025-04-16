@@ -39,10 +39,16 @@ WIDTH = 60  # Width for code listings and comments
 markdown_chapters_path = Path("C:/git/ThinkingInTypes.github.io/Chapters")
 target_path = Path("C:/git/ThinkingInTypes_Examples")
 temp_files = [
-    Path("app.log"),
-    Path("data.txt"),
-    Path("other.txt"),
+    Path("C:/git/ThinkingInTypes_Examples/data.txt"),
+    Path("C:/git/ThinkingInTypes_Examples/other.txt"),
 ]
+
+
+def cleanup():
+    for temp_file in temp_files:
+        if temp_file.exists():
+            temp_file.unlink()
+            # print(f"Deleted {temp_file}")
 
 
 def confirm(
@@ -218,10 +224,7 @@ def a(ctx, force: bool = False) -> None:
     ruff(ctx)
     inject(ctx, force=force)
     console.print("[bold green]\n✅ Workflow completed successfully.[/bold green]")
-    for file in temp_files:
-        if file.exists():
-            file.unlink()
-            print(f"Deleted {file}")
+    cleanup()
 
 
 @task
@@ -232,6 +235,7 @@ def extract_and_run(ctx) -> None:
     extract(ctx, force=True)
     examples(ctx)
     pyright(ctx)
+    cleanup()
 
 
 @task
@@ -249,10 +253,7 @@ def f(ctx, file: Path, force: bool = False) -> None:
     console.print(
         f"[bold green]\n✅ Workflow completed successfully for {file}.[/bold green]"
     )
-    for temp_file in temp_files:
-        if temp_file.exists():
-            temp_file.unlink()
-            print(f"Deleted {temp_file}")
+    cleanup()
 
 
 namespace.add_task(a)

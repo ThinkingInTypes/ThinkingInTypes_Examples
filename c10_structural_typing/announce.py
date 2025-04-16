@@ -13,7 +13,7 @@ class Robot:
 
 
 def announce(speaker: Speaker) -> None:
-    # `speaker` can be any object that has .speak() returning str
+    # `speaker` can be any object with .speak() returning str
     print("Announcement:", speaker.speak())
 
 
