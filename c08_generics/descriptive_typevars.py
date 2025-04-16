@@ -1,4 +1,4 @@
-# example_30.py
+# descriptive_typevars.py
 from typing import TypeVar, Generic
 
 KT = TypeVar("KT")  # Key type

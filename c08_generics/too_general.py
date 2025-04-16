@@ -1,4 +1,4 @@
-# example_27.py
+# too_general.py
 from typing import TypeVar, Iterable
 
 T = TypeVar("T")

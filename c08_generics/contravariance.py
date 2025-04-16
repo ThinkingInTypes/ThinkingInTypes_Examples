@@ -2,10 +2,6 @@
 from typing import Generic, TypeVar
 from animals import Animal, Dog
 
-## Woof
-## Woof
-## Animal sound
-
 T_contra = TypeVar("T_contra", contravariant=True)
 
 

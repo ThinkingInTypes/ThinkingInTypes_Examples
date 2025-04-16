@@ -1,4 +1,4 @@
-# example_16.py
+# protocols_with_attributes.py
 from typing import Protocol
 
 

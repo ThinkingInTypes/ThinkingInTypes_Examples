@@ -1,4 +1,4 @@
-# example_8.py
+# curry_two_arg.py
 from typing import Callable, TypeVar
 
 X = TypeVar("X")

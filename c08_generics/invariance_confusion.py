@@ -1,4 +1,4 @@
-# example_26.py
+# invariance_confusion.py
 from animals import Animal, Dog
 
 ## Woof

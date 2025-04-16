@@ -1,4 +1,4 @@
-# example_13.py
+# recursive_alias_applied.py
 from recursive_alias import JSON
 
 config: JSON = {

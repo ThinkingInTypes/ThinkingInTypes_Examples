@@ -1,4 +1,4 @@
-# example_23.py
+# vector.py
 from typing import TypeVar
 
 T = TypeVar("T")

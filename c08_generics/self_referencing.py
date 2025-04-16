@@ -1,4 +1,4 @@
-# example_9.py
+# self_referencing.py
 from __future__ import (
     annotations,
 )  # For forward-referenced types

@@ -1,4 +1,4 @@
-# example_20.py
+# generic_alias_applied.py
 from generic_alias import Pair, StrDict
 
 p: Pair[int] = (10, 20)
