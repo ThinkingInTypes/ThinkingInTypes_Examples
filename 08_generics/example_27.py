@@ -1,7 +1,7 @@
 # example_27.py
 from typing import TypeVar, Iterable
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 def sort_items(items: list[T]) -> list[T]:

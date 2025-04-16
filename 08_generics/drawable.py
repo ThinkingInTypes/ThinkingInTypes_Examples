@@ -3,5 +3,4 @@ from typing import Protocol
 
 
 class Drawable(Protocol):
-    def draw(self) -> None:
-        ...
+    def draw(self) -> None: ...

@@ -1,4 +1,8 @@
-from multimeter import ConfigCurrentAC, DisplayText, MeasureVoltageDC
+from multimeter import (
+    ConfigCurrentAC,
+    DisplayText,
+    MeasureVoltageDC,
+)
 
 # Example: Construct a MEAS:VOLT:DC? command with range and resolution
 cmd = MeasureVoltageDC(range=10, resolution=0.001)
@@ -13,7 +17,9 @@ except ValueError as e:
 # Output: Error: Resolution specified without a range. Please specify a range or use 'DEF'.
 
 # Construct a CONF:CURR:AC command (e.g., autorange with maximum resolution)
-conf_cmd = ConfigCurrentAC(range="DEF", resolution="MAX")
+conf_cmd = ConfigCurrentAC(
+    range="DEF", resolution="MAX"
+)
 print(conf_cmd.command())
 # Output: CONF:CURR:AC MAX   (note: "DEF" range omitted yields instrument default (autorange))
 

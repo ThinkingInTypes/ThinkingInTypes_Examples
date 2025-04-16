@@ -1,7 +1,7 @@
 # typevars.py
 from typing import TypeVar
 
-T = TypeVar('T')  # Define a TypeVar named T
+T = TypeVar("T")  # Define a TypeVar named T
 
 
 def echo(value: T) -> T:
@@ -9,4 +9,6 @@ def echo(value: T) -> T:
 
 
 print(echo(42))
+## 42
 print(echo("Hello"))
+## Hello

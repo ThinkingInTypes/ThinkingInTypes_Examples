@@ -1,7 +1,7 @@
 # box.py
 from typing import Generic, TypeVar
 
-U = TypeVar('U')  # a generic type for content
+U = TypeVar("U")  # a generic type for content
 
 
 class Box(Generic[U]):
@@ -15,4 +15,6 @@ class Box(Generic[U]):
 int_box = Box(123)  # U is inferred as int
 str_box = Box("Python")  # U is inferred as str
 print(int_box.get_content())  # 123
+## 123
 print(str_box.get_content())  # Python
+## Python

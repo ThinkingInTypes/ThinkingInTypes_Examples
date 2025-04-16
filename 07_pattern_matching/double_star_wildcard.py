@@ -8,5 +8,4 @@ user_info = {
 match user_info:
     case {"name": name, **rest}:
         print(f"Name: {name}, info: {rest}")
-## Name is Alice, other info: {'age': 30,
-## 'country': 'US'}
+## Name: Alice, info: {'age': 30, 'country': 'US'}

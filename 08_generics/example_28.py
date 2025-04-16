@@ -6,7 +6,7 @@ class Comparable(Protocol):
     def __lt__(self, other: Any) -> bool: ...
 
 
-U = TypeVar('U', bound=Comparable)
+U = TypeVar("U", bound=Comparable)
 
 
 def sort_items(items: list[U]) -> list[U]:

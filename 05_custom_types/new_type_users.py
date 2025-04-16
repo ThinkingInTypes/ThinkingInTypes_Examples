@@ -17,8 +17,6 @@ def increment(uid: UserID) -> UserID:
 
 # Access underlying list operation:
 print(increment(users[-1]))
-
-
 ## 43
 
 

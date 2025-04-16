@@ -7,7 +7,7 @@ from container_types import (
 
 
 def print_item_and_return[C](
-        container: Container[C],
+    container: Container[C],
 ) -> C:
     item = container.get_item()
     print("Got:", item)

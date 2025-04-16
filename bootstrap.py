@@ -46,7 +46,9 @@ def main() -> None:
         check=True,
     )
 
-    print("\n🚀 All dependencies installed successfully.")
+    print(
+        "\n🚀 All dependencies installed successfully."
+    )
     print_activation_instruction(system)
 
 
@@ -66,16 +68,22 @@ def print_activation_instruction(system: str) -> None:
     match system:
         case "Windows":
             if "powershell" in shell:
-                print("   .\\.venv\\Scripts\\Activate.ps1")
+                print(
+                    "   .\\.venv\\Scripts\\Activate.ps1"
+                )
             elif "cmd.exe" in shell:
-                print("   .\\.venv\\Scripts\\activate.bat")
+                print(
+                    "   .\\.venv\\Scripts\\activate.bat"
+                )
             else:
                 print(
                     "   .\\.venv\\Scripts\\activate"
                 )  # generic fallback
         case _:
             if "fish" in shell:
-                print("   source .venv/bin/activate.fish")
+                print(
+                    "   source .venv/bin/activate.fish"
+                )
             elif "zsh" in shell:
                 print("   source .venv/bin/activate")
             elif "bash" in shell:
@@ -85,7 +93,9 @@ def print_activation_instruction(system: str) -> None:
                     "   source .venv/bin/activate  # (unknown shell)"
                 )
 
-    print("\n💡 Once activated, you can run tasks like:")
+    print(
+        "\n💡 Once activated, you can run tasks like:"
+    )
     print("   invoke setup")
 
 

@@ -12,7 +12,7 @@ class Dog(Animal):
         print("Woof")
 
 
-TAnimal = TypeVar('TAnimal', bound=Animal)
+TAnimal = TypeVar("TAnimal", bound=Animal)
 
 
 def make_them_speak(creatures: list[TAnimal]) -> None:
@@ -21,6 +21,13 @@ def make_them_speak(creatures: list[TAnimal]) -> None:
 
 
 pets: list[Dog] = [Dog(), Dog()]
-make_them_speak(pets)  # OK, Dog is a subclass of Animal
-make_them_speak([Animal()])  # OK, Animal itself is fine (Animal is the bound)
+make_them_speak(
+    pets
+)  # OK, Dog is a subclass of Animal
+## Woof
+## Woof
+make_them_speak(
+    [Animal()]
+)  # OK, Animal itself is fine (Animal is the bound)
+## Animal sound
 # make_them_speak(["not an animal"])  # type checker error

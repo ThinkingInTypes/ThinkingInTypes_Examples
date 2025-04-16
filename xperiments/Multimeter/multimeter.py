@@ -6,7 +6,9 @@ ParamVal = Literal["MIN", "MAX", "DEF"]
 ParamType = float | ParamVal
 
 
-def _validate_param(value: ParamType, name: str) -> ParamType:
+def _validate_param(
+    value: ParamType, name: str
+) -> ParamType:
     """
     Validate and normalize a parameter value.
 
@@ -25,12 +27,16 @@ def _validate_param(value: ParamType, name: str) -> ParamType:
         case str(s):
             s = s.upper()
             if s not in ParamVal:
-                raise ValueError(f"Invalid {name} parameter: {s}")
+                raise ValueError(
+                    f"Invalid {name} parameter: {s}"
+                )
             return s
         case int() | float() as numeric if numeric > 0:
             return numeric
         case _:
-            raise ValueError(f"Unexpected type for {name} parameter: {value}")
+            raise ValueError(
+                f"Unexpected type for {name} parameter: {value}"
+            )
 
 
 @dataclass
@@ -49,16 +55,25 @@ class MeasureVoltageDC:
     resolution: ParamType = "DEF"
 
     def __post_init__(self) -> None:
-        self.range = _validate_param(self.range, "range")
-        self.resolution = _validate_param(self.resolution, "resolution")
+        self.range = _validate_param(
+            self.range, "range"
+        )
+        self.resolution = _validate_param(
+            self.resolution, "resolution"
+        )
 
         # Enforce that if resolution is non-default, range must also be non-default.
         if (
             isinstance(self.range, str)
             and self.range == "DEF"
-            and (isinstance(self.resolution, str) and self.resolution != "DEF")
+            and (
+                isinstance(self.resolution, str)
+                and self.resolution != "DEF"
+            )
         ):
-            raise ValueError("Resolution specified without a valid (non-'DEF') range.")
+            raise ValueError(
+                "Resolution specified without a valid (non-'DEF') range."
+            )
 
     def command(self) -> str:
         """
@@ -68,7 +83,10 @@ class MeasureVoltageDC:
             A string representing the SCPI command.
         """
         base = "MEAS:VOLT:DC?"
-        if self.range == "DEF" and self.resolution == "DEF":
+        if (
+            self.range == "DEF"
+            and self.resolution == "DEF"
+        ):
             return base
 
         parts = []
@@ -96,16 +114,25 @@ class ConfigCurrentAC:
     resolution: ParamType = "DEF"
 
     def __post_init__(self) -> None:
-        self.range = _validate_param(self.range, "range")
-        self.resolution = _validate_param(self.resolution, "resolution")
+        self.range = _validate_param(
+            self.range, "range"
+        )
+        self.resolution = _validate_param(
+            self.resolution, "resolution"
+        )
 
         # Enforce that if resolution is non-default, the range must also be non-default.
         if (
             isinstance(self.range, str)
             and self.range == "DEF"
-            and (isinstance(self.resolution, str) and self.resolution != "DEF")
+            and (
+                isinstance(self.resolution, str)
+                and self.resolution != "DEF"
+            )
         ):
-            raise ValueError("Resolution specified without a valid (non-'DEF') range.")
+            raise ValueError(
+                "Resolution specified without a valid (non-'DEF') range."
+            )
 
     def command(self) -> str:
         """
@@ -115,7 +142,10 @@ class ConfigCurrentAC:
             A string representing the SCPI configuration command.
         """
         base = "CONF:CURR:AC"
-        if self.range == "DEF" and self.resolution == "DEF":
+        if (
+            self.range == "DEF"
+            and self.resolution == "DEF"
+        ):
             return base
 
         parts = []
@@ -130,11 +160,17 @@ class ConfigCurrentAC:
 # Demonstration of usage:
 if __name__ == "__main__":
     # Valid command with numeric parameters.
-    mv_cmd = MeasureVoltageDC(range=10.0, resolution=0.001)
-    print("MeasureVoltageDC command:", mv_cmd.command())
+    mv_cmd = MeasureVoltageDC(
+        range=10.0, resolution=0.001
+    )
+    print(
+        "MeasureVoltageDC command:", mv_cmd.command()
+    )
 
     # Valid command using special keywords (input as lower case, normalized to uppercase).
-    cc_cmd = ConfigCurrentAC(range="min", resolution="max")
+    cc_cmd = ConfigCurrentAC(
+        range="min", resolution="max"
+    )
     print("ConfigCurrentAC command:", cc_cmd.command())
 
     # An attempt that should fail: specifying a non-default resolution while leaving range as default.

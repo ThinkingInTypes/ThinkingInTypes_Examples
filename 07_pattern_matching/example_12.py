@@ -7,4 +7,4 @@ match user_input.lower:
         print("User said no")
     case _:
         print("Unrecognized response")
-## User said yes
+## Unrecognized response

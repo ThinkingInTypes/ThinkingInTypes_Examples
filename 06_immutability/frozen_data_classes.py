@@ -15,6 +15,7 @@ print(messenger := Messenger("foo", 12, 3.14))
 # Frozen dataclass is immutable:
 with Catch():
     messenger.name = "bar"  # type: ignore
+## Error: cannot assign to field 'name'
 
 # Automatically creates __hash__():
 d = {messenger: "value"}

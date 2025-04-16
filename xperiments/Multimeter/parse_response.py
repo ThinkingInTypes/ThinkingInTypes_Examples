@@ -20,25 +20,36 @@ def parse_idn_response(response: str) -> Identity:
     """Parse *IDN? response into Identity dataclass."""
     parts = response.strip().split(",")
     if len(parts) < 4:
-        raise ValueError("Unexpected *IDN? response format")
+        raise ValueError(
+            "Unexpected *IDN? response format"
+        )
     return Identity(
-        manufacturer=parts[0], model=parts[1], serial=parts[2], firmware=parts[3]
+        manufacturer=parts[0],
+        model=parts[1],
+        serial=parts[2],
+        firmware=parts[3],
     )
 
 
-def parse_error_response(response: str) -> ErrorResponse:
+def parse_error_response(
+    response: str,
+) -> ErrorResponse:
     """Parse SYST:ERR? response "code,<message>" into code and message."""
     text = response.strip()
     code_str, msg = text.split(",", 1)
     code = int(code_str)
     # Remove surrounding quotes from message
     message = msg.strip()
-    if message.startswith('"') and message.endswith('"'):
+    if message.startswith('"') and message.endswith(
+        '"'
+    ):
         message = message[1:-1]
     return ErrorResponse(code=code, message=message)
 
 
-def parse_reading_response(response: str) -> Union[float, List[float]]:
+def parse_reading_response(
+    response: str,
+) -> Union[float, List[float]]:
     """Parse a measurement reading string into float or list of floats."""
     data = response.strip()
     if not data:
@@ -73,6 +84,8 @@ print(vals)
 
 # Handling raw bytes from instrument (e.g., via serial or socket):
 raw_bytes = b"5.000E+00\r\n"
-reading = parse_reading_response(raw_bytes.decode("utf-8"))
+reading = parse_reading_response(
+    raw_bytes.decode("utf-8")
+)
 print(reading)
 # Output: 5.0

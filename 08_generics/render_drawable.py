@@ -20,5 +20,7 @@ class Text:
 circle = Circle()
 text = Text()
 render(circle)  # OK, Circle has draw()
+## Drawing a circle
 render(text)  # OK, Text has draw()
+## Rendering text
 # render(123)   # type checker error: int has no draw()

@@ -2,7 +2,9 @@
 def rest_pattern(*values):
     match values:
         case [first, second, *rest]:
-            print(f"{first = }, {second = }, {rest = }")
+            print(
+                f"{first = }, {second = }, {rest = }"
+            )
 
 
 rest_pattern(10, 20, 30, 40)

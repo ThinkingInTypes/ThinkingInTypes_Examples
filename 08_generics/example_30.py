@@ -1,9 +1,8 @@
 # example_30.py
 from typing import TypeVar, Generic
 
-KT = TypeVar('KT')  # Key type
-VT = TypeVar('VT')  # Value type
+KT = TypeVar("KT")  # Key type
+VT = TypeVar("VT")  # Value type
 
 
-class BiMap(Generic[KT, VT]):
-    ...
+class BiMap(Generic[KT, VT]): ...

@@ -1,8 +1,8 @@
 # multiple_typevars.py
 from typing import TypeVar
 
-A = TypeVar('A')
-B = TypeVar('B')
+A = TypeVar("A")
+B = TypeVar("B")
 
 
 def pairify(x: A, y: B) -> tuple[A, B]:

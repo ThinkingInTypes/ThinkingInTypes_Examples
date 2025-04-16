@@ -1,7 +1,7 @@
 # f_bounded_polymorphism.py
 from typing import TypeVar, Generic
 
-TSelf = TypeVar('TSelf', bound='Form')
+TSelf = TypeVar("TSelf", bound="Form")
 
 
 class Form(Generic[TSelf]):
@@ -10,14 +10,18 @@ class Form(Generic[TSelf]):
         return self
 
 
-class ContactForm(Form['ContactForm']):
+class ContactForm(Form["ContactForm"]):
     def __init__(self):
         self.title = ""
         self.fields = []
 
-    def add_field(self, name: str) -> 'ContactForm':
+    def add_field(self, name: str) -> "ContactForm":
         self.fields.append(name)
         return self
 
 
-form = ContactForm().set_title("Feedback").add_field("email")
+form = (
+    ContactForm()
+    .set_title("Feedback")
+    .add_field("email")
+)

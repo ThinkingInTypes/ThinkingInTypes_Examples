@@ -5,8 +5,7 @@ from io import StringIO
 
 
 class Writable(Protocol):
-    def write(self, __s: str) -> int:
-        ...
+    def write(self, __s: str) -> int: ...
 
 
 def save_message(out: Writable, message: str) -> None:
@@ -23,3 +22,4 @@ buffer = StringIO()
 save_message(buffer, "Hello, Buffer!")
 buffer.seek(0)
 print(buffer.read())
+## Hello, Buffer!
