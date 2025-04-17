@@ -11,9 +11,7 @@ T = TypeVar("T")
 @dataclass
 class Tree(Generic[T]):
     value: T
-    children: list[Tree[T]] = field(
-        default_factory=list
-    )
+    children: list[Tree[T]] = field(default_factory=list)
 
     def add_child(self, child_value: T) -> Tree[T]:
         child = Tree(child_value)

@@ -7,6 +7,6 @@ class Handler(Protocol):
 
 
 def process_request(
-        handler: Handler, request: dict
+    handler: Handler, request: dict
 ) -> dict:
     return handler(request)

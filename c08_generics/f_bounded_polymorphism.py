@@ -21,7 +21,5 @@ class ContactForm(Form["ContactForm"]):
 
 
 form = (
-    ContactForm()
-    .set_title("Feedback")
-    .add_field("email")
+    ContactForm().set_title("Feedback").add_field("email")
 )

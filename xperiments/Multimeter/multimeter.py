@@ -55,9 +55,7 @@ class MeasureVoltageDC:
     resolution: ParamType = "DEF"
 
     def __post_init__(self) -> None:
-        self.range = _validate_param(
-            self.range, "range"
-        )
+        self.range = _validate_param(self.range, "range")
         self.resolution = _validate_param(
             self.resolution, "resolution"
         )
@@ -83,10 +81,7 @@ class MeasureVoltageDC:
             A string representing the SCPI command.
         """
         base = "MEAS:VOLT:DC?"
-        if (
-            self.range == "DEF"
-            and self.resolution == "DEF"
-        ):
+        if self.range == "DEF" and self.resolution == "DEF":
             return base
 
         parts = []
@@ -114,9 +109,7 @@ class ConfigCurrentAC:
     resolution: ParamType = "DEF"
 
     def __post_init__(self) -> None:
-        self.range = _validate_param(
-            self.range, "range"
-        )
+        self.range = _validate_param(self.range, "range")
         self.resolution = _validate_param(
             self.resolution, "resolution"
         )
@@ -142,10 +135,7 @@ class ConfigCurrentAC:
             A string representing the SCPI configuration command.
         """
         base = "CONF:CURR:AC"
-        if (
-            self.range == "DEF"
-            and self.resolution == "DEF"
-        ):
+        if self.range == "DEF" and self.resolution == "DEF":
             return base
 
         parts = []
@@ -160,17 +150,11 @@ class ConfigCurrentAC:
 # Demonstration of usage:
 if __name__ == "__main__":
     # Valid command with numeric parameters.
-    mv_cmd = MeasureVoltageDC(
-        range=10.0, resolution=0.001
-    )
-    print(
-        "MeasureVoltageDC command:", mv_cmd.command()
-    )
+    mv_cmd = MeasureVoltageDC(range=10.0, resolution=0.001)
+    print("MeasureVoltageDC command:", mv_cmd.command())
 
     # Valid command using special keywords (input as lower case, normalized to uppercase).
-    cc_cmd = ConfigCurrentAC(
-        range="min", resolution="max"
-    )
+    cc_cmd = ConfigCurrentAC(range="min", resolution="max")
     print("ConfigCurrentAC command:", cc_cmd.command())
 
     # An attempt that should fail: specifying a non-default resolution while leaving range as default.

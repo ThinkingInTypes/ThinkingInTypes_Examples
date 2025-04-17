@@ -13,9 +13,7 @@ def requires(*conditions: Condition):
         @wraps(func)
         def wrapper(*args, **kwargs):
             for condition in conditions:
-                if not condition.check(
-                        *args, **kwargs
-                ):
+                if not condition.check(*args, **kwargs):
                     raise ValueError(condition.message)
             return func(*args, **kwargs)
 

@@ -21,9 +21,7 @@ def make_them_speak(creatures: list[TAnimal]) -> None:
 
 
 pets: list[Dog] = [Dog(), Dog()]
-make_them_speak(
-    pets
-)  # OK, Dog is a subclass of Animal
+make_them_speak(pets)  # OK, Dog is a subclass of Animal
 ## Woof
 ## Woof
 make_them_speak(

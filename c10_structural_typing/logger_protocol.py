@@ -17,14 +17,18 @@ class FileLogger(AbstractContextManager):
     """
 
     def __init__(self):
-        self._temp_file = tempfile.NamedTemporaryFile(delete=False, mode="a", encoding="utf-8")
+        self._temp_file = tempfile.NamedTemporaryFile(
+            delete=False, mode="a", encoding="utf-8"
+        )
         self.filename = Path(self._temp_file.name)
 
     def log(self, message: str) -> None:
         self._temp_file.write(message + "\n")
         self._temp_file.flush()
 
-    def __exit__(self, exc_type, exc_value, traceback) -> None:
+    def __exit__(
+        self, exc_type, exc_value, traceback
+    ) -> None:
         self._temp_file.close()
         try:
             os.remove(self.filename)
@@ -44,9 +48,7 @@ class ListLogger:
         self.messages.append(message)
 
 
-def run_process(
-        task_name: str, logger: Logger
-) -> None:
+def run_process(task_name: str, logger: Logger) -> None:
     logger.log(f"Starting {task_name}")
     # Perform the task ...
     logger.log(f"Finished {task_name}")

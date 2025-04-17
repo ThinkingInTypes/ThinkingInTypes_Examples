@@ -9,6 +9,7 @@ class PhoneNumber:
     """
     A validated and normalized phone number.
     """
+
     country_code: str
     number: str  # Digits only, no formatting
 
@@ -28,14 +29,10 @@ class PhoneNumber:
         cc, num = match.groups()
         digits = re.sub(r"\D", "", num)
         if not digits:
-            raise ValueError(
-                f"No digits found in: {raw!r}"
-            )
+            raise ValueError(f"No digits found in: {raw!r}")
 
         country_code = cc if cc else "1"  # default to US
-        return cls(
-            country_code=country_code, number=digits
-        )
+        return cls(country_code=country_code, number=digits)
 
     def format_number(self) -> str:
         if len(self.number) == 10:
@@ -50,6 +47,6 @@ class PhoneNumber:
         if not isinstance(other, PhoneNumber):
             return NotImplemented
         return (
-                self.country_code == other.country_code
-                and self.number == other.number
+            self.country_code == other.country_code
+            and self.number == other.number
         )

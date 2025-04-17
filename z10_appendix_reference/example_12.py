@@ -5,10 +5,10 @@ P = ParamSpec("P")
 
 
 def make_logged(
-        func: Callable[P, int],
+    func: Callable[P, int],
 ) -> Callable[Concatenate[str, P], int]:
     def wrapper(
-            prefix: str, *args: P.args, **kwargs: P.kwargs
+        prefix: str, *args: P.args, **kwargs: P.kwargs
     ) -> int:
         print(prefix, "Calling:", func.__name__)
         result = func(*args, **kwargs)

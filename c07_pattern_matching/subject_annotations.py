@@ -9,9 +9,7 @@ def subject_annotation(*values: int) -> None:
             # --first: int
             # --second: int
             # --rest: list[int]
-            print(
-                f"{first = }, {second = }, {rest = }"
-            )
+            print(f"{first = }, {second = }, {rest = }")
 
 
 subject_annotation(10, 20, 30, 40)

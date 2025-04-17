@@ -19,8 +19,12 @@ class UserProfile:
     # Built-in factory ensures each instance gets a new empty list
     preferences: List[str] = field(default_factory=list)
     # Custom factory functions:
-    created_at: datetime = field(default_factory=current_time)
-    metadata: Dict[str, str] = field(default_factory=lambda: {"role": "user"})
+    created_at: datetime = field(
+        default_factory=current_time
+    )
+    metadata: Dict[str, str] = field(
+        default_factory=lambda: {"role": "user"}
+    )
     user_id: int = field(default_factory=random_id)
 
 

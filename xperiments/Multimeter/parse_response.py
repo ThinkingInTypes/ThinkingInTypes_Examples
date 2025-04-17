@@ -20,9 +20,7 @@ def parse_idn_response(response: str) -> Identity:
     """Parse *IDN? response into Identity dataclass."""
     parts = response.strip().split(",")
     if len(parts) < 4:
-        raise ValueError(
-            "Unexpected *IDN? response format"
-        )
+        raise ValueError("Unexpected *IDN? response format")
     return Identity(
         manufacturer=parts[0],
         model=parts[1],
@@ -40,9 +38,7 @@ def parse_error_response(
     code = int(code_str)
     # Remove surrounding quotes from message
     message = msg.strip()
-    if message.startswith('"') and message.endswith(
-        '"'
-    ):
+    if message.startswith('"') and message.endswith('"'):
         message = message[1:-1]
     return ErrorResponse(code=code, message=message)
 
@@ -84,8 +80,6 @@ print(vals)
 
 # Handling raw bytes from instrument (e.g., via serial or socket):
 raw_bytes = b"5.000E+00\r\n"
-reading = parse_reading_response(
-    raw_bytes.decode("utf-8")
-)
+reading = parse_reading_response(raw_bytes.decode("utf-8"))
 print(reading)
 # Output: 5.0

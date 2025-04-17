@@ -9,7 +9,5 @@ from stars import Stars
 ## Error: Stars(number=11)
 
 
-def increase_stars(
-        rating: Stars, increment: int
-) -> Stars:
+def increase_stars(rating: Stars, increment: int) -> Stars:
     return Stars(rating.number + increment)

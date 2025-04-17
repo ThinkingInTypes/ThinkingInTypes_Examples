@@ -10,6 +10,4 @@ def handle_color(color: Color):
         case Color.RED | Color.GREEN | Color.BLUE:
             ...  # handle known colors
         case _ as unknown:
-            raise ValueError(
-                f"Unknown color: {unknown}"
-            )
+            raise ValueError(f"Unknown color: {unknown}")

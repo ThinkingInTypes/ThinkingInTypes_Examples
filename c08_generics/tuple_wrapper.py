@@ -10,4 +10,6 @@ class TupleWrapper(Generic[*Ts]):
 
 
 t1 = TupleWrapper(1)  # TupleWrapper[int]
-t2 = TupleWrapper("a", 2, 3.14)  # TupleWrapper[str, int, float]
+t2 = TupleWrapper(
+    "a", 2, 3.14
+)  # TupleWrapper[str, int, float]

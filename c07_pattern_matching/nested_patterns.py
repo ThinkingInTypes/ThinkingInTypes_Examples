@@ -9,9 +9,7 @@ def nested_pattern(*values: int) -> None:
             # --first: int
             # --second: int
             # --rest: list[int]
-            print(
-                f"{first = }, {second = }, {rest = }"
-            )
+            print(f"{first = }, {second = }, {rest = }")
 
         case [(x, y), *rest]:
             # Known pattern matching limitation in mypy:

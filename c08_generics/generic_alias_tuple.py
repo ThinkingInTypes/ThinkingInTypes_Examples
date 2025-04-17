@@ -2,4 +2,7 @@
 from generic_alias import Pair
 
 # type checker treats this as tuple[Any, Any]:
-r: Pair = ("x", 5,)
+r: Pair = (
+    "x",
+    5,
+)
