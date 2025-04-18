@@ -18,3 +18,12 @@ def f2(phone_num: str):
     )
     assert check.match(phone_num), f"Invalid {phone_num}"
     ...
+
+
+def f3(phonenumber: str):
+    phone_number = re.compile(
+        r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$"
+    )
+    if not phone_number.match(phonenumber):
+        return f"Bad {phonenumber = }"
+    ...
