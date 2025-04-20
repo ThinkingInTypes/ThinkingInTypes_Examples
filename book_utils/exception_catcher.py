@@ -19,7 +19,7 @@ class Catch:
         return self
 
     def __exit__(
-        self, exc_type: Any, exc_value: Any, traceback: Any
+            self, exc_type: Any, exc_value: Any, traceback: Any
     ) -> bool:
         # Only called if an exception escapes the block.
         if exc_type is not None:

@@ -1,9 +1,7 @@
 # logger_protocol.py
-from typing import Protocol
-from pathlib import Path
-import tempfile
-import os
 from contextlib import AbstractContextManager
+from pathlib import Path
+from typing import Protocol
 
 
 class Logger(Protocol):
@@ -12,28 +10,20 @@ class Logger(Protocol):
 
 class FileLogger(AbstractContextManager):
     """
-    Logger that writes to a temporary file.
-    Automatically cleans up via the context manager.
+    Logger that writes to a known log file in a fixed directory.
     """
 
-    def __init__(self):
-        self._temp_file = tempfile.NamedTemporaryFile(
-            delete=False, mode="a", encoding="utf-8"
-        )
-        self.filename = Path(self._temp_file.name)
+    def __init__(self, path: Path = Path("logs/log.txt")):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self.filename = path
+        self._file = self.filename.open("a", encoding="utf-8")
 
     def log(self, message: str) -> None:
-        self._temp_file.write(message + "\n")
-        self._temp_file.flush()
+        self._file.write(message + "\n")
+        self._file.flush()
 
-    def __exit__(
-        self, exc_type, exc_value, traceback
-    ) -> None:
-        self._temp_file.close()
-        try:
-            os.remove(self.filename)
-        except FileNotFoundError:
-            pass
+    def __exit__(self, exc_type, exc_value, traceback) -> None:
+        self._file.close()
 
 
 class ListLogger:
@@ -58,8 +48,29 @@ with FileLogger() as file_logger:
     run_process("DataCleanup", file_logger)
     print(f"log file: {file_logger.filename}")
     print(file_logger.filename.read_text(encoding="utf-8"))
-## log file:
-## C:\Users\bruce\AppData\Local\Temp\tmpo1017u64
+## log file: logs\log.txt
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
+## Starting DataCleanup
+## Finished DataCleanup
 ## Starting DataCleanup
 ## Finished DataCleanup
 

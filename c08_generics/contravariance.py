@@ -19,4 +19,4 @@ dog_sink: Sink[Dog] = animal_sink
 # dog_sink expects at least Dog, and Animal is broader:
 dog_sink.send(Dog())
 ## Processing <animals.Dog object at
-## 0x000001A397336350>
+## 0x00000207204E6350>

@@ -14,7 +14,7 @@ Shape = TypeVarTuple("Shape")
 
 class Tensor(Generic[T, Unpack[Shape]]):
     def __init__(
-        self, data: list, *, shape: tuple[Unpack[Shape]]
+            self, data: list, *, shape: tuple[Unpack[Shape]]
     ):
         self.data = data
         self.shape = shape
