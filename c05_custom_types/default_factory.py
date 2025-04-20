@@ -38,12 +38,12 @@ user2.metadata["role"] = "admin"
 print(f"{user1 = }")
 ## user1 = UserProfile(username='Alice',
 ## preferences=['dark_mode'],
-## created_at=datetime.datetime(2025, 4, 19, 23,
-## 56, 17, 109535), metadata={'role': 'user'},
-## user_id=4659)
+## created_at=datetime.datetime(2025, 4, 20, 15,
+## 13, 19, 235297), metadata={'role': 'user'},
+## user_id=5836)
 print(f"{user2 = }")
 ## user2 = UserProfile(username='Bob',
 ## preferences=['notifications'],
-## created_at=datetime.datetime(2025, 4, 19, 23,
-## 56, 17, 109549), metadata={'role': 'admin'},
-## user_id=8044)
+## created_at=datetime.datetime(2025, 4, 20, 15,
+## 13, 19, 235310), metadata={'role': 'admin'},
+## user_id=9936)

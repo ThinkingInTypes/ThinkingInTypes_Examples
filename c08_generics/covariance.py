@@ -1,9 +1,6 @@
 # covariance.py
 from typing import Generic, TypeVar
 from animals import Animal, Dog
-## Woof
-## Woof
-## Animal sound
 
 T_co = TypeVar("T_co", covariant=True)
 
