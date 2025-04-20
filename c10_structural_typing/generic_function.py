@@ -12,4 +12,6 @@ def print_item_and_return(container: Container[T]) -> T:
 
 # Use generic function with different container types:
 x: str = print_item_and_return(StringContainer("hello"))
+## item = 'hello', type(item) = <class 'str'>
 y: int = print_item_and_return(IntContainer(42))
+## item = 42, type(item) = <class 'int'>

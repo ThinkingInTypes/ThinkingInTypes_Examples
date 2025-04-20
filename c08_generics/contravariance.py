@@ -1,6 +1,9 @@
 # contravariance.py
 from typing import Generic, TypeVar
 from animals import Animal, Dog
+## Woof
+## Woof
+## Animal sound
 
 T_contra = TypeVar("T_contra", contravariant=True)
 
@@ -16,4 +19,4 @@ dog_sink: Sink[Dog] = animal_sink
 # dog_sink expects at least Dog, and Animal is broader:
 dog_sink.send(Dog())
 ## Processing <animals.Dog object at
-## 0x00000281C5AFA350>
+## 0x000001A397336350>

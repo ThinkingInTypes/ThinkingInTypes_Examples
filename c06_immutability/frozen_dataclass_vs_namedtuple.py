@@ -13,7 +13,9 @@ c1 = Config()
 c2 = Config()
 c1.options.append("x")
 print(f"c1.options={c1.options}")  # ['x']
+## c1.options=['x']
 print(f"c2.options={c2.options}")  # []
+## c2.options=[]
 
 # NamedTuple cannot use default_factory; defaults share same object
 # This is forced to use a single default list if provided, and no factory.
@@ -28,13 +30,16 @@ class Person:
 
     def __post_init__(self) -> None:
         if self.age < 0:
-            raise ValueError(f"Age must be non-negative: {self.age}")
+            raise ValueError(
+                f"Age must be non-negative: {self.age}"
+            )
 
 
 try:
     Person("Eve", -5)
 except ValueError as e:
     print(f"Validation: {e}")
+## Validation: Age must be non-negative: -5
 
 
 # 3. Computed/derived fields with init=False
@@ -45,11 +50,14 @@ class Rectangle:
     area: float = field(init=False)
 
     def __post_init__(self) -> None:
-        object.__setattr__(self, "area", self.width * self.height)
+        object.__setattr__(
+            self, "area", self.width * self.height
+        )
 
 
 rect = Rectangle(3.0, 4.0)
 print(f"Rectangle area={rect.area}")  # 12.0
+## Rectangle area=12.0
 
 
 # 4. Hiding sensitive fields via repr
@@ -61,6 +69,7 @@ class Credentials:
 
 cred = Credentials("user1", "s3cr3t")
 print(f"Credentials repr: {cred}")
+## Credentials repr: Credentials(username='user1')
 
 
 # 5. Keyword-only fields enforcement:
@@ -77,6 +86,7 @@ class Point:
 # Positional-only: x, y; z computed
 p = Point(1, 2)
 print(f"Point(z computed): {p}")
+## Point(z computed): Point(x=1, y=2, z=3)
 
 
 # 6. Automatic ordering methods
@@ -90,6 +100,7 @@ class Version:
 v1 = Version(1, 0, 0)
 v2 = Version(1, 1, 0)
 print(f"v1 < v2: {v1 < v2}")
+## v1 < v2: True
 
 
 # 7. Customizing equality/hash behavior
@@ -105,7 +116,11 @@ class IDWrapper:
 
 w1 = IDWrapper(10)
 w2 = IDWrapper(10)
-print(f"Custom eq w1 == w2: {w1 == w2}, hash(w1)==hash(w2): {hash(w1) == hash(w2)}")
+print(
+    f"Custom eq w1 == w2: {w1 == w2}, hash(w1)==hash(w2): {hash(w1) == hash(w2)}"
+)
+## Custom eq w1 == w2: True, hash(w1)==hash(w2):
+## True
 
 
 # 8. Using slots for memory optimization:
@@ -118,3 +133,4 @@ class Point3D:
 
 pt = Point3D(0, 0, 0)
 print(f"Point3D slots: {pt}")  # No __dict__, uses slots
+## Point3D slots: Point3D(x=0, y=0, z=0)

@@ -5,13 +5,13 @@ Ts = TypeVarTuple("Ts")
 
 
 def zip_variadic(
-        *args: tuple[Unpack[Ts]],
+    *args: tuple[Unpack[Ts]],
 ) -> tuple[Tuple[*Ts], ...]:
     return tuple(zip(*args))
 
 
 def unzip_variadic(
-        packed: tuple[tuple[Any, ...], ...],
+    packed: tuple[tuple[Any, ...], ...],
 ) -> tuple[tuple[Any, ...], ...]:
     return tuple(zip(*packed))
 
@@ -24,4 +24,8 @@ zipped = zip_variadic(a, b, c)
 unzipped = unzip_variadic(zipped)
 
 print("Zipped:", zipped)
+## Zipped: ((1, 2, 3), ('a', 'b', 'c'), (3.14,
+## 2.71, 1.41))
 print("Unzipped:", unzipped)
+## Unzipped: ((1, 'a', 3.14), (2, 'b', 2.71), (3,
+## 'c', 1.41))

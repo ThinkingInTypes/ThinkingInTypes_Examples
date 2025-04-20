@@ -1,7 +1,5 @@
 # modify_stars.py
 from stars import Stars
-
-
 ## Stars(number=4)
 ## Stars(number=9)
 ## Error: Stars(number=45)

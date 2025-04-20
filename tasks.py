@@ -267,7 +267,7 @@ def a(ctx, force: bool = False) -> None:
     examples(ctx)
     pyright(ctx)
     update_example_output(ctx, force=force)
-    # validate(ctx)  ## Currently broken
+    validate(ctx)
     ruff(ctx)
     inject(ctx, force=force)
     console.print(

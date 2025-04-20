@@ -9,7 +9,7 @@ positivity = Condition(
 
 @requires(positivity)
 def sqrt(x) -> float:
-    return x ** 0.5
+    return x**0.5
 
 
 print(sqrt(4))

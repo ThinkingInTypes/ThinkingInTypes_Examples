@@ -18,6 +18,10 @@ class Book:
 
 
 print(b := Book("Emma", "Jane Austen", "Good", 11))
+## Book(title='Emma', author='Jane Austen',
+## shelf_id=11)
 # "condition" doesn't exist outside __init__ or __post_init__:
 with Catch():
     print(b.condition)  # noqa
+## Error: 'Book' object has no attribute
+## 'condition'

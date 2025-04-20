@@ -5,5 +5,5 @@ T = TypeVar("T")
 
 
 def sort_items(items: list[T]) -> list[T]:
-    # Pyright issue:
+    # PyRight issue:
     return sorted(items)  # type: ignore

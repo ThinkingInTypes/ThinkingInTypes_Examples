@@ -19,4 +19,6 @@ r1 = Record(1, "Alice", 3.14)  # Record[int, str, float]
 r2 = Record(True, None)  # Record[bool, NoneType]
 
 print(r1.to_tuple())
+## (1, 'Alice', 3.14)
 print(r2.to_tuple())
+## (True, None)

@@ -9,7 +9,8 @@ class Circle:
     area: float = 0.0
 
     def __post_init__(self):
-        self.area = pi * self.radius ** 2
+        self.area = pi * self.radius**2
 
 
 print(Circle(radius=5))
+## Circle(radius=5, area=78.53981633974483)

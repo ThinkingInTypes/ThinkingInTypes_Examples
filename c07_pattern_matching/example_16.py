@@ -1,7 +1,5 @@
 # example_16.py
 from colors import Color
-
-
 ## It's green!
 
 
