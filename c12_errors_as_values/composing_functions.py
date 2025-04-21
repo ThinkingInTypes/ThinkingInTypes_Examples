@@ -2,6 +2,7 @@
 from pprint import pprint
 
 from return_result import func_a
+
 ## [(0, <Success: 0>),
 ##  (1, <Failure: func_a(1)>),
 ##  (2, <Success: 2>),

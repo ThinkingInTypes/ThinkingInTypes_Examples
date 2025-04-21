@@ -1,5 +1,9 @@
 # logger_protocol_demo.py
-from logger_protocol import FileLogger, ListLogger, run_process
+from logger_protocol import (
+    FileLogger,
+    ListLogger,
+    run_process,
+)
 
 with FileLogger() as file_logger:
     run_process("DataCleanup", file_logger)

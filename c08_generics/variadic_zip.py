@@ -5,13 +5,13 @@ Ts = TypeVarTuple("Ts")
 
 
 def zip_variadic(
-        *args: tuple[Unpack[Ts]],
+    *args: tuple[Unpack[Ts]],
 ) -> tuple[Tuple[*Ts], ...]:
     return tuple(zip(*args))
 
 
 def unzip_variadic(
-        packed: tuple[tuple[Any, ...], ...],
+    packed: tuple[tuple[Any, ...], ...],
 ) -> tuple[tuple[Any, ...], ...]:
     return tuple(zip(*packed))
 
