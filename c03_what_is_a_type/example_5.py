@@ -1,7 +1,5 @@
 # example_5.py
-from example_4 import quacks
-## Quack!
-## I can quack, too!
+from duck_typing import quacks
 
 try:
     quacks(42)

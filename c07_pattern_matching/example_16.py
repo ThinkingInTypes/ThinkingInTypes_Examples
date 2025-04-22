@@ -1,6 +1,5 @@
 # example_16.py
 from colors import Color
-## It's green!
 
 
 def handle_color(color: Color):

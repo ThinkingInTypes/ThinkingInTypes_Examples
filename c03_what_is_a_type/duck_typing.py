@@ -1,4 +1,4 @@
-# example_4.py
+# duck_typing.py
 class Duck:
     def quack(self):
         print("Quack!")
@@ -11,11 +11,3 @@ class Car:
 
 def quacks(entity):
     entity.quack()
-
-
-donald = Duck()
-studebaker = Car()
-quacks(donald)
-## Quack!
-quacks(studebaker)
-## I can quack, too!

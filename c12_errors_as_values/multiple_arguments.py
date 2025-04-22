@@ -2,17 +2,6 @@
 from pprint import pprint
 
 from composing_functions import func_a, func_b, func_c
-
-## [(0, <Success: 0>),
-##  (1, <Failure: func_a(1)>),
-##  (2, <Success: 2>),
-##  (3, <Success: 3>),
-##  (4, <Success: 4>)]
-## [(0, <Failure: division by zero>),
-##  (1, <Failure: func_a(1)>),
-##  (2, <Failure: func_b(2)>),
-##  (3, <Failure: func_c(3): division by zero>),
-##  (4, <Success: func_d(1): 1>)]
 from returns.result import Result
 
 

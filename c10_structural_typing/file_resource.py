@@ -1,5 +1,5 @@
 # file_resource.py
-from typing import Protocol, Iterable
+from typing import Protocol
 
 
 class Closable(Protocol):
@@ -17,18 +17,3 @@ class FileResource:
 class SocketResource:
     def close(self) -> None:
         print("Socket closed")
-
-
-def close_all(resources: Iterable[Closable]) -> None:
-    for res in resources:
-        res.close()
-
-
-# All these have a close():
-closables = (
-    FileResource("data.txt"),
-    SocketResource(),
-    open("other.txt", "w"),
-)
-close_all(closables)
-## Socket closed
