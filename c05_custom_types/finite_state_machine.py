@@ -1,5 +1,7 @@
 # finite_state_machine.py
 from enum import Enum
+from typing import ClassVar
+
 
 class Event(Enum):
   SUBMIT = "submit"
