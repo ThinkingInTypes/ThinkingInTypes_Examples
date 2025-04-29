@@ -2,7 +2,9 @@
 from book_utils import Catch
 from require import requires, Condition
 
-positivity = Condition(check=lambda x: x > 0, message="x must be positive")
+positivity = Condition(
+    check=lambda x: x > 0, message="x must be positive"
+)
 
 
 @requires(positivity)

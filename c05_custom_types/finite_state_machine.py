@@ -24,7 +24,9 @@ class Status(Enum):
         if next_state is None:
             print(f"Invalid {self.name} & {event.name}")
             return self
-        print(f"{self.name} + {event.name} -> {next_state.name}")
+        print(
+            f"{self.name} + {event.name} -> {next_state.name}"
+        )
         return next_state
 
     @property
@@ -35,7 +37,10 @@ class Status(Enum):
 # Mapping of transitions: {current_status: {event: next_status}}
 _TRANSITIONS: Dict[Status, Dict[Event, Status]] = {
     Status.OPEN: {Event.SUBMIT: Status.PENDING},
-    Status.PENDING: {Event.APPROVE: Status.CLOSED, Event.REJECT: Status.OPEN},
+    Status.PENDING: {
+        Event.APPROVE: Status.CLOSED,
+        Event.REJECT: Status.OPEN,
+    },
     Status.CLOSED: {Event.REOPEN: Status.OPEN},
 }
 
@@ -60,3 +65,16 @@ workflow = [
     Event.REOPEN,
 ]
 run(Status.OPEN, workflow)
+## Starting at open
+## OPEN + SUBMIT -> PENDING
+## Now at pending
+## Invalid PENDING & REOPEN
+## Now at pending
+## PENDING + REJECT -> OPEN
+## Now at open
+## OPEN + SUBMIT -> PENDING
+## Now at pending
+## PENDING + APPROVE -> CLOSED
+## Now at closed
+## CLOSED + REOPEN -> OPEN
+## Now at open

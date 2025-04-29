@@ -94,7 +94,9 @@ class Person(NamedTuple):
 
 addr = Address("123 Maple St", "Springfield")
 person = Person("Carol", 29, addr)
-print(f"{person.name = }, {person.age = }, {person.address.city = }")
+print(
+    f"{person.name = }, {person.age = }, {person.address.city = }"
+)
 ## person.name = 'Carol', person.age = 29,
 ## person.address.city = 'Springfield'
 

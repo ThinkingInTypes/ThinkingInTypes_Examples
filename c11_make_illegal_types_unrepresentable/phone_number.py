@@ -13,14 +13,18 @@ class PhoneNumber:
     country_code: str
     number: str  # Digits only, no formatting
 
-    phone_number_re = re.compile(r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$")
+    phone_number_re = re.compile(
+        r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$"
+    )
 
     @classmethod
     def parse(cls, raw: str) -> Self:
         cleaned = raw.strip()
         match = cls.phone_number_re.match(cleaned)
         if not match:
-            raise ValueError(f"Invalid phone number: {raw!r}")
+            raise ValueError(
+                f"Invalid phone number: {raw!r}"
+            )
 
         cc, num = match.groups()
         digits = re.sub(r"\D", "", num)
@@ -42,4 +46,7 @@ class PhoneNumber:
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, PhoneNumber):
             return NotImplemented
-        return self.country_code == other.country_code and self.number == other.number
+        return (
+            self.country_code == other.country_code
+            and self.number == other.number
+        )

@@ -38,7 +38,9 @@ class Month(Enum):
 
     @staticmethod
     def number(month_number: int):
-        assert 1 <= month_number <= 12, f"Month({month_number})"
+        assert 1 <= month_number <= 12, (
+            f"Month({month_number})"
+        )
         return list(Month)[month_number - 1]
 
     def check_day(self, day: Day):

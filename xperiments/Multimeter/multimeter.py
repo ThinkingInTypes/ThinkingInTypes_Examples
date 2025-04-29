@@ -6,7 +6,9 @@ ParamVal = Literal["MIN", "MAX", "DEF"]
 ParamType = float | ParamVal
 
 
-def _validate_param(value: ParamType, name: str) -> ParamType:
+def _validate_param(
+    value: ParamType, name: str
+) -> ParamType:
     """
     Validate and normalize a parameter value.
 
@@ -25,12 +27,16 @@ def _validate_param(value: ParamType, name: str) -> ParamType:
         case str(s):
             s = s.upper()
             if s not in ParamVal:
-                raise ValueError(f"Invalid {name} parameter: {s}")
+                raise ValueError(
+                    f"Invalid {name} parameter: {s}"
+                )
             return s
         case int() | float() as numeric if numeric > 0:
             return numeric
         case _:
-            raise ValueError(f"Unexpected type for {name} parameter: {value}")
+            raise ValueError(
+                f"Unexpected type for {name} parameter: {value}"
+            )
 
 
 @dataclass
@@ -50,15 +56,22 @@ class MeasureVoltageDC:
 
     def __post_init__(self) -> None:
         self.range = _validate_param(self.range, "range")
-        self.resolution = _validate_param(self.resolution, "resolution")
+        self.resolution = _validate_param(
+            self.resolution, "resolution"
+        )
 
         # Enforce that if resolution is non-default, range must also be non-default.
         if (
             isinstance(self.range, str)
             and self.range == "DEF"
-            and (isinstance(self.resolution, str) and self.resolution != "DEF")
+            and (
+                isinstance(self.resolution, str)
+                and self.resolution != "DEF"
+            )
         ):
-            raise ValueError("Resolution specified without a valid (non-'DEF') range.")
+            raise ValueError(
+                "Resolution specified without a valid (non-'DEF') range."
+            )
 
     def command(self) -> str:
         """
@@ -97,15 +110,22 @@ class ConfigCurrentAC:
 
     def __post_init__(self) -> None:
         self.range = _validate_param(self.range, "range")
-        self.resolution = _validate_param(self.resolution, "resolution")
+        self.resolution = _validate_param(
+            self.resolution, "resolution"
+        )
 
         # Enforce that if resolution is non-default, the range must also be non-default.
         if (
             isinstance(self.range, str)
             and self.range == "DEF"
-            and (isinstance(self.resolution, str) and self.resolution != "DEF")
+            and (
+                isinstance(self.resolution, str)
+                and self.resolution != "DEF"
+            )
         ):
-            raise ValueError("Resolution specified without a valid (non-'DEF') range.")
+            raise ValueError(
+                "Resolution specified without a valid (non-'DEF') range."
+            )
 
     def command(self) -> str:
         """

@@ -40,7 +40,9 @@ EXCLUDE_PATHS = {
 }
 WIDTH = 60  # Width for code listings and comments
 
-markdown_chapters_path = Path("C:/git/ThinkingInTypes.github.io/Chapters")
+markdown_chapters_path = Path(
+    "C:/git/ThinkingInTypes.github.io/Chapters"
+)
 target_path = Path("C:/git/ThinkingInTypes_Examples")
 temp_files = [
     Path("C:/git/ThinkingInTypes_Examples/data.txt"),
@@ -61,7 +63,9 @@ def confirm(
     force: bool = False,
 ) -> None:
     if force:
-        console.print(f"[green]Auto-confirmed:[/] {message}")
+        console.print(
+            f"[green]Auto-confirmed:[/] {message}"
+        )
         return
     if not Confirm.ask(
         f"[yellow]{message}[/yellow]",
@@ -127,8 +131,12 @@ def extract(ctx, force: bool = False) -> None:
         ctx.run(f"repoclean -a {target_path}")
     else:
         print(f"Directory does not exist: {target_path}")
-    print(f"Running: mdextract -d {markdown_chapters_path} {target_path}")
-    ctx.run(f"mdextract -d {markdown_chapters_path} {target_path}")
+    print(
+        f"Running: mdextract -d {markdown_chapters_path} {target_path}"
+    )
+    ctx.run(
+        f"mdextract -d {markdown_chapters_path} {target_path}"
+    )
 
 
 @task
@@ -141,7 +149,9 @@ def inject(ctx, force: bool = False):
         default=True,
         force=force,
     )
-    ctx.run(rf"mdinject -i {markdown_chapters_path} {target_path}")
+    ctx.run(
+        rf"mdinject -i {markdown_chapters_path} {target_path}"
+    )
 
 
 @task
@@ -157,9 +167,17 @@ def sembr(ctx, chapter: Path):
 
 @task
 def pyright(ctx):
-    console.print("[bold green]" + " Pyright ".center(80, "-") + "[/bold green]")
+    console.print(
+        "[bold green]"
+        + " Pyright ".center(80, "-")
+        + "[/bold green]"
+    )
     ctx.run("pyright")
-    console.print("[bold green]" + " End Pyright ".center(80, "-") + "[/bold green]")
+    console.print(
+        "[bold green]"
+        + " End Pyright ".center(80, "-")
+        + "[/bold green]"
+    )
 
 
 @task
@@ -172,11 +190,15 @@ def mypy(ctx) -> None:
     files = [
         path
         for path in root.rglob("*.py")
-        if not any(part in EXCLUDE_PATHS for part in path.parts)
+        if not any(
+            part in EXCLUDE_PATHS for part in path.parts
+        )
     ]
 
     if not files:
-        console.print("[bold red]No Python files found for mypy linting.[/bold red]")
+        console.print(
+            "[bold red]No Python files found for mypy linting.[/bold red]"
+        )
         return
 
     console.print(
@@ -209,7 +231,10 @@ def mypy(ctx) -> None:
     error_count = 0
 
     with ThreadPoolExecutor() as executor:
-        future_to_file = {executor.submit(check_file, path): path for path in files}
+        future_to_file = {
+            executor.submit(check_file, path): path
+            for path in files
+        }
         for future in as_completed(future_to_file):
             path, code, output = future.result()
             if code != 0:
@@ -223,10 +248,14 @@ def mypy(ctx) -> None:
                 )
 
     if error_count:
-        console.print(f"[bold red]❌ mypy failed on {error_count} files[/bold red]")
+        console.print(
+            f"[bold red]❌ mypy failed on {error_count} files[/bold red]"
+        )
         sys.exit(1)
     else:
-        console.print("[bold green]✅ All files passed mypy[/bold green]")
+        console.print(
+            "[bold green]✅ All files passed mypy[/bold green]"
+        )
 
 
 @task
@@ -241,7 +270,9 @@ def a(ctx, force: bool = False) -> None:
     validate(ctx)
     ruff(ctx)
     inject(ctx, force=force)
-    console.print("[bold green]\n✅ Workflow completed successfully.[/bold green]")
+    console.print(
+        "[bold green]\n✅ Workflow completed successfully.[/bold green]"
+    )
     cleanup()
 
 
@@ -264,7 +295,9 @@ def f(ctx, file: Path, force: bool = False) -> None:
     if not isinstance(file, Path):
         file = Path(file)
     examples(ctx, file=str(file))
-    update_example_output(ctx, force=force)  # Directory needs to be specified here
+    update_example_output(
+        ctx, force=force
+    )  # Directory needs to be specified here
     validate(ctx)
     ruff(ctx)
     inject(ctx, force=force)

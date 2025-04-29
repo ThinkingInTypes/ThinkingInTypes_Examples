@@ -10,7 +10,9 @@ class Fob:
 
     def __post_init__(self) -> None:
         if self.x < 0:
-            raise ValueError(f"Fob arg {self.x} must be positive")
+            raise ValueError(
+                f"Fob arg {self.x} must be positive"
+            )
 
 
 def foo(a: int, b: Fob) -> str:

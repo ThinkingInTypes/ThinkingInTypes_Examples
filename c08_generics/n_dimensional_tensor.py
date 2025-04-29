@@ -13,7 +13,9 @@ Shape = TypeVarTuple("Shape")
 
 
 class Tensor(Generic[T, Unpack[Shape]]):
-    def __init__(self, data: list, *, shape: tuple[Unpack[Shape]]):
+    def __init__(
+        self, data: list, *, shape: tuple[Unpack[Shape]]
+    ):
         self.data = data
         self.shape = shape
 
@@ -22,9 +24,13 @@ class Tensor(Generic[T, Unpack[Shape]]):
 
 
 Shape3x3: TypeAlias = tuple[Literal[3], Literal[3]]
-Shape2x2x2: TypeAlias = tuple[Literal[2], Literal[2], Literal[2]]
+Shape2x2x2: TypeAlias = tuple[
+    Literal[2], Literal[2], Literal[2]
+]
 
-t1 = Tensor[float, *Shape3x3](data=[[1.0] * 3] * 3, shape=(3, 3))
+t1 = Tensor[float, *Shape3x3](
+    data=[[1.0] * 3] * 3, shape=(3, 3)
+)
 
 t2 = Tensor[int, *Shape2x2x2](
     data=[[[1, 2], [3, 4]], [[5, 6], [7, 8]]],

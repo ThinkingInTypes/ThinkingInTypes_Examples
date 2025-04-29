@@ -20,4 +20,6 @@ class ContactForm(Form["ContactForm"]):
         return self
 
 
-form = ContactForm().set_title("Feedback").add_field("email")
+form = (
+    ContactForm().set_title("Feedback").add_field("email")
+)

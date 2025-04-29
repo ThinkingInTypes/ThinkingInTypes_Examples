@@ -9,5 +9,7 @@ class Balance(NamedTuple):
     def deposit(self, deposit_amount: Amount) -> "Balance":
         return Balance(self.amount + deposit_amount)
 
-    def withdraw(self, withdrawal_amount: Amount) -> "Balance":
+    def withdraw(
+        self, withdrawal_amount: Amount
+    ) -> "Balance":
         return Balance(self.amount - withdrawal_amount)

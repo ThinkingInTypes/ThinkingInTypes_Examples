@@ -46,7 +46,9 @@ class HttpStatus(IntEnum):
     INTERNAL_ERROR = 500
 
 
-print(f"HttpStatus.OK = {HttpStatus.OK}, as int: {int(HttpStatus.OK)}")
+print(
+    f"HttpStatus.OK = {HttpStatus.OK}, as int: {int(HttpStatus.OK)}"
+)
 ## HttpStatus.OK = 200, as int: 200
 
 # 4. Iteration and comparison
@@ -115,7 +117,9 @@ class Mood(Enum):
     SAD = 2
 
 
-print(f"Members: {[m for m in Mood]}")  # Only one member per value
+print(
+    f"Members: {[m for m in Mood]}"
+)  # Only one member per value
 ## Members: [<Mood.HAPPY: 1>, <Mood.SAD: 2>]
 print(f"Alias: {Mood.JOYFUL is Mood.HAPPY}")
 ## Alias: True

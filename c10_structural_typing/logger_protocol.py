@@ -16,13 +16,17 @@ class FileLogger(AbstractContextManager):
     def __init__(self, path: Path = Path("./log.txt")):
         path.parent.mkdir(parents=True, exist_ok=True)
         self.filename = path
-        self._file = self.filename.open("w", encoding="utf-8")
+        self._file = self.filename.open(
+            "w", encoding="utf-8"
+        )
 
     def log(self, message: str) -> None:
         self._file.write(message + "\n")
         self._file.flush()
 
-    def __exit__(self, exc_type, exc_value, traceback) -> None:
+    def __exit__(
+        self, exc_type, exc_value, traceback
+    ) -> None:
         self._file.close()
 
 

@@ -22,5 +22,8 @@ class Status(Enum):
 
 
 print(Status.OPEN.handle())
+## open: Status.OPEN
 print(Status.CLOSED.handle())
+## closed: Status.CLOSED
 print(Status.PENDING.handle())
+## pending: Status.PENDING

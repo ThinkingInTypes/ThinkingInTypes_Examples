@@ -27,7 +27,11 @@ class Status(Enum):
     PENDING = ("pending", pending_next)
     CLOSED = ("closed", closed_next)
 
-    def __init__(self, label: str, next_handler: Callable[[Status], Status]) -> None:
+    def __init__(
+        self,
+        label: str,
+        next_handler: Callable[[Status], Status],
+    ) -> None:
         self._label = label
         self._next_handler = next_handler
 
@@ -43,3 +47,7 @@ state = Status.OPEN
 while state != Status.CLOSED:
     print(state.label)
     state = state.next()
+## open
+## Moving from OPEN to PENDING.
+## pending
+## Moving from PENDING to CLOSED.
