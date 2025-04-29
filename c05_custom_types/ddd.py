@@ -14,6 +14,4 @@ class Order:
     products: list[Product]
 
     def total(self) -> float:
-        return sum(
-            product.price for product in self.products
-        )
+        return sum(product.price for product in self.products)

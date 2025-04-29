@@ -1,9 +1,11 @@
 # enum_mixins.py
 from enum import Enum
 
+
 class StrMixin(str):
-  pass
+    pass
+
 
 class Color(StrMixin, Enum):
-  RED = "red"
-  GREEN = "green"
+    RED = "red"
+    GREEN = "green"

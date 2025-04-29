@@ -30,9 +30,7 @@ class Person:
 
     def __post_init__(self) -> None:
         if self.age < 0:
-            raise ValueError(
-                f"Age must be non-negative: {self.age}"
-            )
+            raise ValueError(f"Age must be non-negative: {self.age}")
 
 
 try:
@@ -50,9 +48,7 @@ class Rectangle:
     area: float = field(init=False)
 
     def __post_init__(self) -> None:
-        object.__setattr__(
-            self, "area", self.width * self.height
-        )
+        object.__setattr__(self, "area", self.width * self.height)
 
 
 rect = Rectangle(3.0, 4.0)
@@ -116,9 +112,7 @@ class IDWrapper:
 
 w1 = IDWrapper(10)
 w2 = IDWrapper(10)
-print(
-    f"Custom eq w1 == w2: {w1 == w2}, hash(w1)==hash(w2): {hash(w1) == hash(w2)}"
-)
+print(f"Custom eq w1 == w2: {w1 == w2}, hash(w1)==hash(w2): {hash(w1) == hash(w2)}")
 ## Custom eq w1 == w2: True, hash(w1)==hash(w2):
 ## True
 

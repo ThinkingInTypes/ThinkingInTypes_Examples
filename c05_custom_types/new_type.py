@@ -12,11 +12,7 @@ def process(data: Measurements) -> None:
         print(f"{n = }, {type(n) = }")
 
 
-process(
-    Measurements(
-        [Number(11), Number(3.14), Number("1.618")]
-    )
-)
+process(Measurements([Number(11), Number(3.14), Number("1.618")]))
 ## {'data': __main__.Measurements, 'return':
 ## <class 'NoneType'>}
 ## n = 11, type(n) = <class 'int'>

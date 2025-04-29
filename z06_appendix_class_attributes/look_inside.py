@@ -3,13 +3,7 @@
 
 def attributes(d: object) -> str:
     return (
-        ", ".join(
-            [
-                f"{k}: {v}"
-                for k, v in vars(d).items()
-                if not k.startswith("__")
-            ]
-        )
+        ", ".join([f"{k}: {v}" for k, v in vars(d).items() if not k.startswith("__")])
         or "Empty"
     )
 

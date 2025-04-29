@@ -23,7 +23,5 @@ def multiply(a: int, b: float) -> float:
 
 
 curried_mul = curry_two_arg(multiply)
-get_double = curried_mul(
-    2
-)  # get_double is now Callable[[float], float]
+get_double = curried_mul(2)  # get_double is now Callable[[float], float]
 result = get_double(3.5)  # result = 7.0

@@ -28,9 +28,7 @@ class Month:
 
     def __post_init__(self):
         assert 1 <= self.n <= 12, f"Month({self.n})"
-        assert self.max_days in [28, 30, 31], (
-            f"Month max_days {self.max_days}"
-        )
+        assert self.max_days in [28, 30, 31], f"Month max_days {self.max_days}"
 
     def check_day(self, day: Day):
         assert day.n <= self.max_days, f"{self} {day}"
@@ -58,14 +56,10 @@ class Month:
 
 @dataclass(frozen=True)
 class Months:
-    months: list[Month] = field(
-        default_factory=Month.make_months
-    )
+    months: list[Month] = field(default_factory=Month.make_months)
 
     def number(self, month_number: int):
-        assert 1 <= month_number <= 12, (
-            f"Month({month_number})"
-        )
+        assert 1 <= month_number <= 12, f"Month({month_number})"
         return self.months[month_number - 1]
 
 
