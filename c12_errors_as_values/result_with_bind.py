@@ -1,4 +1,5 @@
 # result_with_bind.py
+from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable, Generic, TypeVar
 
@@ -10,7 +11,7 @@ ERROR = TypeVar("ERROR")
 class Result(Generic[ANSWER, ERROR]):
     def bind(
         self, func: Callable[[ANSWER], "Result"]
-    ) -> "Result[ANSWER, ERROR]":
+    ) -> Result[ANSWER, ERROR]:
         if isinstance(self, Success):
             return func(self.unwrap())
         return self  # Pass the Failure forward

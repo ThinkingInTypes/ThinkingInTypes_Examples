@@ -1,4 +1,4 @@
-# heterogenous_record.py
+# heterogeneous_record.py
 from typing import TypeVarTuple, Generic, Unpack
 
 Fields = TypeVarTuple("Fields")

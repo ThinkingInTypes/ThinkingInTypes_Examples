@@ -1,5 +1,5 @@
 # mutable_defaults.py
-# Pitfalls in NamedTuple vs safe handling in dataclass
+# Pitfalls in NamedTuple vs. safe handling in dataclass
 from dataclasses import dataclass, field
 from typing import NamedTuple
 

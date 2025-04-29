@@ -1,4 +1,5 @@
 # f_bounded_polymorphism.py
+from __future__ import annotations
 from typing import TypeVar, Generic
 
 TSelf = TypeVar("TSelf", bound="Form")
@@ -15,7 +16,7 @@ class ContactForm(Form["ContactForm"]):
         self.title = ""
         self.fields = []
 
-    def add_field(self, name: str) -> "ContactForm":
+    def add_field(self, name: str) -> ContactForm:
         self.fields.append(name)
         return self
 

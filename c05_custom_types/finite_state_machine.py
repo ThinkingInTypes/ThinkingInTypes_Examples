@@ -1,4 +1,5 @@
 # finite_state_machine.py
+from __future__ import annotations
 from enum import Enum
 from typing import Dict
 
@@ -18,7 +19,7 @@ class Status(Enum):
     def __init__(self, label: str) -> None:
         self._label = label
 
-    def on_event(self, event: Event) -> "Status":
+    def on_event(self, event: Event) -> Status:
         mapping = _TRANSITIONS.get(self, {})
         next_state = mapping.get(event)
         if next_state is None:

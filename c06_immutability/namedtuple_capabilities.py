@@ -72,6 +72,8 @@ def describe_point(pt: Point2) -> str:
             return f"Diagonal point at ({x}, {y})"
         case Point2(x, y):
             return f"Point at x={x}, y={y}"
+        case _:
+            return "Unknown point"
 
 
 print(describe_point(Point2(1, 1)))
@@ -108,6 +110,8 @@ def location_info(p: Person) -> str:
             return f"Resident of Springfield"
         case Person(name, _, Address(street, city)):
             return f"{name} lives at {street}, {city}"
+        case _:
+            return "Unknown location
 
 
 print(location_info(person))
