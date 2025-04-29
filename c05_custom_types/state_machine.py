@@ -1,18 +1,23 @@
 # state_machine.py
+from __future__ import annotations
 from enum import Enum
+from typing import Callable
 
 
-def open_next(self) -> "Status":
+def open_next(self: Status) -> Status:
+    _ = self  # Silence unused variable warning.
     print("Moving from OPEN to PENDING.")
     return Status.PENDING
 
 
-def pending_next(self) -> "Status":
+def pending_next(self: Status) -> Status:
+    _ = self
     print("Moving from PENDING to CLOSED.")
     return Status.CLOSED
 
 
-def closed_next(self) -> "Status":
+def closed_next(self: Status) -> Status:
+    _ = self
     print("CLOSED is a final state. Staying put.")
     return Status.CLOSED
 
@@ -22,11 +27,11 @@ class Status(Enum):
     PENDING = ("pending", pending_next)
     CLOSED = ("closed", closed_next)
 
-    def __init__(self, label: str, next_handler: callable):
+    def __init__(self, label: str, next_handler: Callable[[Status], Status]) -> None:
         self._label = label
         self._next_handler = next_handler
 
-    def next(self) -> "Status":
+    def next(self) -> Status:
         return self._next_handler(self)
 
     @property
@@ -34,7 +39,7 @@ class Status(Enum):
         return self._label
 
 
-def start(state: Status = Status.OPEN):
-    while state != Status.CLOSED:
-        print(state.label)
-        state = state.next()
+state = Status.OPEN
+while state != Status.CLOSED:
+    print(state.label)
+    state = state.next()

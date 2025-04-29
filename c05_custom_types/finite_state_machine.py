@@ -24,7 +24,7 @@ class Status(Enum):
         if next_state is None:
             print(f"Invalid {self.name} & {event.name}")
             return self
-        print(f"{self.name} + {event.name} → {next_state.name}")
+        print(f"{self.name} + {event.name} -> {next_state.name}")
         return next_state
 
     @property
