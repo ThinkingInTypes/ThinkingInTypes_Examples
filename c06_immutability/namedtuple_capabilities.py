@@ -42,7 +42,7 @@ class Circle(NamedTuple):
     def area(self) -> float:
         from math import pi
 
-        return pi * (self.radius**2)
+        return pi * (self.radius ** 2)
 
 
 print(f"{(c := Circle(5))} {c.area():.2f}")
@@ -111,7 +111,7 @@ def location_info(p: Person) -> str:
         case Person(name, _, Address(street, city)):
             return f"{name} lives at {street}, {city}"
         case _:
-            return "Unknown location
+            return "Unknown location"
 
 
 print(location_info(person))
