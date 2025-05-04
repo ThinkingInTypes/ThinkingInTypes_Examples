@@ -39,8 +39,6 @@ try:
     Person("Eve", -5)
 except ValueError as e:
     print(f"Validation: {e}")
-
-
 ## Validation: Age must be non-negative: -5
 
 
@@ -59,8 +57,6 @@ class Rectangle:
 
 rect = Rectangle(3.0, 4.0)
 print(f"Rectangle area={rect.area}")  # 12.0
-
-
 ## Rectangle area=12.0
 
 
@@ -73,8 +69,6 @@ class Credentials:
 
 cred = Credentials("user1", "s3cr3t")
 print(f"Credentials repr: {cred}")
-
-
 ## Credentials repr: Credentials(username='user1')
 
 
@@ -92,8 +86,6 @@ class Point:
 # Positional-only: x, y; z computed
 p = Point(1, 2)
 print(f"Point(z computed): {p}")
-
-
 ## Point(z computed): Point(x=1, y=2, z=3)
 
 
@@ -108,8 +100,6 @@ class Version:
 v1 = Version(1, 0, 0)
 v2 = Version(1, 1, 0)
 print(f"v1 < v2: {v1 < v2}")
-
-
 ## v1 < v2: True
 
 
@@ -129,8 +119,6 @@ w2 = IDWrapper(10)
 print(
     f"Custom eq w1 == w2: {w1 == w2}, hash(w1)==hash(w2): {hash(w1) == hash(w2)}"
 )
-
-
 ## Custom eq w1 == w2: True, hash(w1)==hash(w2):
 ## True
 

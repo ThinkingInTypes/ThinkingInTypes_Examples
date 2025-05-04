@@ -1,12 +1,9 @@
 # learn_joke.py
 from chatbot import Chatbot
-from add_hello import bot
+from joke import joke
 
-
-def joke(self):
-    print("Why did the duck cross the road? It was the chicken's day off.")
-    self.history.append("joke")
-
-
+bot = Chatbot()
 setattr(Chatbot, "joke", joke)
 bot.joke()
+## Why did the duck cross the road?
+## It was the chicken's day off.

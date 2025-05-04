@@ -7,4 +7,6 @@ class SmalltalkObject:
         return handler
 
     def not_found(self, message, *args, **kwargs):
-        print(f"{self.__class__.__name__}: '{message}' not found")
+        print(
+            f"{self.__class__.__name__}: '{message}' not found"
+        )

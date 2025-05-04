@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Parrot:
-    known_phrases: list[str] = field(default_factory=list)
+    known_phrases: set[str] = field(default_factory=set)
 
     def __getattr__(self, name: str):
         def handler(*args, **kwargs):
@@ -17,7 +17,7 @@ class Parrot:
 
         def new_method(self, *args, **kwargs):
             print(f"Parrot says: {message}")
-            self.known_phrases.append(message)
+            self.known_phrases.add(message)
 
         setattr(self.__class__, message, new_method)
         return getattr(self, message)(*args, **kwargs)

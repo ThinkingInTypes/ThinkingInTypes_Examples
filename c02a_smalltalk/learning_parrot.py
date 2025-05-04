@@ -6,7 +6,7 @@ coco = Parrot()
 
 # Before learning:
 print(polly.known_phrases, coco.known_phrases)
-## [] []
+## set() set()
 
 polly.hello()
 ## [Class] Parrot learns: hello
@@ -19,4 +19,4 @@ coco.squawk()
 
 # After learning:
 print(polly.known_phrases, coco.known_phrases)
-## ['hello'] ['hello', 'squawk']
+## {'hello'} {'hello', 'squawk'}
