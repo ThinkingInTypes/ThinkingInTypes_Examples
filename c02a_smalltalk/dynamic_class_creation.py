@@ -3,17 +3,14 @@
 BaseAnimal = type(
     "BaseAnimal",  # name
     (object,),  # bases
-    {  # class body (attributes/methods)
-        "speak": lambda self: print("Generic animal sound.")
-    }
+    # class body (attributes/methods):
+    {"speak": lambda self: print("Generic animal sound.")},
 )
 
 Cat = type(  # Subclassing
     "Cat",
     (BaseAnimal,),
-    {
-        "speak": lambda self: print("Meow!")
-    }
+    {"speak": lambda self: print("Meow!")},
 )
 
 feline = Cat()

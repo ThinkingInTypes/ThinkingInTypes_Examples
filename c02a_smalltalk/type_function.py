@@ -1,5 +1,6 @@
 # type_function.py
-class Plumbus: pass
+class Plumbus:
+    pass
 
 
 print(type(Plumbus()))
