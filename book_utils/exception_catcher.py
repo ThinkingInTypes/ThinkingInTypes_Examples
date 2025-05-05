@@ -8,7 +8,6 @@ the context manager in case argument evaluation raises an exception.
 To do this the function should be provided as a zero-argument callable.
 If the function takes arguments, it must be wrapped in a lambda to delay evaluation.
 """
-
 from __future__ import annotations
 from typing import Any, Callable, TypeVar
 
@@ -20,7 +19,7 @@ class Catch:
         return self
 
     def __exit__(
-        self, exc_type: Any, exc_value: Any, traceback: Any
+            self, exc_type: Any, exc_value: Any, traceback: Any
     ) -> bool:
         # Only called if an exception escapes the block.
         if exc_type is not None:

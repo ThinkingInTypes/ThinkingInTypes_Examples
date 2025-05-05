@@ -9,5 +9,3 @@ bot.weather()
 ## Don't know 'weather'; remembering it.
 bot.joke()
 ## Don't know 'joke'; remembering it.
-bot.weather()
-bot.joke()
