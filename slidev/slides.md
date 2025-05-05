@@ -6,19 +6,30 @@ author: Bruce Eckel
 lineNumbers: false
 class: text-center
 transition: fade-out
-#layout: image
-#image: background.png
-layout: cover
-background: background.png
-backgroundSize: contain
 colorSchema: light
+fonts:
+  # basically the text
+  sans: Robot
+  # use with `font-serif` css class from UnoCSS
+  serif: Robot Slab
+  # for code blocks, inline code, etc.
+  mono: JetBrains Mono
+background: background.png
 ---
 
 # Make Illegal States Unrepresentable
 
 ## Pycon 2025 Typing Summit
 
-#### From ThinkingInTypes.com
+#### Bruce Eckel
+
+---
+layout: image
+image: background.png
+backgroundSize: contain
+class: text-center
+---
+
 
 ---
 zoom: 1.6
@@ -64,3 +75,10 @@ zoom: 1.6
 zoom: 1.6
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/typed_bank_account.py {*}{maxHeight:'340px'}
+
+---
+layout: image-right
+image: background.png
+---
+
+# Questions...
