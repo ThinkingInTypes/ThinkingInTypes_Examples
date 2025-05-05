@@ -42,6 +42,12 @@ zoom: 1.6
 <<< @/../c11_make_illegal_types_unrepresentable/phone_number_functions.py {*}{maxHeight:'340px'}
 
 ---
+layout: center
+---
+
+# Design by Contract Preconditions
+
+---
 zoom: 1.6
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/require.py {*}{maxHeight:'340px'}
@@ -75,6 +81,16 @@ zoom: 1.6
 zoom: 1.6
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/typed_bank_account.py {*}{maxHeight:'340px'}
+
+---
+zoom: 1.6
+---
+<<< @/../c11_make_illegal_types_unrepresentable/phone_number.py {*}{maxHeight:'340px'}
+
+---
+zoom: 1.6
+---
+<<< @/../c11_make_illegal_types_unrepresentable/phone_numbers_as_types.py {*}{maxHeight:'340px'}
 
 ---
 layout: image-right
