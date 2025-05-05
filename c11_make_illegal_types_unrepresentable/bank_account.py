@@ -20,17 +20,17 @@ sufficient_balance = Condition(
 class BankAccount:
     balance: Decimal
 
-    @requires(positive_amount, sufficient_balance)
-    def withdraw(self, amount: Decimal) -> str:
-        self.balance -= amount
-        return f"Withdrew {amount}, balance: {self.balance}"
-
     @requires(positive_amount)
     def deposit(self, amount: Decimal) -> str:
         self.balance += amount
         return (
             f"Deposited {amount}, balance: {self.balance}"
         )
+
+    @requires(positive_amount, sufficient_balance)
+    def withdraw(self, amount: Decimal) -> str:
+        self.balance -= amount
+        return f"Withdrew {amount}, balance: {self.balance}"
 
 
 account = BankAccount(Decimal(100))

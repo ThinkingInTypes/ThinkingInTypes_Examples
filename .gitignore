@@ -174,3 +174,4 @@ cython_debug/
 .pypirc
 data.txt
 other.txt
+/node_modules
