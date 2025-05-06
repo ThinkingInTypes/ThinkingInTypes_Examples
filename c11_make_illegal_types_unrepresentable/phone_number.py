@@ -34,8 +34,13 @@ class PhoneNumber:
 
     def format_number(self) -> str:
         if len(self.number) == 10:
-            return f"({self.number[:3]}) {self.number[3:6]}-{self.number[6:]}"
-        return self.number  # Fallback: just the digits
+            area, prefix, line = (
+                self.number[:3],
+                self.number[3:6],
+                self.number[6:]
+            )
+            return f"({area}) {prefix}-{line}"
+        return self.number  # Fallback: just digits
 
     def __str__(self) -> str:
         formatted = self.format_number()

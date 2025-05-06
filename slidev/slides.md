@@ -32,12 +32,12 @@ class: text-center
 
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/string_phone_numbers.py {*}{maxHeight:'320px'}
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_number_functions.py {*}{maxHeight:'340px'}
 
@@ -50,53 +50,55 @@ layout: center
 ### (Bertrand Meyer; Eiffel Language)
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/require.py {*}{maxHeight:'340px'}
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/basic_requires.py {*}{maxHeight:'340px'}
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/bank_account.py {*}{maxHeight:'340px'}
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/amount.py {*}{maxHeight:'340px'}
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/bad_amount.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/bad_amount.py
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/balance.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/balance.py
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/typed_bank_account.py {*}{maxHeight:'340px'}
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_number.py {*}{maxHeight:'340px'}
 
 ---
-zoom: 1.6
+zoom: 1.7
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_numbers_as_types.py {*}{maxHeight:'340px'}
 
 ---
-layout: image-right
+layout: image-left
 image: background.png
+backgroundSize: contain
+class: text-center
 ---
 
 # Questions...
