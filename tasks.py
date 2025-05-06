@@ -287,6 +287,15 @@ def extract_and_run(ctx) -> None:
     pyright(ctx)
     cleanup()
 
+@task
+def slideshow(ctx) -> None:
+    """
+    extract_and_run, then run slidev
+    """
+    # extract_and_run(ctx)
+    ctx.run("cd slidev && pwd && pnpm slidev Slides.md")
+
+
 
 @task
 def f(ctx, file: Path, force: bool = False) -> None:
@@ -319,3 +328,4 @@ namespace.add_task(sembr)
 namespace.add_task(extract_and_run)
 namespace.add_task(pyright)
 namespace.add_task(mypy)
+namespace.add_task(slideshow)

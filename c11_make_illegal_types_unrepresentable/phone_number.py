@@ -27,10 +27,10 @@ class PhoneNumber:
         cc, num = match.groups()
         digits = re.sub(r"\D", "", num)
         if not digits:
-            raise ValueError(f"No digits found in: {raw!r}")
+            raise ValueError(f"No digits in: {raw!r}")
 
         country_code = cc if cc else "1"  # default to US
-        return cls(country_code=country_code, number=digits)
+        return cls(country_code, digits)
 
     def format_number(self) -> str:
         if len(self.number) == 10:
