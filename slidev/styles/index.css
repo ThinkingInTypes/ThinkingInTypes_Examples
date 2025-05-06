@@ -2,8 +2,10 @@
 section .content {
   padding-left: 0 !important;
   padding-right: 0 !important;
+  padding-top: 0 !important;
   max-width: none !important;
   width: 100vw !important;
+  max-height: none !important;
   display: flex;
   align-items: flex-start;
 }
