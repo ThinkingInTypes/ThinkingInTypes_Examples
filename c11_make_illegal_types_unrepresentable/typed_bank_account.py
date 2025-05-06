@@ -1,5 +1,6 @@
 # typed_bank_account.py
 from dataclasses import dataclass
+
 from amount import Amount
 from balance import Balance
 from book_utils import Catch
@@ -11,11 +12,17 @@ class BankAccount:
 
     def deposit(self, amount: Amount) -> str:
         self.balance = self.balance.deposit(amount)
-        return f"Deposited {amount.value}, balance: {self.balance.amount.value}"
+        return (
+            f"Deposited {amount.value}, "
+            f"Balance: {self.balance.amount.value}"
+        )
 
     def withdraw(self, amount: Amount) -> str:
         self.balance = self.balance.withdraw(amount)
-        return f"Withdrew {amount.value}, balance: {self.balance.amount.value}"
+        return (
+            f"Withdrew {amount.value}, "
+            f"Balance: {self.balance.amount.value}"
+        )
 
 
 account = BankAccount(Balance(Amount(100)))
