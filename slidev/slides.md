@@ -34,13 +34,17 @@ class: text-center
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/string_phone_numbers.py {*}{maxHeight:'320px'}
+<<< @/../c11_make_illegal_types_unrepresentable/string_phone_numbers.py {*}{maxHeight:'350px'}
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/phone_number_functions.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/phone_number_functions.py {*}{maxHeight:'350px'}
 
 ---
 layout: center
@@ -52,46 +56,64 @@ layout: center
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/require.py {*}{maxHeight:'340px'}
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/basic_requires.py {*}{maxHeight:'320px'}
+<<< @/../c11_make_illegal_types_unrepresentable/basic_requires.py {*}{maxHeight:'340px'}
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/bank_account.py {*}{maxHeight:'340px'}
 
 ---
 zoom: 1.7
+layout: full
+class: px-0 
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/amount.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/amount.py {*}{maxHeight:'350px'}
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/bad_amount.py
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/balance.py
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/typed_bank_account.py {*}{maxHeight:'340px'}
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_number.py {*}{maxHeight:'340px'}
 
 ---
 zoom: 1.8
+layout: full
+class: px-0 
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_numbers_as_types.py {*}{maxHeight:'340px'}
 
