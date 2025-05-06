@@ -9,10 +9,8 @@ class PhoneNumber:
     """
     A validated and normalized phone number.
     """
-
     country_code: str
     number: str  # Digits only, no formatting
-
     phone_number_re = re.compile(
         r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$"
     )

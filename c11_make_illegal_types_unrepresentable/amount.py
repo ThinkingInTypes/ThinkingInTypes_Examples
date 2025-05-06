@@ -16,8 +16,8 @@ class Amount:
             )
         object.__setattr__(self, "value", d_value)
 
-    def __add__(self, other: "Amount") -> Amount:
+    def __add__(self, other: Amount) -> Amount:
         return Amount(self.value + other.value)
 
-    def __sub__(self, other: "Amount") -> Amount:
+    def __sub__(self, other: Amount) -> Amount:
         return Amount(self.value - other.value)

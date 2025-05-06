@@ -37,6 +37,7 @@ EXCLUDE_PATHS = {
     "bootstrap.py",
     "book_utils",
     "xperiments",
+    "slidev",
 }
 WIDTH = 60  # Width for code listings and comments
 

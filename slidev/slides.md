@@ -47,6 +47,8 @@ layout: center
 
 # Design by Contract Preconditions
 
+### (Bertrand Meyer; Eiffel Language)
+
 ---
 zoom: 1.6
 ---
