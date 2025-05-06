@@ -26,3 +26,9 @@ Without activation, use `uv run example.py`.
 - If you have `pip` issues, try `python -m ensurepip --upgrade`
 - If you're trying to see which Python uvx is using, run:
   `uvx python -c "import sys; print(sys.executable)"`
+
+## To Run the Slidev Presentations
+
+- Install `pnpm`. In Windows: `winget install --id pnpm.pnpm`
+- `cd slidev`
+- `pnpm slidev Slides.md` (or whatever slides Markdown file you want to run)
