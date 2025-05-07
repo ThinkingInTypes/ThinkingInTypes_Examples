@@ -4,7 +4,9 @@ from dataclasses import dataclass
 from typing import Self
 import re
 
-_PHONE_RE = re.compile(r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$")
+_PHONE_RE = re.compile(
+    r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$"
+)
 
 
 @dataclass(frozen=True)
@@ -15,7 +17,9 @@ class PhoneNumber:
     def __new__(cls, *args, **kwargs):
         # Deny subclassing and direct instantiation
         if cls is not PhoneNumber:
-            raise TypeError("Subclassing PhoneNumber is not allowed")
+            raise TypeError(
+                "Subclassing PhoneNumber is not allowed"
+            )
         return super().__new__(cls)
 
     @classmethod
@@ -23,7 +27,9 @@ class PhoneNumber:
         cleaned = raw.strip()
         match = _PHONE_RE.match(cleaned)
         if not match:
-            raise ValueError(f"Invalid phone number: {raw!r}")
+            raise ValueError(
+                f"Invalid phone number: {raw!r}"
+            )
 
         cc, num = match.groups()
         digits = re.sub(r"\D", "", num)
@@ -51,6 +57,6 @@ class PhoneNumber:
         if not isinstance(other, PhoneNumber):
             return NotImplemented
         return (
-                self.country_code == other.country_code
-                and self.number == other.number
+            self.country_code == other.country_code
+            and self.number == other.number
         )

@@ -32,6 +32,7 @@ print(account.withdraw(Amount.of(30)))
 ## Withdrew 30, Balance: 120
 with Catch():
     account.withdraw(Amount.of(200))
+## Error: Negative Amount(-80)
 with Catch():
     account.deposit(Amount.of(-10))
-## Error: Amount(-10) cannot be negative
+## Error: Negative Amount(-10)

@@ -19,6 +19,3 @@ print(is_file(Path("nonexistent.txt")))
 with Catch():
     # Raises TypeError, static checker flags it:
     is_file(12345)  # type: ignore
-## Error: argument should be a str or an
-## os.PathLike object where __fspath__ returns a
-## str, not 'int'

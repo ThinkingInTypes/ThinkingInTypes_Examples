@@ -12,4 +12,3 @@ class Order:
 order = Order(order_id=123)
 with Catch():
     order.order_id = 456  # type: ignore
-## Error: cannot assign to field 'order_id'

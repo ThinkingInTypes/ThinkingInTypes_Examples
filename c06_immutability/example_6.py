@@ -17,6 +17,5 @@ print(p.x, p.y)  # Outputs: 1 2
 with Catch():
     # Attempting to modify a field produces an error:
     p.x = 5  # type: ignore
-## Error: cannot assign to field 'x'
 
 p.__dict__["x"] = 5  # Bypassing 'frozen'

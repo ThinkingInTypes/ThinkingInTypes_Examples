@@ -10,5 +10,3 @@ print(add(10, 5))
 ## 15
 with Catch():
     add(10, "5")  # type: ignore
-## Error: unsupported operand type(s) for +: 'int'
-## and 'str'
