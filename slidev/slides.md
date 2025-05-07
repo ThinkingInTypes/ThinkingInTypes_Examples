@@ -33,18 +33,18 @@ class: text-center
 
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/string_phone_numbers.py {*}{maxHeight:'350px'}
+<<< @/../c11_make_illegal_types_unrepresentable/string_phone_numbers.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/phone_number_functions.py {*}{maxHeight:'350px'}
+<<< @/../c11_make_illegal_types_unrepresentable/phone_number_functions.py
 
 ---
 layout: center
@@ -55,67 +55,67 @@ layout: center
 ### (Bertrand Meyer; Eiffel Language)
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/require.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/require.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/basic_requires.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/basic_requires.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/bank_account.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/bank_account.py
 
 ---
-zoom: 1.7
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/amount.py {*}{maxHeight:'350px'}
+<<< @/../c11_make_illegal_types_unrepresentable/amount.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/bad_amount.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/balance.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/typed_bank_account.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/typed_bank_account.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/phone_number.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/phone_number.py
 
 ---
-zoom: 1.8
+zoom: 2.0
 layout: full
-class: pl-3 pr-0 max-w-none w-full py-0
+class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/phone_numbers_as_types.py {*}{maxHeight:'340px'}
+<<< @/../c11_make_illegal_types_unrepresentable/phone_numbers_as_types.py
 
 ---
 layout: image-left
