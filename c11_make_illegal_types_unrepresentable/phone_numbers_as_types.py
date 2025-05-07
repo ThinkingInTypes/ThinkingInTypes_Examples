@@ -5,7 +5,7 @@ from book_utils import Catch
 
 for raw in phone_numbers:
     with Catch():
-        pn = PhoneNumber.parse(raw)
+        pn = PhoneNumber.of(raw)
         print(f"{raw!r} -> {pn}")
 ## '5551234' -> +555 1234
 ## '555-1234' -> +555 1234
