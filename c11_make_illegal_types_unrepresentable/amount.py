@@ -1,20 +1,22 @@
 # amount.py
 from __future__ import annotations
+
 from dataclasses import dataclass
 from decimal import Decimal
+from typing import Self
 
 
 @dataclass(frozen=True)
 class Amount:
     value: Decimal
 
-    def __init__(self, value: int | float | str | Decimal):
-        d_value = Decimal(str(value))
-        if d_value < Decimal("0"):
-            raise ValueError(
-                f"Amount({d_value}) cannot be negative"
-            )
-        object.__setattr__(self, "value", d_value)
+    @classmethod
+    def of(cls, value: int | float | str) -> Self:
+        return cls(Decimal(str(value)))
+
+    def __post_init__(self) -> None:  # Runtime check
+        if self.value < Decimal("0"):
+            raise ValueError(f"Negative Amount({self.value})")
 
     def __add__(self, other: Amount) -> Amount:
         return Amount(self.value + other.value)

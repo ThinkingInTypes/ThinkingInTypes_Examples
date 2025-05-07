@@ -1,9 +1,11 @@
 # require.py
-from typing import Callable, NamedTuple
+from dataclasses import dataclass
+from typing import Callable
 from functools import wraps
 
 
-class Condition(NamedTuple):
+@dataclass(frozen=True)
+class Condition:
     check: Callable[..., bool]
     message: str
 

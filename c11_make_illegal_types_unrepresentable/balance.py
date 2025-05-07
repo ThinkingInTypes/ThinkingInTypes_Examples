@@ -1,10 +1,11 @@
 # balance.py
 from __future__ import annotations
-from typing import NamedTuple
+from dataclasses import dataclass
 from amount import Amount
 
 
-class Balance(NamedTuple):
+@dataclass(frozen=True)
+class Balance:
     amount: Amount
 
     def deposit(self, amount: Amount) -> Balance:

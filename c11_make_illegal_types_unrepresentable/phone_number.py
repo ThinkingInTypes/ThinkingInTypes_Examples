@@ -1,28 +1,29 @@
 # phone_number.py
+# Validated and normalized phone number
 from dataclasses import dataclass
 from typing import Self
 import re
 
+_PHONE_RE = re.compile(r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$")
+
 
 @dataclass(frozen=True)
 class PhoneNumber:
-    """
-    A validated and normalized phone number.
-    """
     country_code: str
     number: str  # Digits only, no formatting
-    phone_number_re = re.compile(
-        r"^\+?(\d{1,3})?[\s\-.()]*([\d\s\-.()]+)$"
-    )
+
+    def __new__(cls, *args, **kwargs):
+        # Deny subclassing and direct instantiation
+        if cls is not PhoneNumber:
+            raise TypeError("Subclassing PhoneNumber is not allowed")
+        return super().__new__(cls)
 
     @classmethod
-    def parse(cls, raw: str) -> Self:
+    def of(cls, raw: str) -> Self:
         cleaned = raw.strip()
-        match = cls.phone_number_re.match(cleaned)
+        match = _PHONE_RE.match(cleaned)
         if not match:
-            raise ValueError(
-                f"Invalid phone number: {raw!r}"
-            )
+            raise ValueError(f"Invalid phone number: {raw!r}")
 
         cc, num = match.groups()
         digits = re.sub(r"\D", "", num)
@@ -37,7 +38,7 @@ class PhoneNumber:
             area, prefix, line = (
                 self.number[:3],
                 self.number[3:6],
-                self.number[6:]
+                self.number[6:],
             )
             return f"({area}) {prefix}-{line}"
         return self.number  # Fallback: just digits

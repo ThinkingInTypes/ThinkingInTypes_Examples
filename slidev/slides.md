@@ -34,14 +34,12 @@ class: text-center
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/string_phone_numbers.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_number_functions.py
@@ -56,63 +54,54 @@ layout: center
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/require.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/basic_requires.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/bank_account.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/amount.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
-<<< @/../c11_make_illegal_types_unrepresentable/bad_amount.py
+<<< @/../c11_make_illegal_types_unrepresentable/demo_amount.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/balance.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/typed_bank_account.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_number.py
 
 ---
 zoom: 2.0
-layout: full
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
 ---
 <<< @/../c11_make_illegal_types_unrepresentable/phone_numbers_as_types.py

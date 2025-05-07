@@ -287,6 +287,7 @@ def extract_and_run(ctx) -> None:
     pyright(ctx)
     cleanup()
 
+
 @task
 def slideshow(ctx) -> None:
     """
@@ -294,7 +295,6 @@ def slideshow(ctx) -> None:
     """
     # extract_and_run(ctx)
     ctx.run("cd slidev && pwd && pnpm slidev Slides.md")
-
 
 
 @task
