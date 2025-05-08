@@ -19,4 +19,4 @@ coco.squawk()
 
 # After learning:
 print(polly.known_phrases, coco.known_phrases)
-## {'hello'} {'squawk', 'hello'}
+## {'hello'} {'hello', 'squawk'}
