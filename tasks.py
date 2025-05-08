@@ -40,7 +40,7 @@ EXCLUDE_PATHS = {
     "xperiments",
     "slidev",
 }
-WIDTH = 60  # Width for code listings and comments
+WIDTH = 65  # Width for code listings and comments
 
 markdown_chapters_path = Path(
     "C:/git/ThinkingInTypes.github.io/Chapters"
@@ -297,7 +297,7 @@ def slideshow(ctx) -> None:
     if platform.system() == "Windows":
         # 'start' is a built-in to cmd.exe; PowerShell -NoExit keeps the window open
         ctx.run(
-            'start powershell -NoExit -Command "Set-Location slidev; pnpm slidev Slides.md"',
+            r'cmd.exe /c start "Slidev" powershell.exe -NoExit -Command "Set-Location slidev; pnpm slidev Slides.md"',
         )
     else:
         # fallback for POSIX: allocate a PTY
