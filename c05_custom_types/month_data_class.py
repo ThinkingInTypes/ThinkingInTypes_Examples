@@ -63,9 +63,7 @@ class Months:
     )
 
     def number(self, month_number: int):
-        assert 1 <= month_number <= 12, (
-            f"Month({month_number})"
-        )
+        assert 1 <= month_number <= 12, f"Month({month_number})"
         return self.months[month_number - 1]
 
 

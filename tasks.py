@@ -65,9 +65,7 @@ def confirm(
     force: bool = False,
 ) -> None:
     if force:
-        console.print(
-            f"[green]Auto-confirmed:[/] {message}"
-        )
+        console.print(f"[green]Auto-confirmed:[/] {message}")
         return
     if not Confirm.ask(
         f"[yellow]{message}[/yellow]",
@@ -192,9 +190,7 @@ def mypy(ctx) -> None:
     files = [
         path
         for path in root.rglob("*.py")
-        if not any(
-            part in EXCLUDE_PATHS for part in path.parts
-        )
+        if not any(part in EXCLUDE_PATHS for part in path.parts)
     ]
 
     if not files:
@@ -292,37 +288,48 @@ def extract_and_run(ctx) -> None:
 @task
 def slideshow(ctx) -> None:
     """
-    Launch Slidev dev server in a new pwsh window, fully detached so this Invoke task
-    returns immediately.
+    Launch Slidev in a brand-new pwsh window, detach immediately, and avoid
+    the libuv assertion by pre-setting the console title.
     """
     _ = ctx
-    # 1. Find pwsh (PowerShell 7+) or fall back to Windows PowerShell
+    # 1) Locate PowerShell 7+ or fall back
     pwsh = shutil.which("pwsh") or shutil.which("powershell.exe")
-    if pwsh is None:
-        print("❌ PowerShell not found on PATH (pwsh or powershell.exe).")
+    if not pwsh:
+        print(
+            "❌ Neither pwsh nor powershell.exe were found on PATH."
+        )
         return
 
-    # 2. Build a single string command for cmd.exe /c start
+    # 2) Compute the absolute path to slidev
     slides_dir = Path("slidev").resolve()
-    # Note: start "" -> empty window title, then we launch pwsh with -NoExit
-    cmd = (
-        f'start "" "{pwsh}" -NoExit -Command '
-        f'"Set-Location {slides_dir}; pnpm slidev Slides.md"'
+
+    # 3) Pick a title for the new console (must be nonempty!)
+    window_title = "Slide Show"
+
+    # 4) Build the pwsh -Command string:
+    #    1. Set the console title so libuv has something non-null
+    #    2. Change directory into your slidev folder
+    #    3. Launch the dev server
+    pwsh_cmd = (
+        rf"[Console]::Title='{window_title}';"
+        rf"Set-Location '{slides_dir}';"
+        "pnpm slidev Slides.md"
     )
 
-    # 3. Detach with subprocess.Popen + CREATE_NEW_CONSOLE
+    # 5) Finally, spawn the new console fully detached.
+    #    - shell=True so that `start` is interpreted by cmd.exe
+    #    - CREATE_NEW_CONSOLE ensures a brand-new window
     subprocess.Popen(
-        cmd,
+        f'start "" "{pwsh}" -NoExit -Command "{pwsh_cmd}"',
         shell=True,
-        creationflags=subprocess.CREATE_NEW_CONSOLE
+        creationflags=subprocess.CREATE_NEW_CONSOLE,
     )
 
-    # else:
-    #     # fallback for POSIX: allocate a PTY
-    #     with ctx.cd("slidev"):
-    #         ctx.run("pnpm slidev Slides.md", pty=True)
 
-
+# else:
+#     # fallback for POSIX: allocate a PTY
+#     with ctx.cd("slidev"):
+#         ctx.run("pnpm slidev Slides.md", pty=True)
 # @task
 # def slideshow(ctx) -> None:
 #     """

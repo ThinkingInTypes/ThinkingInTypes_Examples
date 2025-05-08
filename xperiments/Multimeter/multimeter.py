@@ -6,9 +6,7 @@ ParamVal = Literal["MIN", "MAX", "DEF"]
 ParamType = float | ParamVal
 
 
-def _validate_param(
-    value: ParamType, name: str
-) -> ParamType:
+def _validate_param(value: ParamType, name: str) -> ParamType:
     """
     Validate and normalize a parameter value.
 

@@ -27,9 +27,7 @@ class PhoneNumber:
         cleaned = raw.strip()
         match = _PHONE_RE.match(cleaned)
         if not match:
-            raise ValueError(
-                f"Invalid phone number: {raw!r}"
-            )
+            raise ValueError(f"Invalid phone number: {raw!r}")
 
         cc, num = match.groups()
         digits = re.sub(r"\D", "", num)
@@ -57,6 +55,6 @@ class PhoneNumber:
         if not isinstance(other, PhoneNumber):
             return NotImplemented
         return (
-                self.country_code == other.country_code
-                and self.number == other.number
+            self.country_code == other.country_code
+            and self.number == other.number
         )

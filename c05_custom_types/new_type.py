@@ -13,9 +13,7 @@ def process(data: Measurements) -> None:
 
 
 process(
-    Measurements(
-        [Number(11), Number(3.14), Number("1.618")]
-    )
+    Measurements([Number(11), Number(3.14), Number("1.618")])
 )
 ## {'data': __main__.Measurements, 'return':
 ## <class 'NoneType'>}

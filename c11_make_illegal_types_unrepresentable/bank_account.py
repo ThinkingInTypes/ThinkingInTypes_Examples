@@ -23,9 +23,7 @@ class BankAccount:
     @requires(positive_amount)
     def deposit(self, amount: Decimal) -> str:
         self.balance += amount
-        return (
-            f"Deposited {amount}, balance: {self.balance}"
-        )
+        return f"Deposited {amount}, balance: {self.balance}"
 
     @requires(positive_amount, sufficient_balance)
     def withdraw(self, amount: Decimal) -> str:

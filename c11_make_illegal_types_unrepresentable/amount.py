@@ -16,9 +16,7 @@ class Amount:
 
     def __post_init__(self) -> None:  # Runtime check
         if self.value < Decimal("0"):
-            raise ValueError(
-                f"Negative Amount({self.value})"
-            )
+            raise ValueError(f"Negative Amount({self.value})")
 
     def __add__(self, other: Amount) -> Amount:
         return Amount(self.value + other.value)
