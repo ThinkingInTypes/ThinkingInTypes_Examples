@@ -3,6 +3,7 @@
 'Invoke' command file.
 """
 
+import platform
 import subprocess
 import sys
 from concurrent.futures import (
@@ -291,10 +292,25 @@ def extract_and_run(ctx) -> None:
 @task
 def slideshow(ctx) -> None:
     """
-    extract_and_run, then run slidev
+    Run slidev in a new PowerShell window (so you get the full interactive UI).
     """
-    # extract_and_run(ctx)
-    ctx.run("cd slidev && pwd && pnpm slidev Slides.md")
+    if platform.system() == "Windows":
+        # 'start' is a built-in to cmd.exe; PowerShell -NoExit keeps the window open
+        ctx.run(
+            'start powershell -NoExit -Command "Set-Location slidev; pnpm slidev Slides.md"',
+        )
+    else:
+        # fallback for POSIX: allocate a PTY
+        with ctx.cd("slidev"):
+            ctx.run("pnpm slidev Slides.md", pty=True)
+
+
+# @task
+# def slideshow(ctx) -> None:
+#     """
+#     Run slidev
+#     """
+#     ctx.run("cd slidev && pnpm slidev Slides.md")
 
 
 @task

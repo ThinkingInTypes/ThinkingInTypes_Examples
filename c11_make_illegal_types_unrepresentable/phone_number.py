@@ -57,6 +57,6 @@ class PhoneNumber:
         if not isinstance(other, PhoneNumber):
             return NotImplemented
         return (
-            self.country_code == other.country_code
-            and self.number == other.number
+                self.country_code == other.country_code
+                and self.number == other.number
         )
