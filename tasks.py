@@ -23,6 +23,9 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Confirm
 
+WIDTH = 65  # Width for code listings and comments
+# 65 works for slidev with zoom: 2.0
+
 console = Console()
 
 EXCLUDE_PATHS = {
@@ -40,7 +43,6 @@ EXCLUDE_PATHS = {
     "xperiments",
     "slidev",
 }
-WIDTH = 65  # Width for code listings and comments
 
 markdown_chapters_path = Path(
     "C:/git/ThinkingInTypes.github.io/Chapters"
@@ -262,11 +264,11 @@ def a(ctx, force: bool = False) -> None:
     All: extract, run all scripts, update examples, validate, re-inject examples into book. (--force runs w/o prompting)
     """
     extract(ctx, force=force)
+    ruff(ctx)
     examples(ctx)
     pyright(ctx)
     update_example_output(ctx, force=force)
     validate(ctx)
-    ruff(ctx)
     inject(ctx, force=force)
     console.print(
         "[bold green]\n✅ Workflow completed successfully.[/bold green]"

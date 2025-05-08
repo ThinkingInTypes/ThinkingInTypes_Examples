@@ -13,23 +13,23 @@ class BankAccount:
     def deposit(self, amount: Amount) -> str:
         self.balance = self.balance.deposit(amount)
         return (
-            f"Deposited {amount.value}, "
+            f"Deposit {amount.value}, "
             f"Balance: {self.balance.amount.value}"
         )
 
     def withdraw(self, amount: Amount) -> str:
         self.balance = self.balance.withdraw(amount)
         return (
-            f"Withdrew {amount.value}, "
+            f"Withdraw {amount.value}, "
             f"Balance: {self.balance.amount.value}"
         )
 
 
 account = BankAccount(Balance(Amount.of(100)))
 print(account.deposit(Amount.of(50)))
-## Deposited 50, Balance: 150
+## Deposit 50, Balance: 150
 print(account.withdraw(Amount.of(30)))
-## Withdrew 30, Balance: 120
+## Withdraw 30, Balance: 120
 with Catch():
     account.withdraw(Amount.of(200))
 ## Error: Negative Amount(-80)

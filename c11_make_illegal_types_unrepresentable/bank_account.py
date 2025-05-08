@@ -23,19 +23,19 @@ class BankAccount:
     @requires(positive_amount)
     def deposit(self, amount: Decimal) -> str:
         self.balance += amount
-        return f"Deposited {amount}, balance: {self.balance}"
+        return f"Deposit {amount}, balance: {self.balance}"
 
     @requires(positive_amount, sufficient_balance)
     def withdraw(self, amount: Decimal) -> str:
         self.balance -= amount
-        return f"Withdrew {amount}, balance: {self.balance}"
+        return f"Withdraw {amount}, balance: {self.balance}"
 
 
 account = BankAccount(Decimal(100))
 print(account.deposit(Decimal(50)))
-## Deposited 50, balance: 150
+## Deposit 50, balance: 150
 print(account.withdraw(Decimal(30)))
-## Withdrew 30, balance: 120
+## Withdraw 30, balance: 120
 with Catch():
     account.withdraw(Decimal(200))
 ## Error: Insufficient balance
