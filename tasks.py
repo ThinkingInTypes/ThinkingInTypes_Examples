@@ -3,7 +3,7 @@
 'Invoke' command file.
 """
 
-import platform
+import shutil
 import subprocess
 import sys
 from concurrent.futures import (
@@ -292,17 +292,35 @@ def extract_and_run(ctx) -> None:
 @task
 def slideshow(ctx) -> None:
     """
-    Run slidev in a new PowerShell window (so you get the full interactive UI).
+    Launch Slidev dev server in a new pwsh window, fully detached so this Invoke task
+    returns immediately.
     """
-    if platform.system() == "Windows":
-        # 'start' is a built-in to cmd.exe; PowerShell -NoExit keeps the window open
-        ctx.run(
-            r'cmd.exe /c start "Slidev" powershell.exe -NoExit -Command "Set-Location slidev; pnpm slidev Slides.md"',
-        )
-    else:
-        # fallback for POSIX: allocate a PTY
-        with ctx.cd("slidev"):
-            ctx.run("pnpm slidev Slides.md", pty=True)
+    _ = ctx
+    # 1. Find pwsh (PowerShell 7+) or fall back to Windows PowerShell
+    pwsh = shutil.which("pwsh") or shutil.which("powershell.exe")
+    if pwsh is None:
+        print("❌ PowerShell not found on PATH (pwsh or powershell.exe).")
+        return
+
+    # 2. Build a single string command for cmd.exe /c start
+    slides_dir = Path("slidev").resolve()
+    # Note: start "" -> empty window title, then we launch pwsh with -NoExit
+    cmd = (
+        f'start "" "{pwsh}" -NoExit -Command '
+        f'"Set-Location {slides_dir}; pnpm slidev Slides.md"'
+    )
+
+    # 3. Detach with subprocess.Popen + CREATE_NEW_CONSOLE
+    subprocess.Popen(
+        cmd,
+        shell=True,
+        creationflags=subprocess.CREATE_NEW_CONSOLE
+    )
+
+    # else:
+    #     # fallback for POSIX: allocate a PTY
+    #     with ctx.cd("slidev"):
+    #         ctx.run("pnpm slidev Slides.md", pty=True)
 
 
 # @task
