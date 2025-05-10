@@ -28,14 +28,14 @@ def func_c(i: int) -> Result[int, ZeroDivisionError]:
 
 @safe  # Convert existing function
 def func_d(
-    i: int,
+        i: int,
 ) -> str:  # Result[str, ZeroDivisionError]
     j = int(1 / i)
     return f"func_d({i}): {j}"
 
 
 def composed(
-    i: int,
+        i: int,
 ) -> Result[str, str | ValueError | ZeroDivisionError]:
     result_a = func_a(i)
     if isinstance(result_a, Failure):

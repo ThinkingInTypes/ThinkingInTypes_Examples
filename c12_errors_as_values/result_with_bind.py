@@ -10,7 +10,7 @@ ERROR = TypeVar("ERROR")
 @dataclass(frozen=True)
 class Result(Generic[ANSWER, ERROR]):
     def bind(
-        self, func: Callable[[ANSWER], "Result"]
+            self, func: Callable[[ANSWER], "Result"]
     ) -> Result[ANSWER, ERROR]:
         if isinstance(self, Success):
             return func(self.unwrap())

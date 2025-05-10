@@ -11,7 +11,7 @@ from composing_functions import (
 
 
 def composed(
-    i: int,
+        i: int,
 ) -> Result[str, str | ZeroDivisionError | ValueError]:
     # fmt: off
     return (

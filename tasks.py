@@ -2,10 +2,11 @@
 """
 'Invoke' command file.
 """
-
+import re
 import shutil
 import subprocess
 import sys
+from collections import defaultdict
 from concurrent.futures import (
     ThreadPoolExecutor,
     as_completed,
@@ -22,6 +23,7 @@ from pybooktools.invoke_tasks import (
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Confirm
+from rich.text import Text
 
 WIDTH = 65  # Width for code listings and comments
 # 65 works for slidev with zoom: 2.0
@@ -167,19 +169,62 @@ def sembr(ctx, chapter: Path):
     rewrite_with_semantic_breaks(chapter)
 
 
+def clean_pyright_output(text: str) -> str:
+    # Fix common encoding artifacts
+    text = text.replace("Â ", "  ")
+    text = re.sub(r"[^\x00-\x7F]+", "", text)
+    return text
+
+
+def group_output_by_file(output: str) -> dict[str, list[str]]:
+    """
+    Groups Pyright output lines by file.
+    Returns a dictionary mapping relative file paths to lists of lines.
+    """
+    file_groups: dict[str, list[str]] = defaultdict(list)
+    current_file: str | None = None
+
+    for line in output.splitlines():
+        line_stripped = line.strip()
+
+        if line_stripped.endswith(".py") and Path(line_stripped).is_absolute():
+            try:
+                current_file = str(Path(line_stripped).resolve().relative_to(Path.cwd()))
+            except ValueError:
+                current_file = Path(line_stripped).name
+            file_groups[current_file] = []
+        elif current_file:
+            file_groups[current_file].append(line)
+
+    return file_groups
+
+
 @task
 def pyright(ctx):
-    console.print(
-        "[bold green]"
-        + " Pyright ".center(80, "-")
-        + "[/bold green]"
+    console.print("[bold green]" + " Pyright ".center(80, "-") + "[/bold green]")
+
+    result = ctx.run(
+        "pyright", env={"PYRIGHT_DISABLE_COLOR": "1"}, warn=True, hide=True
     )
-    ctx.run("pyright")
-    console.print(
-        "[bold green]"
-        + " End Pyright ".center(80, "-")
-        + "[/bold green]"
-    )
+
+    cleaned_output = clean_pyright_output(result.stdout)
+    grouped = group_output_by_file(cleaned_output)
+
+    if not grouped:
+        console.print("[bold green]No output from Pyright.[/bold green]")
+    else:
+        for path, lines in grouped.items():
+            panel = Panel.fit(
+                Text("\n".join(lines)),
+                title=path,
+                border_style="cyan"
+            )
+            console.print(panel)
+
+    if result.exited != 0:
+        console.print(f"[red]Pyright exited with code {result.exited}[/red]")
+
+    console.print("[bold green]" + " End Pyright ".center(80, "-") + "[/bold green]")
 
 
 @task
