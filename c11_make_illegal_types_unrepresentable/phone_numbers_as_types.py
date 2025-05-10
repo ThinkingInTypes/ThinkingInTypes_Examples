@@ -20,3 +20,5 @@ for raw in phone_numbers:
 ## '01234' -> +012 34
 ## Error: Invalid phone number: ''
 ## ' 5551234 ' -> +555 1234
+print(PhoneNumber("777", "5551212"))
+## +777 5551212
