@@ -32,6 +32,14 @@ class: text-center
 ---
 
 
+
+---
+layout: image
+image: happypath.png
+backgroundSize: contain
+class: text-center
+---
+
 ---
 zoom: 2.0
 class: pl-3 pr-0 max-w-none w-full py-1 overflow-auto
