@@ -15,17 +15,6 @@ class PhoneNumber:
     country_code: str
     number: str  # Digits only, no formatting
 
-    def __post_init__(self) -> None:
-        # Validate country code: 1-3 digits
-        if not re.fullmatch(r"\d{1,3}", self.country_code):
-            raise ValueError(
-                f"Invalid country code: {self.country_code!r}"
-            )
-        # Validate number: digits only
-        if not re.fullmatch(r"\d+", self.number):
-            raise ValueError(
-                f"Invalid number digits: {self.number!r}"
-            )
 
     @classmethod
     def of(cls, raw: str) -> Self:
@@ -39,6 +28,18 @@ class PhoneNumber:
             raise ValueError(f"No digits in: {raw!r}")
         country_code = cc or "1"  # default to US
         return cls(country_code, digits)
+            
+    def __post_init__(self) -> None:
+        # Validate country code: 1-3 digits
+        if not re.fullmatch(r"\d{1,3}", self.country_code):
+            raise ValueError(
+                f"Invalid country code: {self.country_code!r}"
+            )
+        # Validate number: digits only
+        if not re.fullmatch(r"\d+", self.number):
+            raise ValueError(
+                f"Invalid number digits: {self.number!r}"
+            )
 
     def format_number(self) -> str:
         if len(self.number) == 10:
