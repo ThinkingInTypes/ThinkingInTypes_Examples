@@ -1,20 +1,9 @@
 # n_dimensional_tensor.py
-from typing import (
-    TypeVar,
-    TypeVarTuple,
-    Generic,
-    Unpack,
-    Literal,
-    TypeAlias,
-)
+from typing import Literal, TypeAlias
 
-T = TypeVar("T")
-Shape = TypeVarTuple("Shape")
-
-
-class Tensor(Generic[T, Unpack[Shape]]):
+class Tensor[T, *Shape]:
     def __init__(
-        self, data: list, *, shape: tuple[Unpack[Shape]]
+        self, data: list, *, shape: tuple[*Shape]
     ):
         self.data = data
         self.shape = shape

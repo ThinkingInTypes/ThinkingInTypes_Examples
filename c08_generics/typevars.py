@@ -4,11 +4,11 @@ from typing import TypeVar
 T = TypeVar("T")  # Define a TypeVar named T
 
 
-def echo(value: T) -> T:
+def identity(value: T) -> T:
     return value
 
 
-print(echo(42))
+print(identity(42))
 ## 42
-print(echo("Hello"))
+print(identity("Hello"))
 ## Hello

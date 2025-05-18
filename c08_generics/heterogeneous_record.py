@@ -1,24 +1,23 @@
-# heterogeneous_record.py
-from typing import TypeVarTuple, Generic, Unpack
+from dataclasses import dataclass
 
-Fields = TypeVarTuple("Fields")
+@dataclass(init=False)
+class Record[*Fields]:
+    fields: tuple[*Fields]
 
-
-class Record(Generic[*Fields]):
-    def __init__(self, *fields: *Fields):
+    def __init__(self, *fields: *Fields) -> None:
         self.fields = fields
 
     def __repr__(self) -> str:
-        return f"Record(fields={self.fields})"
+        return f"{self.__class__.__name__}(fields={self.fields})"
 
     def to_tuple(self) -> tuple[*Fields]:
         return self.fields
 
 
-r1 = Record(1, "Alice", 3.14)  # Record[int, str, float]
-r2 = Record(True, None)  # Record[bool, NoneType]
+r1 = Record(1, "Alice", 3.14)
+r2 = Record(True, None)
 
 print(r1.to_tuple())
-## (1, 'Alice', 3.14)
+# (1, 'Alice', 3.14)
 print(r2.to_tuple())
-## (True, None)
+# (True, None)

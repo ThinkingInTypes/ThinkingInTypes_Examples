@@ -1,10 +1,6 @@
 # tuple_wrapper.py
-from typing import Generic, TypeVarTuple
 
-Ts = TypeVarTuple("Ts")
-
-
-class TupleWrapper(Generic[*Ts]):
+class TupleWrapper[*Ts]:
     def __init__(self, *values: *Ts):
         self.values = values
 
