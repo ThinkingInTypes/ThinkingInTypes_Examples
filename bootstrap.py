@@ -1,3 +1,4 @@
+# bootstrap.py
 #!/usr/bin/env python3
 """
 Bootstraps the project by:

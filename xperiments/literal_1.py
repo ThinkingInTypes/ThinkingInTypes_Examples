@@ -1,4 +1,4 @@
-# literal_to_set.py
+# literal_1.py
 from typing import Literal
 
 ParamVal = Literal["MIN", "MAX", "DEF"]
