@@ -2,13 +2,9 @@
 # For forward-referenced types:
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Generic, TypeVar
-
-T = TypeVar("T")
-
 
 @dataclass
-class Tree(Generic[T]):
+class Tree[T]:
     value: T
     children: list[Tree[T]] = field(default_factory=list)
 

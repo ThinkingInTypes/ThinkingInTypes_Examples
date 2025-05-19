@@ -1,12 +1,9 @@
 # f_bounded_polymorphism.py
 from __future__ import annotations
-from typing import TypeVar, Generic
-
-TSelf = TypeVar("TSelf", bound="Form")
 
 
-class Form(Generic[TSelf]):
-    def set_title(self: TSelf, title: str) -> TSelf:
+class Form[T]:
+    def set_title(self: T, title: str) -> T:
         self.title = title
         return self
 
