@@ -8,7 +8,7 @@ class Box[U]:
     content: U
 
     def get_content(self) -> U:
-        reveal_type(self.content)
+        # reveal_type(self.content)
         return self.content
 
 

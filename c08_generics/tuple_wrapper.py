@@ -1,7 +1,7 @@
 # tuple_wrapper.py
 
-class TupleWrapper[*Ts]:
-    def __init__(self, *values: *Ts):
+class TupleWrapper[*T]:
+    def __init__(self, *values: *T):
         self.values = values
 
 

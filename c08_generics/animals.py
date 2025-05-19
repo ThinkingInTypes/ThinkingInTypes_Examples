@@ -1,6 +1,6 @@
 # animals.py
 from dataclasses import dataclass
-from typing import TypeVar, Optional
+from typing import Optional
 
 
 @dataclass
@@ -16,9 +16,6 @@ class Dog(Animal):
         print(f"{self.name}: Woof")
 
 
-TAnimal = TypeVar("TAnimal", bound=Animal)
-
-
-def speak(creatures: list[TAnimal]) -> None:
+def speak[TAnimal:Animal](creatures: list[TAnimal]) -> None:
     for creature in creatures:
         creature.say()

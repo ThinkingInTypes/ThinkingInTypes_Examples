@@ -1,13 +1,8 @@
 # contravariance.py
-from typing import Generic, TypeVar
-
 from animals import Animal, Dog
 
-T_contra = TypeVar("T_contra", contravariant=True)
-
-
-class Sink(Generic[T_contra]):
-    def send(self, value: T_contra) -> None:
+class Sink[T]:
+    def send(self, value: T) -> None:
         print(f"Processing {value}")
 
 
