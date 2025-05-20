@@ -1,13 +1,10 @@
 # bound_typevar.py
-from typing import Protocol, Any, TypeVar
+from typing import Protocol, Any
 
 
 class Comparable(Protocol):
     def __lt__(self, other: Any) -> bool: ...
 
 
-U = TypeVar("U", bound=Comparable)
-
-
-def sort_items(items: list[U]) -> list[U]:
+def sort_items[U](items: list[U]) -> list[U]:
     return sorted(items)

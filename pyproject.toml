@@ -4,7 +4,7 @@ name = "thinkingintypes-examples"
 version = "0.1.0"
 description = "Examples from the book ThinkingInTypes.com"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "pybooktools",
     "pyinvoke>=1.0.4",
@@ -43,7 +43,7 @@ dev = [
 pybooktools = { path = "../pybooktools", editable = true }
 
 [tool.pyright]
-pythonVersion = "3.13"
+pythonVersion = "3.14"
 ignore = [
     "xperiments",
     "bootstrap.py",

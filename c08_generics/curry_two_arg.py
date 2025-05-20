@@ -3,7 +3,7 @@ from typing import Callable
 
 
 def curry_two_arg[X, Y, Z](
-    func: Callable[[X, Y], Z],
+        func: Callable[[X, Y], Z],
 ) -> Callable[[X], Callable[[Y], Z]]:
     def curried(x: X) -> Callable[[Y], Z]:
         def inner(y: Y) -> Z:

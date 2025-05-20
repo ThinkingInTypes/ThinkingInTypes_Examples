@@ -1,6 +1,7 @@
 # contravariance.py
 from animals import Animal, Dog
 
+
 class Sink[T]:
     def send(self, value: T) -> None:
         print(f"Processing {value}")

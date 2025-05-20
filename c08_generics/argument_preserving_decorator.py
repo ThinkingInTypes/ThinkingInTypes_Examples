@@ -1,6 +1,7 @@
 # argument_preserving_decorator.py
 from typing import Callable
 
+
 def log_call[**P, R](fn: Callable[P, R]) -> Callable[P, R]:
     def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
         print(f"Calling {fn.__name__} with {args=}, {kwargs=}")

@@ -1,6 +1,7 @@
 # covariance.py
 from animals import Animal, Dog
 
+
 class ReadOnlyBox[T]:
     def __init__(self, content: T):
         self._content = content
