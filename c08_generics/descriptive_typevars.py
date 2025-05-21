@@ -1,3 +1,0 @@
-# descriptive_typevars.py
-
-class BiMap[KT, VT]: ...

@@ -1,4 +1,4 @@
-# bound_typevar.py
+# bound_type_variable.py
 from typing import Protocol, Any
 
 
