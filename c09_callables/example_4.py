@@ -1,11 +1,8 @@
 # example_4.py
-from typing import Callable, ParamSpec, TypeVar
-
-P = ParamSpec("P")
-R = TypeVar("R")
+from typing import Callable
 
 
-def logging_decorator(
+def logging_decorator[**P, R](
     func: Callable[P, R],
 ) -> Callable[P, R]:
     def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
@@ -22,7 +19,5 @@ def multiply(a: int, b: int) -> int:
     return a * b
 
 
-multiply(
-    2, 3
-)  # Output: Calling multiply with (2, 3) and {} then returns 6
+multiply(2, 3)
 ## Calling multiply with (2, 3) and {}

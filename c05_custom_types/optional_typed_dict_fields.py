@@ -7,4 +7,5 @@ class UserSettings(TypedDict):
     notifications_enabled: NotRequired[bool]
 
 
-settings: UserSettings = {"theme": "dark"}
+# Only the required field is provided:
+tettings: UserSettings = {"theme": "dark"}
