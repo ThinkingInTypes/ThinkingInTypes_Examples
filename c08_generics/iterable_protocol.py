@@ -1,8 +1,6 @@
 # iterable_protocol.py
-from typing import Iterator, TypeVar, Protocol
-
-T = TypeVar("T", covariant=True)
+from typing import Iterator, Protocol
 
 
-class IterableLike(Protocol[T]):
+class IterableLike[T](Protocol):
     def __iter__(self) -> Iterator[T]: ...
