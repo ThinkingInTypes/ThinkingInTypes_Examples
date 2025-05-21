@@ -1,6 +1,7 @@
 # constrained_type_variable.py
 
-def add[Number:(int, float)](a: Number, b: Number) -> Number:
+
+def add[Number: (int, float)](a: Number, b: Number) -> Number:
     return a + b
 
 

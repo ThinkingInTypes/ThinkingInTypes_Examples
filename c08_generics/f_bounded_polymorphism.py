@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import cast
 
 
 @dataclass
@@ -11,7 +12,7 @@ class Form[T]:
     def set_title(self, title: str) -> T:
         self.title = title
         # Returns self as type T for fluent chaining:
-        return self  # type: ignore
+        return cast(T, self)
 
 
 @dataclass

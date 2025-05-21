@@ -16,6 +16,6 @@ class Dog(Animal):
         print(f"{self.name}: Woof")
 
 
-def speak[T:Animal](creatures: list[T]) -> None:
+def speak[T: Animal](creatures: list[T]) -> None:
     for creature in creatures:
         creature.say()

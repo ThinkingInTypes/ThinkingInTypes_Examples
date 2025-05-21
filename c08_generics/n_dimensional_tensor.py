@@ -3,9 +3,7 @@ from typing import Literal, TypeAlias
 
 
 class Tensor[T, *Shape]:
-    def __init__(
-            self, data: list, *, shape: tuple[*Shape]
-    ):
+    def __init__(self, data: list, *, shape: tuple[*Shape]):
         self.data = data
         self.shape = shape
 

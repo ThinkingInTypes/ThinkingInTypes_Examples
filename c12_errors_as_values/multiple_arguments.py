@@ -10,7 +10,7 @@ def add(first: int, second: int, third: int) -> str:
 
 
 def composed(
-        i: int, j: int
+    i: int, j: int
 ) -> Result[str, str | ZeroDivisionError | ValueError]:
     # fmt: off
     return Result.do(

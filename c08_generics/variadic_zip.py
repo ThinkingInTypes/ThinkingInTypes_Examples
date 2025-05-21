@@ -1,13 +1,14 @@
 # variadic_zip.py
 
+
 def zip_variadic[*T](
-        *args: tuple[*T],
+    *args: tuple[*T],
 ) -> tuple[tuple[*T], ...]:
     return tuple(zip(*args))
 
 
 def unzip_variadic[*T](
-        packed: tuple[tuple[*T], ...],
+    packed: tuple[tuple[*T], ...],
 ) -> tuple[tuple[*T], ...]:
     return tuple(zip(*packed))
 

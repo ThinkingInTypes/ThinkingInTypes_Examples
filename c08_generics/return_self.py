@@ -1,8 +1,9 @@
 # return_self.py
 """
-Return `Self` enables type-safe method chaining in subclasses 
+Return `Self` enables type-safe method chaining in subclasses
 without the complexity of F-bounded generics.
 """
+
 from dataclasses import dataclass, field
 from typing import Self
 

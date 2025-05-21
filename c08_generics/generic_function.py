@@ -1,5 +1,6 @@
 # generic_function.py
 
+
 def identity[T](value: T) -> T:
     return value
 

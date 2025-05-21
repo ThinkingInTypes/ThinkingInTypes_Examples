@@ -2,6 +2,7 @@
 """
 'Invoke' command file.
 """
+
 import re
 import shutil
 import subprocess
@@ -187,9 +188,16 @@ def group_output_by_file(output: str) -> dict[str, list[str]]:
     for line in output.splitlines():
         line_stripped = line.strip()
 
-        if line_stripped.endswith(".py") and Path(line_stripped).is_absolute():
+        if (
+            line_stripped.endswith(".py")
+            and Path(line_stripped).is_absolute()
+        ):
             try:
-                current_file = str(Path(line_stripped).resolve().relative_to(Path.cwd()))
+                current_file = str(
+                    Path(line_stripped)
+                    .resolve()
+                    .relative_to(Path.cwd())
+                )
             except ValueError:
                 current_file = Path(line_stripped).name
             file_groups[current_file] = []
@@ -201,30 +209,45 @@ def group_output_by_file(output: str) -> dict[str, list[str]]:
 
 @task
 def pyright(ctx):
-    console.print("[bold green]" + " Pyright ".center(80, "-") + "[/bold green]")
+    console.print(
+        "[bold green]"
+        + " Pyright ".center(80, "-")
+        + "[/bold green]"
+    )
 
     result = ctx.run(
-        "pyright", env={"PYRIGHT_DISABLE_COLOR": "1"}, warn=True, hide=True
+        "pyright",
+        env={"PYRIGHT_DISABLE_COLOR": "1"},
+        warn=True,
+        hide=True,
     )
 
     cleaned_output = clean_pyright_output(result.stdout)
     grouped = group_output_by_file(cleaned_output)
 
     if not grouped:
-        console.print("[bold green]No output from Pyright.[/bold green]")
+        console.print(
+            "[bold green]No output from Pyright.[/bold green]"
+        )
     else:
         for path, lines in grouped.items():
             panel = Panel.fit(
                 Text("\n".join(lines)),
                 title=path,
-                border_style="cyan"
+                border_style="cyan",
             )
             console.print(panel)
 
     if result.exited != 0:
-        console.print(f"[red]Pyright exited with code {result.exited}[/red]")
+        console.print(
+            f"[red]Pyright exited with code {result.exited}[/red]"
+        )
 
-    console.print("[bold green]" + " End Pyright ".center(80, "-") + "[/bold green]")
+    console.print(
+        "[bold green]"
+        + " End Pyright ".center(80, "-")
+        + "[/bold green]"
+    )
 
 
 @task
