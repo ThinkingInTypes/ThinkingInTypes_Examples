@@ -47,9 +47,7 @@ EXCLUDE_PATHS = {
     "slidev",
 }
 
-markdown_chapters_path = Path(
-    "C:/git/ThinkingInTypes.github.io/Chapters"
-)
+markdown_chapters_path = Path("C:/git/ThinkingInTypes.github.io/Chapters")
 target_path = Path("C:/git/ThinkingInTypes_Examples")
 temp_files = [
     Path("C:/git/ThinkingInTypes_Examples/data.txt"),
@@ -136,12 +134,8 @@ def extract(ctx, force: bool = False) -> None:
         ctx.run(f"repoclean -a {target_path}")
     else:
         print(f"Directory does not exist: {target_path}")
-    print(
-        f"Running: mdextract -d {markdown_chapters_path} {target_path}"
-    )
-    ctx.run(
-        f"mdextract -d {markdown_chapters_path} {target_path}"
-    )
+    print(f"Running: mdextract -d {markdown_chapters_path} {target_path}")
+    ctx.run(f"mdextract -d {markdown_chapters_path} {target_path}")
 
 
 @task
@@ -154,9 +148,7 @@ def inject(ctx, force: bool = False):
         default=True,
         force=force,
     )
-    ctx.run(
-        rf"mdinject -i {markdown_chapters_path} {target_path}"
-    )
+    ctx.run(rf"mdinject -i {markdown_chapters_path} {target_path}")
 
 
 @task
@@ -188,15 +180,10 @@ def group_output_by_file(output: str) -> dict[str, list[str]]:
     for line in output.splitlines():
         line_stripped = line.strip()
 
-        if (
-            line_stripped.endswith(".py")
-            and Path(line_stripped).is_absolute()
-        ):
+        if line_stripped.endswith(".py") and Path(line_stripped).is_absolute():
             try:
                 current_file = str(
-                    Path(line_stripped)
-                    .resolve()
-                    .relative_to(Path.cwd())
+                    Path(line_stripped).resolve().relative_to(Path.cwd())
                 )
             except ValueError:
                 current_file = Path(line_stripped).name
@@ -209,11 +196,7 @@ def group_output_by_file(output: str) -> dict[str, list[str]]:
 
 @task
 def pyright(ctx):
-    console.print(
-        "[bold green]"
-        + " Pyright ".center(80, "-")
-        + "[/bold green]"
-    )
+    console.print("[bold green]" + " Pyright ".center(80, "-") + "[/bold green]")
 
     result = ctx.run(
         "pyright",
@@ -226,9 +209,7 @@ def pyright(ctx):
     grouped = group_output_by_file(cleaned_output)
 
     if not grouped:
-        console.print(
-            "[bold green]No output from Pyright.[/bold green]"
-        )
+        console.print("[bold green]No output from Pyright.[/bold green]")
     else:
         for path, lines in grouped.items():
             panel = Panel.fit(
@@ -239,15 +220,9 @@ def pyright(ctx):
             console.print(panel)
 
     if result.exited != 0:
-        console.print(
-            f"[red]Pyright exited with code {result.exited}[/red]"
-        )
+        console.print(f"[red]Pyright exited with code {result.exited}[/red]")
 
-    console.print(
-        "[bold green]"
-        + " End Pyright ".center(80, "-")
-        + "[/bold green]"
-    )
+    console.print("[bold green]" + " End Pyright ".center(80, "-") + "[/bold green]")
 
 
 @task
@@ -264,9 +239,7 @@ def mypy(ctx) -> None:
     ]
 
     if not files:
-        console.print(
-            "[bold red]No Python files found for mypy linting.[/bold red]"
-        )
+        console.print("[bold red]No Python files found for mypy linting.[/bold red]")
         return
 
     console.print(
@@ -299,10 +272,7 @@ def mypy(ctx) -> None:
     error_count = 0
 
     with ThreadPoolExecutor() as executor:
-        future_to_file = {
-            executor.submit(check_file, path): path
-            for path in files
-        }
+        future_to_file = {executor.submit(check_file, path): path for path in files}
         for future in as_completed(future_to_file):
             path, code, output = future.result()
             if code != 0:
@@ -316,14 +286,10 @@ def mypy(ctx) -> None:
                 )
 
     if error_count:
-        console.print(
-            f"[bold red]❌ mypy failed on {error_count} files[/bold red]"
-        )
+        console.print(f"[bold red]❌ mypy failed on {error_count} files[/bold red]")
         sys.exit(1)
     else:
-        console.print(
-            "[bold green]✅ All files passed mypy[/bold green]"
-        )
+        console.print("[bold green]✅ All files passed mypy[/bold green]")
 
 
 @task
@@ -338,9 +304,17 @@ def a(ctx, force: bool = False) -> None:
     update_example_output(ctx, force=force)
     validate(ctx)
     inject(ctx, force=force)
-    console.print(
-        "[bold green]\n✅ Workflow completed successfully.[/bold green]"
-    )
+    console.print("[bold green]\n✅ Workflow completed successfully.[/bold green]")
+    cleanup()
+
+
+@task
+def run_all(ctx) -> None:
+    """
+    Run all examples in repository
+    """
+    examples(ctx)
+    pyright(ctx)
     cleanup()
 
 
@@ -350,9 +324,10 @@ def extract_and_run(ctx) -> None:
     Extract and run all examples.
     """
     extract(ctx, force=True)
-    examples(ctx)
-    pyright(ctx)
-    cleanup()
+    run_all(ctx)
+    # examples(ctx)
+    # pyright(ctx)
+    # cleanup()
 
 
 @task
@@ -365,9 +340,7 @@ def slideshow(ctx) -> None:
     # 1) Locate PowerShell 7+ or fall back
     pwsh = shutil.which("pwsh") or shutil.which("powershell.exe")
     if not pwsh:
-        print(
-            "❌ Neither pwsh nor powershell.exe were found on PATH."
-        )
+        print("❌ Neither pwsh nor powershell.exe were found on PATH.")
         return
 
     # 2) Compute the absolute path to slidev
@@ -416,9 +389,7 @@ def f(ctx, file: Path, force: bool = False) -> None:
     if not isinstance(file, Path):
         file = Path(file)
     examples(ctx, file=str(file))
-    update_example_output(
-        ctx, force=force
-    )  # Directory needs to be specified here
+    update_example_output(ctx, force=force)  # Directory needs to be specified here
     validate(ctx)
     ruff(ctx)
     inject(ctx, force=force)
@@ -436,6 +407,7 @@ namespace.add_task(docformat)
 namespace.add_task(ruff)
 namespace.add_task(update_example_output)
 namespace.add_task(sembr)
+namespace.add_task(run_all)
 namespace.add_task(extract_and_run)
 namespace.add_task(pyright)
 namespace.add_task(mypy)

@@ -1,8 +1,6 @@
 # container.py
-from typing import Protocol, TypeVar
-
-T = TypeVar("T", covariant=True)
+from typing import Protocol
 
 
-class Container(Protocol[T]):
+class Container[T](Protocol):
     def get_item(self) -> T: ...

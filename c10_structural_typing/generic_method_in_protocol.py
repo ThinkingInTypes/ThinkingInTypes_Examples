@@ -1,8 +1,6 @@
 # generic_method_in_protocol.py
-from typing import Protocol, TypeVar
-
-T = TypeVar("T")
+from typing import Protocol
 
 
 class Container(Protocol):
-    def get_item(self, type_: type[T]) -> T: ...
+    def get_item[T](self, type_: type[T]) -> T: ...

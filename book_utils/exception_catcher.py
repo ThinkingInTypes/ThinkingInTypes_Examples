@@ -11,18 +11,15 @@ If the function takes arguments, it must be wrapped in a lambda to delay evaluat
 from __future__ import annotations
 
 import traceback as _traceback
-from typing import Any, Callable, TypeVar
-
-R = TypeVar("R")
+from typing import Any, Callable
 
 _NO_REPORT = ["# type: ignore", "# noqa"]
 
 
 class Catch:
     """
-    Catch and print expected errors, but allow programming errors to propagate.
-    Programming errors include SyntaxError, NameError, TypeError, and AttributeError.
-    Lines annotated with any marker in _NO_REPORT are never reported.
+    Catch and print expected errors, but allow _fatal_exceptions to propagate.
+    Lines annotated with any marker in _NO_REPORT are not reported.
     """
 
     _fatal_exceptions = (SyntaxError, NameError, TypeError, AttributeError)
@@ -43,7 +40,7 @@ class Catch:
         print(f"Error: {exc_value}")
         return True
 
-    def __call__(self, func: Callable[[], R]) -> R | None:
+    def __call__[R](self, func: Callable[[], R]) -> R | None:
         try:
             result = func()
             if result is not None:

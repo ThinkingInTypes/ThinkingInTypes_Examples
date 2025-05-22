@@ -1,13 +1,12 @@
 # generic_function.py
-from typing import TypeVar
-from container import Container, T
+from container import Container
 from container_types import StringContainer, IntContainer
 
 
-def print_item_and_return(container: Container[T]) -> T:
+def print_item_and_return[T](container: Container[T]) -> T:
     item = container.get_item()
     print(f"{item = }, {type(item) = }")
-    return item  # Type inferred as C
+    return item
 
 
 # Use generic function with different container types:

@@ -1,19 +1,14 @@
 # result.py
 # Generic Result with Success & Failure subtypes
-
 from dataclasses import dataclass
-from typing import Generic, TypeVar
-
-ANSWER = TypeVar("ANSWER")
-ERROR = TypeVar("ERROR")
 
 
-class Result(Generic[ANSWER, ERROR]):
+class Result[ANSWER, ERROR]:
     pass
 
 
 @dataclass(frozen=True)
-class Success(Result[ANSWER, ERROR]):
+class Success[ANSWER, ERROR](Result[ANSWER, ERROR]):
     answer: ANSWER  # Usage: return Success(answer)
 
     def unwrap(self) -> ANSWER:
@@ -21,5 +16,5 @@ class Success(Result[ANSWER, ERROR]):
 
 
 @dataclass(frozen=True)
-class Failure(Result[ANSWER, ERROR]):
+class Failure[ANSWER, ERROR](Result[ANSWER, ERROR]):
     error: ERROR  # Usage: return Failure(error)
