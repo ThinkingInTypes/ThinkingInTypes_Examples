@@ -1,7 +1,7 @@
 # multiple_arguments.py
 from pprint import pprint
 
-from composing_functions import func_a, func_b, func_c
+from composing_functions import fa, fb, fc
 from returns.result import Result
 
 
@@ -15,16 +15,16 @@ def composed(
     # fmt: off
     return Result.do(
         add(first, second, third)
-        for first in func_a(i)
-        for second in func_b(j)
-        for third in func_c(i + j)
+        for first in fa(i)
+        for second in fb(j)
+        for third in fc(i + j)
     )
 
 
 inputs = [(1, 5), (7, 2), (2, 1), (7, 5)]
 pprint([(args, composed(*args)) for args in inputs])
-## [((1, 5), <Failure: func_a(1)>),
-##  ((7, 2), <Failure: func_b(2)>),
-##  ((2, 1), <Failure: func_c(3): division by
+## [((1, 5), <Failure: fa(1)>),
+##  ((7, 2), <Failure: fb(2)>),
+##  ((2, 1), <Failure: fc(3): division by
 ## zero>),
 ##  ((7, 5), <Success: add(7 + 5 + 0): 12>)]

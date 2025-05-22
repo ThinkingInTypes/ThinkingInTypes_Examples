@@ -3,13 +3,13 @@
 from book_utils import Catch
 
 
-def func_a(i: int) -> int:
+def fa(i: int) -> int:
     if i == 1:
-        raise ValueError(f"func_a({i})")
+        raise ValueError(f"fa({i})")
     return i
 
 
 with Catch():
-    result = [func_a(i) for i in range(3)]
+    result = [fa(i) for i in range(3)]
     print(result)
-## Error: func_a(1)
+## Error: fa(1)

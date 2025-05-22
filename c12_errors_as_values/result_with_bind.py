@@ -1,16 +1,13 @@
 # result_with_bind.py
 from __future__ import annotations
+
 from dataclasses import dataclass
-from typing import Callable, Generic, TypeVar
-
-ANSWER = TypeVar("ANSWER")
-ERROR = TypeVar("ERROR")
+from typing import Callable
 
 
-@dataclass(frozen=True)
-class Result(Generic[ANSWER, ERROR]):
+class Result[ANSWER, ERROR]:
     def bind(
-            self, func: Callable[[ANSWER], "Result"]
+            self, func: Callable[[ANSWER], Result]
     ) -> Result[ANSWER, ERROR]:
         if isinstance(self, Success):
             return func(self.unwrap())
@@ -18,7 +15,7 @@ class Result(Generic[ANSWER, ERROR]):
 
 
 @dataclass(frozen=True)
-class Success(Result[ANSWER, ERROR]):
+class Success[ANSWER, ERROR]:
     answer: ANSWER
 
     def unwrap(self) -> ANSWER:
@@ -26,5 +23,5 @@ class Success(Result[ANSWER, ERROR]):
 
 
 @dataclass(frozen=True)
-class Failure(Result[ANSWER, ERROR]):
+class Failure[ANSWER, ERROR]:
     error: ERROR

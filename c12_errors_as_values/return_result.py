@@ -4,7 +4,7 @@
 from returns.result import Failure, Result, Success
 
 
-def func_a(i: int) -> Result[int, str]:
+def fa(i: int) -> Result[int, str]:
     if i == 1:
-        return Failure(f"func_a({i})")
+        return Failure(f"fa({i})")
     return Success(i)
