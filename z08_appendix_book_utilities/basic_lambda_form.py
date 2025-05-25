@@ -1,4 +1,4 @@
-# simple_lambda_form.py
+# basic_lambda_form.py
 from book_utils import Catch
 
 with Catch() as catch:

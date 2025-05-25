@@ -1,4 +1,4 @@
-# example_1.py
+# literal_patterns.py
 status = 404
 match status:
     case 200:

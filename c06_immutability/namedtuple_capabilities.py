@@ -12,7 +12,7 @@ print(f"{p1 = }, {type(p1) = }")
 ## '__main__.Point1'>
 
 
-# 2. A simple immutable type:
+# 2. A basic immutable type:
 class Point2(NamedTuple):
     x: int
     y: int
