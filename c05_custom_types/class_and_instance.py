@@ -1,6 +1,5 @@
 # class_and_instance.py
 
-
 def show_dicts(obj: object, obj_name: str):
     cls = obj.__class__
     cls_name = cls.__name__
