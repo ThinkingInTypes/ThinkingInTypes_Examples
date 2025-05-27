@@ -1,4 +1,4 @@
-# custom_init.py
+# point.py
 from dataclasses import dataclass
 
 
@@ -11,7 +11,3 @@ class Point:
         x_str, y_str = coord.split(",")
         self.x = float(x_str.strip())
         self.y = float(y_str.strip())
-
-
-print(Point(" 10.5 , 20.3 "))
-## Point(x=10.5, y=20.3)

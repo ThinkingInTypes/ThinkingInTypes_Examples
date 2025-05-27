@@ -1,4 +1,4 @@
-# dataclass_attribute.py
+# dataclass_with_init.py
 from dataclasses import dataclass
 
 
@@ -6,6 +6,9 @@ from dataclasses import dataclass
 class D:
     x: int = 1
     y: int = 2
+
+    def __init__(self):
+        pass
 
 
 d = D()
