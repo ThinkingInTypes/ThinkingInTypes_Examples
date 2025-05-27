@@ -18,7 +18,7 @@ print(f"c2.options={c2.options}")  # []
 ## c2.options=[]
 
 # NamedTuple cannot use default_factory; defaults share same object
-# This is forced to use a single default list if provided, and no factory.
+# This must use a single default list if provided, and no factory.
 PointNT = NamedTuple("PointNT", [("tags", list[str])])
 
 
