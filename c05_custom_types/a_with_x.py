@@ -7,4 +7,4 @@ class A:
 
 a = A()
 print(f"{a.x = }, {a.y = }")
-## a.x = 1
+## a.x = 1, a.y = 2

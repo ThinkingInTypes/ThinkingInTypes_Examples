@@ -10,8 +10,7 @@ def fa(i: int) -> int | str:  # Sum type
 
 
 print(outputs := [(i, fa(i)) for i in range(5)])
-## [(0, 0), (1, 'fa(1)'), (2, 2), (3, 3), (4,
-## 4)]
+## [(0, 0), (1, 'fa(1)'), (2, 2), (3, 3), (4, 4)]
 
 for i, r in outputs:
     match r:

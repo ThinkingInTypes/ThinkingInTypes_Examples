@@ -24,8 +24,6 @@ class Color(Enum):
 print(Color.RED)
 ## Color.RED
 print(Color.RED.name, Color.RED.value)
-
-
 ## RED 1
 
 
@@ -37,8 +35,6 @@ class Status(Enum):
 
 
 print(list(Status))
-
-
 ## [<Status.PENDING: 1>, <Status.RUNNING: 2>,
 ## <Status.DONE: 3>]
 
@@ -73,8 +69,6 @@ print(Color.RED == Color.GREEN)
 print(Color["BLUE"])
 ## Color.BLUE
 print(Color(2))  # GREEN
-
-
 ## Color.GREEN
 
 
@@ -97,8 +91,6 @@ class Fruit(StrEnum):
 print(Fruit.APPLE.upper())
 ## APPLE
 print(f"JSON-ready: {Fruit.BANANA!r}")
-
-
 ## JSON-ready: <Fruit.BANANA: 'banana'>
 
 
@@ -115,8 +107,6 @@ class Shape(Enum):
 
 
 print(f"Shape.CIRCLE has {Shape.CIRCLE.sides()} sides")
-
-
 ## Shape.CIRCLE has 0 sides
 
 
@@ -132,8 +122,6 @@ print(
 )  # Only one member per value
 ## Members: [<Mood.HAPPY: 1>, <Mood.SAD: 2>]
 print(f"Alias: {Mood.JOYFUL is Mood.HAPPY}")
-
-
 ## Alias: True
 
 
@@ -148,8 +136,6 @@ user_perm = Permission.READ | Permission.WRITE  # type: ignore
 print(f"User permissions: {user_perm}")
 ## User permissions: Permission.READ|WRITE
 print(f"Can execute? {Permission.EXECUTE in user_perm}")
-
-
 ## Can execute? False
 
 

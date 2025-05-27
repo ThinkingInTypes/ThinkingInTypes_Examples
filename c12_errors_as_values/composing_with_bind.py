@@ -6,7 +6,7 @@ from composing_functions import fa, fb, fc, fd
 
 
 def composed(
-        i: int,
+    i: int,
 ) -> Result[str, str | ZeroDivisionError | ValueError]:
     # fmt: off
     return (

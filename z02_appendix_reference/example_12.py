@@ -3,9 +3,11 @@ from typing import Callable
 
 
 def make_logged[**P](
-        func: Callable[P, int],
+    func: Callable[P, int],
 ) -> Callable[..., int]:
-    def wrapper(prefix: str, *args: P.args, **kwargs: P.kwargs) -> int:
+    def wrapper(
+        prefix: str, *args: P.args, **kwargs: P.kwargs
+    ) -> int:
         print(f"{prefix} Calling: {func.__name__}")
         result = func(*args, **kwargs)
         print(f"{prefix} Result: {result}")
@@ -20,3 +22,5 @@ def add(x: int, y: int) -> int:
 
 
 add("[LOG]", 3, 4)
+## [LOG] Calling: add
+## [LOG] Result: 7

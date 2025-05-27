@@ -1,5 +1,6 @@
 # display_attributes.py
 
+
 def display_attributes(obj: any) -> None:
     """
     Display class variables and instance variables of the given object.
@@ -9,8 +10,9 @@ def display_attributes(obj: any) -> None:
     """
     cls = obj.__class__
     cls_vars = {
-        k: v for k, v in cls.__dict__.items()
-        if not k.startswith('__') and k not in obj.__dict__
+        k: v
+        for k, v in cls.__dict__.items()
+        if not k.startswith("__") and k not in obj.__dict__
     }
     print(f"{'Class Variables':=^25}")
     for k, v in cls_vars.items():
@@ -22,9 +24,9 @@ def display_attributes(obj: any) -> None:
 
 
 if __name__ == "__main__":
+
     class A:
         x: int = 100
-
 
     a = A()
     display_attributes(a)

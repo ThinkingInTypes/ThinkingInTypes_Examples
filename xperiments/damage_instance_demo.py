@@ -10,8 +10,12 @@ class Starship:
 
 def main() -> None:
     print("Accessing via class:")
-    print(f"Starship.stats: {Starship.stats}")       # This works: ClassVar
-    print(f"Starship.damage: {Starship.damage}")     # This works at runtime (but not a ClassVar)
+    print(
+        f"Starship.stats: {Starship.stats}"
+    )  # This works: ClassVar
+    print(
+        f"Starship.damage: {Starship.damage}"
+    )  # This works at runtime (but not a ClassVar)
 
     s1 = Starship()
     s2 = Starship()
@@ -31,11 +35,17 @@ def main() -> None:
     print("\nChecking instance __dict__:")
     print(f"s1.__dict__: {s1.__dict__}")
     print(f"s2.__dict__: {s2.__dict__}")
-    print(f"Starship.__dict__['damage']: {Starship.__dict__['damage']}")
+    print(
+        f"Starship.__dict__['damage']: {Starship.__dict__['damage']}"
+    )
 
     print("\nConclusion:")
-    print("- 'damage' exists in Starship.__dict__ because it was defined at the class level.")
-    print("- But it's not a ClassVar, so when accessed via an instance, it's copied into instance.__dict__.")
+    print(
+        "- 'damage' exists in Starship.__dict__ because it was defined at the class level."
+    )
+    print(
+        "- But it's not a ClassVar, so when accessed via an instance, it's copied into instance.__dict__."
+    )
     print("- Each instance has its own copy of 'damage'.")
 
 

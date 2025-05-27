@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class FibonacciRatio:
     sequence_length: int
@@ -10,7 +11,9 @@ class FibonacciRatio:
             fib.append(fib[-1] + fib[-2])
         return fib
 
-    def calculate_relative_growth(self, fib: list[int]) -> list[float]:
+    def calculate_relative_growth(
+        self, fib: list[int]
+    ) -> list[float]:
         growth_rates = []
         for prev, current in zip(fib[:-1], fib[1:]):
             growth_rates.append(current / prev)
@@ -18,11 +21,17 @@ class FibonacciRatio:
 
     def show_stabilization(self):
         fib_sequence = self.generate_fibonacci()
-        growth_rates = self.calculate_relative_growth(fib_sequence)
+        growth_rates = self.calculate_relative_growth(
+            fib_sequence
+        )
 
-        print(f"{'Step':>4} | {'Fib Number':>10} | {'Rel. Growth':>12}")
+        print(
+            f"{'Step':>4} | {'Fib Number':>10} | {'Rel. Growth':>12}"
+        )
         print("-" * 33)
-        for i, (num, rate) in enumerate(zip(fib_sequence[1:], growth_rates), start=1):
+        for i, (num, rate) in enumerate(
+            zip(fib_sequence[1:], growth_rates), start=1
+        ):
             print(f"{i:4d} | {num:10d} | {rate:12.8f}")
 
 
