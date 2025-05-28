@@ -5,5 +5,4 @@ try:
     quacks(42)
 except AttributeError as e:
     print(f"Oops: {e = }")
-## Oops: e = AttributeError("'int' object has no
-## attribute 'quack'")
+## Oops: e = AttributeError("'int' object has no attribute 'quack'")

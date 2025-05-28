@@ -11,5 +11,4 @@ class Product:
 
 product = Product("Laptop", 999.99)
 print(product)
-## Product(name='Laptop', price=999.99,
-## in_stock=True)
+## Product(name='Laptop', price=999.99, in_stock=True)

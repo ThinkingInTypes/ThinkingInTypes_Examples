@@ -1,6 +1,7 @@
 # dataclass_with_init.py
 from dataclasses import dataclass
 from class_and_instance import show_dicts
+from class_methods import show_methods
 
 
 @dataclass
@@ -12,6 +13,13 @@ class DI:
         pass
 
 
+show_methods(DI)
+## class DI:
+##   __init__(self)
+##   __annotate_func__(format, /)
+##   __replace__(self, /, **changes)
+##   __repr__(self)
+##   __eq__(self, other)
 di = DI()
 show_dicts(di, "di")
 ## DI.__dict__ (class attributes):
@@ -25,7 +33,7 @@ show_dicts(di, "di")
 di.x = 99
 show_dicts(di, "di")
 ## DI.__dict__ (class attributes):
-##   x: 1  # overridden by instance
+##   x: 1  # Hidden by instance attribute
 ##   y: 2
 ## di.__dict__ (instance attributes):
 ##   x: 99
@@ -35,8 +43,8 @@ show_dicts(di, "di")
 di.y = 111
 show_dicts(di, "di")
 ## DI.__dict__ (class attributes):
-##   x: 1  # overridden by instance
-##   y: 2  # overridden by instance
+##   x: 1  # Hidden by instance attribute
+##   y: 2  # Hidden by instance attribute
 ## di.__dict__ (instance attributes):
 ##   x: 99
 ##   y: 111

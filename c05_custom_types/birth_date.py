@@ -94,6 +94,5 @@ for date in [
 ## (11, 31, 2022)
 ## Error: Month.NOVEMBER Day(n=31)
 ## (12, 31, 2022)
-## BirthDate(m=DECEMBER, d=Day(n=31),
-## y=Year(n=2022))
+## BirthDate(m=DECEMBER, d=Day(n=31), y=Year(n=2022))
 ## ------------------------------

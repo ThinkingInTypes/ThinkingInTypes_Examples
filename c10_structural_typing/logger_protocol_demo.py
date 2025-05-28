@@ -17,5 +17,4 @@ with FileLogger() as file_logger:
 test_logger = ListLogger()
 run_process("DataCleanup", test_logger)
 print("Captured logs:", test_logger.messages)
-## Captured logs: ['Starting DataCleanup',
-## 'Finished DataCleanup']
+## Captured logs: ['Starting DataCleanup', 'Finished DataCleanup']

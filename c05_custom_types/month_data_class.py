@@ -99,27 +99,22 @@ for date in [
         )
         print("-" * 30)
 ## (7, 8, 1957)
-## BirthDate(m=Month(name='July', n=7,
-## max_days=31), d=Day(n=8), y=Year(n=1957))
+## BirthDate(m=Month(name='July', n=7, max_days=31), d=Day(n=8),
+## y=Year(n=1957))
 ## ------------------------------
 ## (0, 32, 1857)
 ## Error: Month(0)
 ## (2, 31, 2022)
-## Error: Month(name='February', n=2, max_days=28)
-## Day(n=31)
+## Error: Month(name='February', n=2, max_days=28) Day(n=31)
 ## (9, 31, 2022)
-## Error: Month(name='September', n=9,
-## max_days=30) Day(n=31)
+## Error: Month(name='September', n=9, max_days=30) Day(n=31)
 ## (4, 31, 2022)
-## Error: Month(name='April', n=4, max_days=30)
-## Day(n=31)
+## Error: Month(name='April', n=4, max_days=30) Day(n=31)
 ## (6, 31, 2022)
-## Error: Month(name='June', n=6, max_days=30)
-## Day(n=31)
+## Error: Month(name='June', n=6, max_days=30) Day(n=31)
 ## (11, 31, 2022)
-## Error: Month(name='November', n=11,
-## max_days=30) Day(n=31)
+## Error: Month(name='November', n=11, max_days=30) Day(n=31)
 ## (12, 31, 2022)
-## BirthDate(m=Month(name='December', n=12,
-## max_days=31), d=Day(n=31), y=Year(n=2022))
+## BirthDate(m=Month(name='December', n=12, max_days=31),
+## d=Day(n=31), y=Year(n=2022))
 ## ------------------------------

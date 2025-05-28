@@ -21,12 +21,14 @@ from pybooktools.invoke_tasks import (
     rewrite_with_semantic_breaks,
     validate,
 )
+from pybooktools.util import config
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Confirm
 from rich.text import Text
 
-WIDTH = 65  # Width for code listings and comments
+# Width for code listings and comments
+WIDTH = config.LINE_LENGTH
 # 65 works for slidev with zoom: 2.0
 
 console = Console()

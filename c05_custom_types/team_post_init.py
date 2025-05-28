@@ -15,5 +15,4 @@ class Team:
 
 
 print(Team("alice", ["bob", "carol", "ted"]))
-## Team(leader='Alice', members=['Alice', 'bob',
-## 'carol', 'ted'])
+## Team(leader='Alice', members=['Alice', 'bob', 'carol', 'ted'])

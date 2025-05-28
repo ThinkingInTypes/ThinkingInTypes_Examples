@@ -22,7 +22,7 @@ show_dicts(d, "d")
 d.x = 99
 show_dicts(d, "d")
 ## D.__dict__ (class attributes):
-##   x: 1  # overridden by instance
+##   x: 1  # Hidden by instance attribute
 ##   y: 2
 ## d.__dict__ (instance attributes):
 ##   x: 99
@@ -32,8 +32,8 @@ show_dicts(d, "d")
 d.y = 111
 show_dicts(d, "d")
 ## D.__dict__ (class attributes):
-##   x: 1  # overridden by instance
-##   y: 2  # overridden by instance
+##   x: 1  # Hidden by instance attribute
+##   y: 2  # Hidden by instance attribute
 ## d.__dict__ (instance attributes):
 ##   x: 99
 ##   y: 111

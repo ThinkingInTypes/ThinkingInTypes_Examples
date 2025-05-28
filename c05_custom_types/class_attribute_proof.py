@@ -1,4 +1,4 @@
-# proof_of_class_attribute.py
+# class_attribute_proof.py
 from class_and_instance import show_dicts
 
 
@@ -20,7 +20,7 @@ show_dicts(a, "a")
 a.x = 99
 show_dicts(a, "a")
 ## A.__dict__ (class attributes):
-##   x: 1  # overridden by instance
+##   x: 1  # Hidden by instance attribute
 ##   y: 2
 ## a.__dict__ (instance attributes):
 ##   x: 99
@@ -30,8 +30,8 @@ show_dicts(a, "a")
 a.y = 111
 show_dicts(a, "a")
 ## A.__dict__ (class attributes):
-##   x: 1  # overridden by instance
-##   y: 2  # overridden by instance
+##   x: 1  # Hidden by instance attribute
+##   y: 2  # Hidden by instance attribute
 ## a.__dict__ (instance attributes):
 ##   x: 99
 ##   y: 111

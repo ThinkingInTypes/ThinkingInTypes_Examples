@@ -21,8 +21,7 @@ def add(a: int, b: int) -> int:
 
 
 print(greet("Alice", 30))
-## Calling greet with args=('Alice', 30),
-## kwargs={}
+## Calling greet with args=('Alice', 30), kwargs={}
 ## Hi Alice, age 30
 print(add(2, 3))
 ## Calling add with args=(2, 3), kwargs={}

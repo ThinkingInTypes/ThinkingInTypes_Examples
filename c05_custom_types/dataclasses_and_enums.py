@@ -16,5 +16,4 @@ class User:
 
 
 print(User(id=1, name="Alice", status=Status.ACTIVE))
-## User(id=1, name='Alice', status=<Status.ACTIVE:
-## 'active'>)
+## User(id=1, name='Alice', status=<Status.ACTIVE: 'active'>)

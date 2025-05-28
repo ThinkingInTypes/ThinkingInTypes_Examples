@@ -3,10 +3,10 @@ from typing import Callable
 
 
 def make_logged[**P](
-        func: Callable[P, int],
+    func: Callable[P, int],
 ) -> Callable[..., int]:
     def wrapper(
-            prefix: str, *args: P.args, **kwargs: P.kwargs
+        prefix: str, *args: P.args, **kwargs: P.kwargs
     ) -> int:
         print(f"{prefix} Calling: {func.__name__}")
         result = func(*args, **kwargs)
