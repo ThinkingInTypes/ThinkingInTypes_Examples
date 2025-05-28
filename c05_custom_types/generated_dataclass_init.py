@@ -10,7 +10,9 @@ class Point:
     @classmethod
     def show_generated_init(cls) -> None:
         params = [
-            f"{f.name}: {getattr(f.type, '__name__', repr(f.type))} = {repr(f.default)}"
+            f"{f.name}: "
+            f"{getattr(f.type, '__name__', repr(f.type))} = "
+            f"{repr(f.default)}"
             for f in fields(cls)
         ]
         print(f"def __init__(self, {', '.join(params)}):")

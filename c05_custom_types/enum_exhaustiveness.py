@@ -19,6 +19,8 @@ def paint1(color: Color) -> str:
 
 
 print(paint1(Color.BLUE))
+
+
 ## Something else
 
 

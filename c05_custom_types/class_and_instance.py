@@ -1,5 +1,6 @@
 # class_and_instance.py
 
+
 def show_dicts(obj: object, obj_name: str):
     cls = obj.__class__
     cls_name = cls.__name__
@@ -16,7 +17,7 @@ def show_dicts(obj: object, obj_name: str):
         value = cls_dict[attr]
         note = ""
         if attr in obj_dict and obj_dict[attr] != value:
-            note = "  # overridden by instance"
+            note = "  # Hidden by instance attribute"
         print(f"  {attr}: {value}{note}")
 
     print(f"{obj_name}.__dict__ (instance attributes):")
