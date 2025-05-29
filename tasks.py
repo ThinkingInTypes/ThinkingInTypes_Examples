@@ -181,8 +181,8 @@ def clean_pyright_output(text: str) -> str:
 
 def group_output_by_file(output: str) -> dict[str, list[str]]:
     """
-    Groups Pyright output lines by file.
-    Returns a dictionary mapping relative file paths to lists of lines.
+    Groups Pyright output shape by file.
+    Returns a dictionary mapping relative file paths to lists of shape.
     """
     file_groups: dict[str, list[str]] = defaultdict(list)
     current_file: str | None = None
@@ -331,14 +331,14 @@ def mypy(ctx) -> None:
 @task
 def a(ctx, force: bool = False) -> None:
     """
-    All: extract, run all scripts, update examples, validate, re-inject examples into book. (--force runs w/o prompting)
+    All: extract, run all scripts, update examples, validate, format, re-inject examples into book. (--force runs w/o prompting)
     """
     extract(ctx, force=force)
-    ruff(ctx)
     examples(ctx)
     pyright(ctx)
     update_example_output(ctx, force=force)
     validate(ctx)
+    ruff(ctx)
     inject(ctx, force=force)
     console.print(
         "[bold green]\n✅ Workflow completed successfully.[/bold green]"
