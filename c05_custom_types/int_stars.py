@@ -26,7 +26,7 @@ stars2 = 11
 with Catch():
     print(f1(stars2))
 ## Error: f1: 11
-stars1 = 99
+stars3 = 99
 with Catch():
-    print(f2(stars1))
+    print(f2(stars3))
 ## Error: f2: 99

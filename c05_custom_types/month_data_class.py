@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from book_utils import Catch
 
 
-@dataclass(frozen=True)
+@dataclass
 class Day:
     n: int
 
@@ -12,7 +12,7 @@ class Day:
         assert 1 <= self.n <= 31, f"Day({self.n})"
 
 
-@dataclass(frozen=True)
+@dataclass
 class Year:
     n: int
 
@@ -20,7 +20,7 @@ class Year:
         assert 1900 < self.n <= 2022, f"Year({self.n})"
 
 
-@dataclass(frozen=True)
+@dataclass
 class Month:
     name: str
     n: int
@@ -56,7 +56,7 @@ class Month:
         ]
 
 
-@dataclass(frozen=True)
+@dataclass
 class Months:
     months: list[Month] = field(
         default_factory=Month.make_months
@@ -67,7 +67,7 @@ class Months:
         return self.months[month_number - 1]
 
 
-@dataclass(frozen=True)
+@dataclass
 class BirthDate:
     m: Month
     d: Day

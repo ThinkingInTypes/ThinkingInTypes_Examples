@@ -6,13 +6,13 @@ type Number = int | float | str
 Measurements = NewType("Measurements", list[Number])
 
 
-def process_measurements(data: Measurements) -> None:
-    print(get_type_hints(process_measurements))
+def process(data: Measurements) -> None:
+    print(get_type_hints(process))
     for n in data:
         print(f"{n = }, {type(n) = }")
 
 
-process_measurements(Measurements([11, 3.14, "1.618"]))
+process(Measurements([11, 3.14, "1.618"]))
 ## {'data': __main__.Measurements, 'return': <class 'NoneType'>}
 ## n = 11, type(n) = <class 'int'>
 ## n = 3.14, type(n) = <class 'float'>

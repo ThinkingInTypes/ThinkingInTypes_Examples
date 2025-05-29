@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from book_utils import Catch
 
 
-@dataclass(frozen=True)
+@dataclass
 class Order:
     order_id: int
     items: list[str] = field(default_factory=list)

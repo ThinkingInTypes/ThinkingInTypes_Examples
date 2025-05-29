@@ -16,7 +16,7 @@ print(m)
 print(m.name, m.number, m.depth)
 ## foo 12 3.14
 mm = Messenger("xx", 1)  # Uses default argument
-print(mm == Messenger("xx", 1))  # Generates __eq__()
+print(mm == Messenger("xx", 1))  # Generated __eq__()
 ## True
 print(mm == Messenger("xx", 2))
 ## False

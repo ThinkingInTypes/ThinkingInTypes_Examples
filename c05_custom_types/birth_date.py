@@ -6,7 +6,7 @@ from enum import Enum
 from book_utils import Catch
 
 
-@dataclass(frozen=True)
+@dataclass
 class Day:
     n: int
 
@@ -14,7 +14,7 @@ class Day:
         assert 1 <= self.n <= 31, f"{self}"
 
 
-@dataclass(frozen=True)
+@dataclass
 class Year:
     n: int
 
@@ -48,7 +48,7 @@ class Month(Enum):
         return self.name
 
 
-@dataclass(frozen=True)
+@dataclass
 class BirthDate:
     m: Month
     d: Day

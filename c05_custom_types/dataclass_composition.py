@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass
 class FullName:
     name: str
 
@@ -13,7 +13,7 @@ class FullName:
         )
 
 
-@dataclass(frozen=True)
+@dataclass
 class BirthDate:
     dob: str
 
@@ -21,7 +21,7 @@ class BirthDate:
         print(f"BirthDate checking {self.dob}")
 
 
-@dataclass(frozen=True)
+@dataclass
 class EmailAddress:
     address: str
 
@@ -29,7 +29,7 @@ class EmailAddress:
         print(f"EmailAddress checking {self.address}")
 
 
-@dataclass(frozen=True)
+@dataclass
 class Person:
     name: FullName
     date_of_birth: BirthDate

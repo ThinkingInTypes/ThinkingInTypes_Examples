@@ -1,8 +1,5 @@
 # dataclass_initvar.py
-# pyright: reportAttributeAccessIssue=false
-# mypy: disable-error-code="attr-defined"
 from dataclasses import dataclass, InitVar
-from book_utils import Catch
 
 
 @dataclass
@@ -17,8 +14,6 @@ class Book:
             self.shelf_id = None
 
 
-print(b := Book("Emma", "Jane Austen", "Good", 11))
-## Book(title='Emma', author='Jane Austen', shelf_id=11)
-# "condition" doesn't exist outside __init__ or __post_init__:
-with Catch():
-    print(b.condition)  # noqa
+b = Book("Emma", "Austen", "Good", 11)
+print(b.__dict__)
+## {'title': 'Emma', 'author': 'Austen', 'shelf_id': 11}

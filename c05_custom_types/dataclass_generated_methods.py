@@ -15,7 +15,7 @@ class OrderedPoint:
     y: int = 2
 
 
-@dataclass(frozen=True)
+@dataclass
 class FrozenPoint:
     x: int = 1
     y: int = 2
@@ -43,9 +43,6 @@ show_methods(FrozenPoint)
 ## class FrozenPoint:
 ##   __annotate_func__(format, /)
 ##   __replace__(self, /, **changes)
-##   __hash__(self)
 ##   __init__(self, x: int = 1, y: int = 2) -> None
 ##   __repr__(self)
 ##   __eq__(self, other)
-##   __setattr__(self, name, value)
-##   __delattr__(self, name)
