@@ -1,5 +1,5 @@
 # contravariance.py
-from animals import Animal, Dog
+from c09_generics.animals import Animal, Dog
 
 
 class Sink[T]:

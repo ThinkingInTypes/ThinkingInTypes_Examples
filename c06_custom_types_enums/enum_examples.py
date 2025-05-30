@@ -78,7 +78,7 @@ class Direction(Enum):
     SOUTH = 2
     EAST = 3
     WEST = 4
-    # UP = 1  # Uncommenting this would raise ValueError for duplicate
+    # UP = 1  # Uncommenting this raises ValueError
 
 
 # 7. Subclassing str or int for JSON-friendliness

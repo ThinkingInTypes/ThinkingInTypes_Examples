@@ -16,6 +16,7 @@ class UserProfile:
     username: str
     # Built-in factory: each instance gets a new empty list
     strlist: List[str] = field(default_factory=list)
+    # Custom default factories:
     n1: int = field(default_factory=next_ten)
     data: Dict[str, str] = field(
         default_factory=lambda: {"A": "B"}
