@@ -1,6 +1,7 @@
 # type_safe_date.py
 from dataclasses import dataclass
 from enum import Enum
+from typing import Self
 
 
 @dataclass(frozen=True)
@@ -43,7 +44,7 @@ class Month(Enum):  # Enum[MonthValue]
         return self.name
 
     @classmethod
-    def number(cls, month_number: int) -> Month:
+    def number(cls, month_number: int) -> Self:
         for m in cls:
             if m.value.number == month_number:
                 return m
@@ -51,15 +52,37 @@ class Month(Enum):  # Enum[MonthValue]
 
 
 @dataclass(frozen=True)
-class Date:
-    year: int
-    month: Month
-    day: int
+class Year:
+    value: int
 
     def __post_init__(self) -> None:
-        if self.year <= 0:
-            raise ValueError(f"Invalid year: {self.year}")
-        self.month.value.valid_day(self.day)
+        if self.value <= 0:
+            raise ValueError(f"Invalid year: {self.value}")
+
+
+@dataclass(frozen=True)
+class Day:
+    value: int
+
+    def __post_init__(self) -> None:
+        if self.value <= 0:
+            raise ValueError(f"Invalid day: {self.value}")
+
+    @classmethod
+    def of(cls, month: Month, day: int) -> Self:
+        month.value.valid_day(day)
+        return cls(day)
+
+
+@dataclass(frozen=True)
+class Date:
+    year: Year
+    month: Month
+    day: Day
+
+    def __post_init__(self) -> None:
+        # Validate day against month:
+        object.__setattr__(self, 'day', Day.of(self.month, self.day.value))
 
     def __str__(self) -> str:
-        return f"{self.year}-{self.month.value.number:02}-{self.day:02}"
+        return f"{self.year.value}-{self.month.value.number:02}-{self.day.value:02}"
