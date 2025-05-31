@@ -2,20 +2,28 @@
 from dataclasses import dataclass
 from enum import Enum
 
+
 @dataclass(frozen=True)
 class MonthValue:
     number: int
-    days: int    # Number of days in the month
+    days: int  # Number of days in the month
 
     def __post_init__(self) -> None:
         if not 1 <= self.number <= 12:
-            raise ValueError(f"Invalid month number: {self.number}")
+            raise ValueError(
+                f"Invalid month number: {self.number}"
+            )
         if not 1 <= self.days <= 31:
-            raise ValueError(f"Invalid days in month: {self.days}")
+            raise ValueError(
+                f"Invalid days in month: {self.days}"
+            )
 
     def valid_day(self, day: int) -> None:
         if not 1 <= day <= self.days:
-            raise ValueError(f"Invalid day {day} for month {self.number}")
+            raise ValueError(
+                f"Invalid day {day} for month {self.number}"
+            )
+
 
 class Month(Enum):  # Enum[MonthValue]
     JANUARY = MonthValue(1, 31)
@@ -40,6 +48,7 @@ class Month(Enum):  # Enum[MonthValue]
             if m.value.number == month_number:
                 return m
         raise ValueError(f"No such month: {month_number}")
+
 
 @dataclass(frozen=True)
 class Date:
