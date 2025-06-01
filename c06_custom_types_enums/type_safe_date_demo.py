@@ -2,19 +2,17 @@
 from book_utils import Catch
 from type_safe_date import Month, Day, Year, Date
 
-print(
-    Date(Year(2025), Month.FEBRUARY, Day(28))
-)
+print(Date(Year(2025), Month.FEBRUARY, Day(28)))
+## 2025-02-28
 
 # Look up by month number
-print(
-    Date(Year(2025), Month.number(4), Day(30))
-)
+print(Date(Year(2025), Month.number(4), Day(30)))
+## 2025-04-30
 
-# Invalid day for February
 with Catch():
     Day.of(Month.FEBRUARY, 30)
+## Error: Invalid day 30 for month 2
 
-# Invalid year
 with Catch():
     Year(0)
+## Error: Invalid year: 0
