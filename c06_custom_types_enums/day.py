@@ -14,5 +14,6 @@ class Day:
 
     @classmethod
     def of(cls, month: Month, day: int) -> Self:
-        month.value.valid_day(day)
+        # Ensure day is within Month's range:
+        month.valid_day(day)
         return cls(day)

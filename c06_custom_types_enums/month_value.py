@@ -18,9 +18,3 @@ class MonthValue:
             raise ValueError(
                 f"Invalid days in month: {self.days}"
             )
-
-    def valid_day(self, day: int) -> None:
-        if not 1 <= day <= self.days:
-            raise ValueError(
-                f"Invalid day {day} for month {self.number}"
-            )

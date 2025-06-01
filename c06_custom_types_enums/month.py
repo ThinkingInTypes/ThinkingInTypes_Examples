@@ -1,6 +1,7 @@
 # month.py
 from enum import Enum
 from typing import Self
+
 from month_value import MonthValue
 
 
@@ -21,9 +22,18 @@ class Month(Enum):  # Enum[MonthValue]
     def __str__(self) -> str:
         return self.name
 
+    def __int__(self) -> int:
+        return self.value.number
+
+    def valid_day(self, day: int) -> None:
+        if not 1 <= day <= self.value.days:
+            raise ValueError(f"Invalid day {day} for {self}")
+
     @classmethod
-    def number(cls, month_number: int) -> Self:
+    def _missing_(cls, value: object) -> Self:
+        if not isinstance(value, int):
+            raise TypeError("Expected int")
         for m in cls:
-            if m.value.number == month_number:
+            if m.value.number == value:
                 return m
-        raise ValueError(f"No such month: {month_number}")
+        raise ValueError(f"No such month: {value}")
