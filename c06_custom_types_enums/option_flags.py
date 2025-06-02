@@ -14,9 +14,9 @@ for k, v in Option.__members__.items():
     print(f"{k} = {v.value} ({v.value:08b})")
 
 # Compose multiple options:
-opt1 = Option.TRACE | Option.DEBUG
+opt1 = Option.TRACE | Option.VERBOSE
 print(f"{opt1 = } ({opt1.value:08b})")
-opt2 = Option.TRACE | Option.DEBUG | Option.VERBOSE
+opt2 = opt1 | Option.SAVE
 print(f"{opt2 = } ({opt2.value:08b})")
 
 # Usage
