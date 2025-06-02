@@ -5,7 +5,7 @@ from typing import Self
 from month_value import MonthValue
 
 
-class Month(Enum):  # Enum[MonthValue]
+class Month(Enum):
     JANUARY = MonthValue(1, 31)
     FEBRUARY = MonthValue(2, 28)
     MARCH = MonthValue(3, 31)

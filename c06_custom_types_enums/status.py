@@ -9,14 +9,23 @@ class Status(Enum):
     RETRY = 3
 
 
+# Construction syntax returns corresponding value:
+print(Status(2))
+## Status.ERROR
+
+# Look up by name string:
+print(Status["RETRY"])
+## Status.RETRY
+
+
 # Accessing members:
 state = Status.OK
 print(state)
 ## Status.OK
-print(state.value)
-## 1
 print(state.name)
 ## OK
+print(state.value)
+## 1
 
 # Equality and identity:
 assert Status.OK == Status.OK
@@ -31,7 +40,7 @@ for s in Status:
 
 # Invalid member access:
 with Catch():
-    Status(4)
+    Status(4)  # Lookup syntax
 ## Error: 4 is not a valid Status
 
 # Enum members are immutable:
