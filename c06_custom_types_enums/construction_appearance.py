@@ -34,6 +34,7 @@ class S2(StrEnum):
 # Enum members have name and value:
 print(S.A.name)
 print(S.A.value)
+print(f"{S.__members__ = }")
 
 # Construction syntax returns corresponding value:
 print(N(2))
