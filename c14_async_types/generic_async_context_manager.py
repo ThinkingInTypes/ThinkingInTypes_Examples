@@ -14,11 +14,11 @@ async def manage[T](value: T) -> AsyncIterator[T]:
 
 
 async def generic_async_context_manager() -> None:
-    async with manage(Resource("7. Generic")) as resource:
-        print(await resource.work())
+    async with manage(Resource("Generic ACM")) as resource:
+        print(await resource.process())
 
 
 asyncio.run(generic_async_context_manager())
-## Acquiring Resource(name='7. Generic')
-## Completed: 7. Generic
-## Releasing Resource(name='7. Generic')
+## Acquiring Resource(name='Generic ACM')
+## Completed: Generic ACM
+## Releasing Resource(name='Generic ACM')

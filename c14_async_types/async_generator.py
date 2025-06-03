@@ -2,21 +2,21 @@
 import asyncio
 from typing import AsyncGenerator
 
-from async_resource import Resource
+from async_resource import Resource, do_work
 
 
 async def generate_resources() -> AsyncGenerator[Resource, None]:
     for i in range(3):
-        await asyncio.sleep(0.1)
-        yield Resource(f"4. gen-{i}")
+        await do_work()
+        yield Resource(f"gen-{i}")
 
 
 async def generate_resources_coroutine() -> None:
     async for r in generate_resources():
-        print(await r.work())
+        print(await r.process())
 
 
 asyncio.run(generate_resources_coroutine())
-## Completed: 4. gen-0
-## Completed: 4. gen-1
-## Completed: 4. gen-2
+## Completed: gen-0
+## Completed: gen-1
+## Completed: gen-2

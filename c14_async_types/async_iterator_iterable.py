@@ -2,7 +2,7 @@
 import asyncio
 from typing import AsyncIterator, AsyncIterable
 
-from async_resource import Resource
+from async_resource import Resource, do_work
 
 
 class ResourceStreamer:
@@ -16,15 +16,15 @@ class ResourceStreamer:
         if self.count <= 0:
             raise StopAsyncIteration
         self.count -= 1
-        await asyncio.sleep(0.1)
-        return Resource(f"3. stream-{self.count}")
+        await do_work()
+        return Resource(f"Stream-{self.count}")
 
 
 async def consume_stream(
     stream: AsyncIterable[Resource],
 ) -> None:
     async for resource in stream:
-        print(await resource.work())
+        print(await resource.process())
 
 
 async def consumer() -> None:
@@ -32,6 +32,6 @@ async def consumer() -> None:
 
 
 asyncio.run(consumer())
-## Completed: 3. stream-2
-## Completed: 3. stream-1
-## Completed: 3. stream-0
+## Completed: Stream-2
+## Completed: Stream-1
+## Completed: Stream-0

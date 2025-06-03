@@ -8,19 +8,18 @@ from async_resource import Resource
 
 @asynccontextmanager
 async def resource_context() -> AsyncIterator[Resource]:
-    print("5. Acquiring resource")
-    await asyncio.sleep(0.1)
-    yield Resource("5. AsyncContextManager")
-    print("5. Releasing resource")
-    await asyncio.sleep(0.1)
+    resource = Resource("Async Context Manager")
+    print(f"Acquired {resource}")
+    yield resource
+    print(f"Releasing {resource}")
 
 
-async def get_resource_manager_async() -> None:
+async def async_context_manager_async() -> None:
     async with resource_context() as res:
-        print(await res.work())
+        print(await res.process())
 
 
-asyncio.run(get_resource_manager_async())
-## 5. Acquiring resource
-## Completed: 5. AsyncContextManager
-## 5. Releasing resource
+asyncio.run(async_context_manager_async())
+## Acquired Resource(name='Async Context Manager')
+## Completed: Async Context Manager
+## Releasing Resource(name='Async Context Manager')
