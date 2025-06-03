@@ -7,3 +7,5 @@ match status:
         result = "Not Found"
     case _:
         result = "Unknown status"
+print(result)
+## Not Found

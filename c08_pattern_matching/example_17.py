@@ -2,7 +2,7 @@
 pair = (5, 5)
 match pair:
     case (x, y) if x == y:
-        print("The two values are equal.")
+        print("Values are equal.")
     case (x, y):
-        print("The values are different.")
-## The two values are equal.
+        print("Values are different.")
+## Values are equal.
