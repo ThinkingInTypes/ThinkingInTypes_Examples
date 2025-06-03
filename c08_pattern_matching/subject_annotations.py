@@ -1,5 +1,4 @@
 # subject_annotations.py
-from typing import Tuple
 
 
 def subject_annotation(*values: int) -> None:

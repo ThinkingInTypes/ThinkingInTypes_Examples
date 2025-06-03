@@ -1,6 +1,5 @@
 # box.py
 from dataclasses import dataclass
-from typing_extensions import reveal_type
 
 
 @dataclass

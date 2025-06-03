@@ -1,9 +1,9 @@
 # wildcard_final_case.py
-def wildcard(status):
+def wildcard(status) -> str:
     match status:
         case 200:
-            message = "OK"
+            return "OK"
         case 404:
-            message = "Not Found"
+            return "Not Found"
         case _:
-            message = "Unknown"  # `_` matches anything not matched above
+            return "Unknown"  # `_` matches anything not matched above

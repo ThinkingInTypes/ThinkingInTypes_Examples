@@ -1,5 +1,4 @@
 # composing_functions.py
-from pprint import pprint
 
 from return_result import fa
 from returns.result import (

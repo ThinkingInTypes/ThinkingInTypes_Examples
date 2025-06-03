@@ -106,6 +106,9 @@ def ruff(ctx) -> None:
     """
     Formats code in Python files.
     """
+    print("Ruff sorting imports:")
+    ctx.run("ruff check --fix")
+    print(f"Ruff formatting for line length {WIDTH}")
     ctx.run(f"ruff format --line-length {WIDTH}")
 
 
@@ -144,6 +147,7 @@ def extract(ctx, force: bool = False) -> None:
     ctx.run(
         f"mdextract -d {markdown_chapters_path} {target_path}"
     )
+    ruff(ctx)
 
 
 @task

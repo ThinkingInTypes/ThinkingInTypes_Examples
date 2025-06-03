@@ -1,5 +1,5 @@
 # dataclass_as_dict.py
-from dataclasses import dataclass, asdict
+from dataclasses import asdict
 from point_dataclasses import Point
 
 p = Point(7, 9)

@@ -104,7 +104,7 @@ print(
 def location_info(p: Person) -> str:
     match p:
         case Person(_, _, Address(_, city="Springfield")):
-            return f"Resident of Springfield"
+            return "Resident of Springfield"
         case Person(name, _, Address(street, city)):
             return f"{name} lives at {street}, {city}"
         case _:
