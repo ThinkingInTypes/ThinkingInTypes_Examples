@@ -20,15 +20,13 @@ class ResourceStreamer:
         return Resource(f"Stream-{self.count}")
 
 
-async def consume_stream(
-    stream: AsyncIterable[Resource],
-) -> None:
+async def consume(stream: AsyncIterable[Resource]) -> None:
     async for resource in stream:
         print(await resource.process())
 
 
 async def consumer() -> None:
-    await consume_stream(ResourceStreamer())
+    await consume(ResourceStreamer())
 
 
 asyncio.run(consumer())

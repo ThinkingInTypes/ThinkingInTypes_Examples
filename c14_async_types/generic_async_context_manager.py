@@ -8,7 +8,7 @@ from async_resource import Resource
 
 @asynccontextmanager
 async def manage[T](value: T) -> AsyncIterator[T]:
-    print(f"Acquiring {value}")
+    print(f"Acquired {value}")
     yield value
     print(f"Releasing {value}")
 
@@ -19,6 +19,6 @@ async def generic_async_context_manager() -> None:
 
 
 asyncio.run(generic_async_context_manager())
-## Acquiring Resource(name='Generic ACM')
+## Acquired Resource(name='Generic ACM')
 ## Completed: Generic ACM
 ## Releasing Resource(name='Generic ACM')
