@@ -12,3 +12,4 @@ with Catch():
         WARNING = 2
         ERROR = 3
         MISSING = 5  # error: gap
+## Error: invalid enum 'Status': missing values 4

@@ -11,3 +11,4 @@ with Catch():
         GREEN = 2
         BLUE = 3
         DUPLICATE = 3
+## Error: aliases found in <enum 'Color'>: DUPLICATE -> BLUE
