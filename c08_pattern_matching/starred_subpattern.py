@@ -1,4 +1,6 @@
-# example_8.py
+# starred_subpattern.py
+
+
 def rest_pattern(*values):
     match values:
         case [first, second, *rest]:

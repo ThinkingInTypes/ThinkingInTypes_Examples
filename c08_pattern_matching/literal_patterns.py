@@ -1,11 +1,19 @@
 # literal_patterns.py
-status = 404
-match status:
-    case 200:
-        result = "OK"
-    case 404:
-        result = "Not Found"
-    case _:
-        result = "Unknown status"
-print(result)
-## Not Found
+
+
+def info(status: int) -> str:
+    match status:
+        case 200:
+            return f"{status:03d}: OK"
+        case 404:
+            return f"{status:03d}: Not Found"
+        case _:
+            return f"{status:03d}: Unknown status"
+
+
+print(info(200))
+## 200: OK
+print(info(404))
+## 404: Not Found
+print(info(500))
+## 500: Unknown status

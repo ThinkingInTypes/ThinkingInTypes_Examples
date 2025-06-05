@@ -5,7 +5,7 @@ and can be used as a callable via its __call__ method.
 
 When used as a callable, argument evaluation must be delayed until inside
 the context manager in case argument evaluation raises an exception.
-To do this the function should be provided as a zero-argument callable.
+To do this, the function should be provided as a zero-argument callable.
 If the function takes arguments, it must be wrapped in a lambda to delay evaluation.
 """
 
