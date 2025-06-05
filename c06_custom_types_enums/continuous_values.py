@@ -1,11 +1,14 @@
 # continuous_values.py
 # pyright: reportArgumentType=false
-from enum import Enum, EnumCheck
+from enum import Enum, verify, CONTINUOUS
 
+from book_utils import Catch
 
-# CONTINUOUS Not implemented yet
-class Status(Enum, boundary=EnumCheck.CONTINUOUS):
-    OK = 1
-    WARNING = 2
-    ERROR = 3
-    MISSING = 5  # error: gap
+with Catch():
+
+    @verify(CONTINUOUS)
+    class Status(Enum):
+        OK = 1
+        WARNING = 2
+        ERROR = 3
+        MISSING = 5  # error: gap

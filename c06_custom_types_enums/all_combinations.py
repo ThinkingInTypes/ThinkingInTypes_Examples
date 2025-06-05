@@ -1,17 +1,21 @@
 # all_combinations.py
-# pyright: reportArgumentType=false
-from enum import Flag, EnumCheck, auto
+from enum import Flag, auto, verify, NAMED_FLAGS
+
+from book_utils import Catch
 
 
-class AllFlags(Flag, boundary=EnumCheck.NAMED_FLAGS):
+@verify(NAMED_FLAGS)
+class AllFlags(Flag):
     FIRST = auto()  # 1
     SECOND = auto()  # 2
     THIRD = auto()  # 4
     ALL = FIRST | SECOND | THIRD  # 7
 
 
-# NAMED_FLAGS not implemented yet
-class Missing(Flag, boundary=EnumCheck.NAMED_FLAGS):
-    FIRST = auto()
-    SECOND = auto()
-    THIRD = auto()
+with Catch():
+
+    @verify(NAMED_FLAGS)
+    class Missing(Flag):
+        FIRST = auto()
+        SECOND = auto()
+        THIRD = auto()

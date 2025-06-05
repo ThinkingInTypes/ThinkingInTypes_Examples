@@ -1,6 +1,5 @@
 # phone_number.py
 # Validated and normalized phone number
-from __future__ import annotations
 from dataclasses import dataclass
 from typing import Self
 import re

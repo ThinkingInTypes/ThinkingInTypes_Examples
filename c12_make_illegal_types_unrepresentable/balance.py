@@ -1,5 +1,4 @@
 # balance.py
-from __future__ import annotations
 from dataclasses import dataclass
 from amount import Amount
 

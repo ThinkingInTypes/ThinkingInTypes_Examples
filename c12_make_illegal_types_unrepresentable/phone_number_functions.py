@@ -27,3 +27,4 @@ def f3(phonenumber: str):
     if not phone_number.match(phonenumber):
         return f"Bad {phonenumber = }"
     ...
+    return "OK"

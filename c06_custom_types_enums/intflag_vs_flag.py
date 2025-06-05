@@ -26,7 +26,7 @@ for k, v in Flags.__members__.items():
 defined = 3  # FIRST | SECOND
 undefined = 903
 
-# Both succeed:
+# Both lookups succeed:
 print(f"{IntFlags(defined) = }")
 ## IntFlags(defined) = <IntFlags.FIRST|SECOND: 3>
 print(f"{Flags(defined) = }")

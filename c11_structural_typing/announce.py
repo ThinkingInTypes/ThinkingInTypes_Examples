@@ -1,12 +1,16 @@
 # announce.py
+from dataclasses import dataclass
+
 from speaker import Speaker
 
 
+@dataclass
 class Dog:
     def speak(self) -> str:
         return "woof"
 
 
+@dataclass
 class Robot:
     def speak(self) -> str:
         return "beep-boop"
