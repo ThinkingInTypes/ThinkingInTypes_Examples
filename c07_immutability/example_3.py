@@ -8,6 +8,6 @@ class BaseConfig:
     TIMEOUT: Final[int] = 60
 
 
+# Error: can't override a final attribute in BaseConfig
 class SubConfig(BaseConfig):
-    # Error: can't override a final attribute in BaseConfig
     TIMEOUT = 30  # type: ignore
