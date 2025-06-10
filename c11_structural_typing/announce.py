@@ -21,7 +21,7 @@ def announce(speaker: Speaker) -> None:
     print("Announcement:", speaker.speak())
 
 
-announce(Dog())  # OK, Dog has speak()
+announce(Dog())  # Dog has speak()
 ## Announcement: woof
-announce(Robot())  # OK, Robot has speak()
+announce(Robot())  # Robot has speak()
 ## Announcement: beep-boop

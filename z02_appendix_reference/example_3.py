@@ -1,6 +1,6 @@
 # example_3.py
-from typing import NoReturn
+from typing import Never
 
 
-def fatal_error(msg: str) -> NoReturn:
+def fatal_error(msg: str) -> Never:
     raise RuntimeError(msg)
