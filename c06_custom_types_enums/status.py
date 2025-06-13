@@ -1,6 +1,5 @@
 # status.py
 from enum import Enum
-
 from book_utils import Catch
 
 
@@ -34,7 +33,7 @@ assert Status.OK is Status.OK
 
 # Iteration:
 for s in Status:
-    print(s, s.name, s.value)
+    print(s.name, s.value)
 ## OK 1
 ## ERROR 2
 ## RETRY 3
@@ -45,7 +44,5 @@ with Catch():
 ## Error: 4 is not a valid Status
 
 # Enum members are immutable:
-try:
+with Catch():
     Status.OK.value = 42  # type: ignore
-except Exception as e:
-    print(e)
