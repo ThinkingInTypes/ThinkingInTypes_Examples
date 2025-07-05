@@ -6,7 +6,6 @@ description = "Examples from the book ThinkingInTypes.com"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "numpy>=2.3.1",
     "pybooktools",
     "pyinvoke>=1.0.4",
     "returns>=0.25.0",
